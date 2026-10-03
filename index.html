@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -680,14 +681,18 @@ id="userTotalEarned">
 </div>
 
 
-<div
-class="earning-info">
+<div class="earning-info">
 
 <strong>Gains des machines</strong>
 
 <p>
 Les gains sont calculés automatiquement par Supabase
 selon les machines actives et le nombre de jours écoulés.
+</p>
+
+<p>
+<strong>Actualisation automatique lors de l'ouverture
+de votre espace.</strong>
 </p>
 
 </div>
@@ -881,6 +886,10 @@ Montant minimum : 2 500 FCFA.
 Le montant doit être un multiple de 100 FCFA.
 </li>
 
+<li>
+Le solde est vérifié directement par Supabase.
+</li>
+
 </ul>
 
 </div>
@@ -899,6 +908,31 @@ min="2500"
 step="100"
 required
 placeholder="Exemple : 2500">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Mode de paiement</label>
+
+<select
+id="withdrawalMethod"
+required>
+
+<option value="">
+Sélectionner
+</option>
+
+<option value="Wave">
+Wave
+</option>
+
+<option value="Orange Money">
+Orange Money
+</option>
+
+</select>
 
 </div>
 
@@ -1021,7 +1055,7 @@ Administrateur connecté
 </strong>
 
 <p>
-Vous pouvez gérer les demandes de dépôt.
+Vous pouvez gérer les demandes de dépôt et de retrait.
 </p>
 
 </div>
@@ -1600,7 +1634,7 @@ async function updateMyEarnings(){
 
 if(!currentAuthUser){
 
-return;
+return 0;
 
 }
 
@@ -1622,7 +1656,7 @@ console.error(
 error
 );
 
-return;
+return 0;
 
 }
 
@@ -1634,12 +1668,16 @@ data,
 );
 
 
+return Number(data || 0);
+
 }catch(error){
 
 console.error(
 "Erreur inattendue lors du calcul des gains :",
 error
 );
+
+return 0;
 
 }
 
@@ -1722,12 +1760,16 @@ return;
 }
 
 
-/* CALCUL DES GAINS */
+/* =====================================================
+   CALCUL AUTOMATIQUE DES GAINS
+===================================================== */
 
 await updateMyEarnings();
 
 
-/* RECHARGEMENT DU PROFIL */
+/* =====================================================
+   RECHARGER LE PROFIL APRES CALCUL
+===================================================== */
 
 await loadCurrentUser();
 
@@ -2288,7 +2330,7 @@ alert(
 
 
 /* =========================================================
-   RETRAIT
+   RETRAIT SECURISE
 ========================================================= */
 
 async function submitWithdrawal(event){
@@ -2307,11 +2349,22 @@ return;
 }
 
 
-/* Actualiser les gains avant de vérifier le solde */
+/* Actualiser les gains avant la demande */
 
 await updateMyEarnings();
 
 await loadCurrentUser();
+
+
+if(!currentProfile){
+
+alert(
+"Impossible de charger votre solde."
+);
+
+return;
+
+}
 
 
 const amount =
@@ -2320,15 +2373,19 @@ document.getElementById("withdrawalAmount").value
 );
 
 
+const method =
+document.getElementById("withdrawalMethod").value;
+
+
 const phone =
 document.getElementById("withdrawalPhone")
 .value.trim();
 
 
-if(amount < 2500){
+if(!amount){
 
 alert(
-"Le retrait minimum est de 2 500 FCFA."
+"Veuillez saisir un montant."
 );
 
 return;
@@ -2336,10 +2393,10 @@ return;
 }
 
 
-if(amount % 100 !== 0){
+if(!method){
 
 alert(
-"Le montant doit être un multiple de 100 FCFA."
+"Veuillez sélectionner Wave ou Orange Money."
 );
 
 return;
@@ -2347,13 +2404,10 @@ return;
 }
 
 
-if(
-amount >
-Number(currentProfile.balance || 0)
-){
+if(!phone){
 
 alert(
-"Votre solde est insuffisant."
+"Veuillez saisir le numéro de réception."
 );
 
 return;
@@ -2361,46 +2415,28 @@ return;
 }
 
 
-const today =
-new Date();
-
-
-if(today.getDay() !== 5){
-
-alert(
-"Les retraits sont disponibles uniquement le vendredi."
-);
-
-return;
-
-}
-
+/*
+   La vérification du vendredi,
+   du minimum, du multiple de 100
+   et du solde est maintenant effectuée
+   directement par Supabase.
+*/
 
 try{
 
 const {
+data,
 error
 } =
 await supabaseClient
-.from("withdrawals")
-.insert({
-
-user_id:
-currentAuthUser.id,
-
-amount:
-amount,
-
-payment_method:
-"Wave ou Orange Money",
-
-payment_number:
-phone,
-
-status:
-"pending"
-
-});
+.rpc(
+"create_withdrawal",
+{
+p_amount:amount,
+p_payment_method:method,
+p_payment_number:phone
+}
+);
 
 
 if(error){
@@ -2408,7 +2444,7 @@ if(error){
 console.error(error);
 
 alert(
-"Impossible d'envoyer la demande : " +
+"Demande refusée : " +
 error.message
 );
 
@@ -2418,11 +2454,14 @@ return;
 
 
 alert(
-"Votre demande de retrait a été envoyée à l'administrateur."
+"Votre demande de retrait a été enregistrée avec succès.\n\n" +
+"Elle est maintenant en attente de validation par l'administrateur."
 );
 
 
 document.getElementById("withdrawalAmount").value = "";
+
+document.getElementById("withdrawalMethod").value = "";
 
 document.getElementById("withdrawalPhone").value = "";
 
@@ -2609,6 +2648,7 @@ let html = `
 
 <th>Date</th>
 <th>Montant</th>
+<th>Mode</th>
 <th>Numéro</th>
 <th>Statut</th>
 
@@ -2629,6 +2669,10 @@ ${formatDate(withdrawal.created_at)}
 
 <td>
 ${formatMoney(withdrawal.amount)}
+</td>
+
+<td>
+${escapeHtml(withdrawal.payment_method)}
 </td>
 
 <td>
@@ -2906,7 +2950,8 @@ html;
 async function validateDeposit(depositId){
 
 if(!confirm(
-"Voulez-vous vraiment VALIDER ce dépôt ? La machine sera activée."
+"Voulez-vous vraiment VALIDER ce dépôt ?\n\n" +
+"Le montant sera ajouté au solde et la machine sera activée."
 )){
 
 return;
@@ -2943,7 +2988,8 @@ return;
 
 
 alert(
-"DEPÔT VALIDÉ.\n\nLa machine a été activée pour l'utilisateur."
+"DEPÔT VALIDÉ.\n\n" +
+"Le solde a été crédité et la machine a été activée."
 );
 
 
@@ -3096,8 +3142,10 @@ let html = `
 <th>Utilisateur</th>
 <th>Téléphone</th>
 <th>Montant</th>
+<th>Mode</th>
 <th>Numéro réception</th>
 <th>Statut</th>
+<th>Action</th>
 
 </tr>
 
@@ -3112,6 +3160,38 @@ item =>
 item.id ===
 withdrawal.user_id
 );
+
+
+let actions = "-";
+
+
+if(withdrawal.status === "pending"){
+
+actions = `
+
+<div class="action-buttons">
+
+<button
+class="btn btn-success"
+onclick="validateWithdrawal(${withdrawal.id})">
+
+VALIDER
+
+</button>
+
+<button
+class="btn btn-danger"
+onclick="rejectWithdrawal(${withdrawal.id})">
+
+REFUSER
+
+</button>
+
+</div>
+
+`;
+
+}
 
 
 html += `
@@ -3142,12 +3222,22 @@ ${formatMoney(withdrawal.amount)}
 
 <td>
 ${escapeHtml(
-withdrawal.payment_number
+withdrawal.payment_method || "-"
+)}
+</td>
+
+<td>
+${escapeHtml(
+withdrawal.payment_number || "-"
 )}
 </td>
 
 <td>
 ${statusHtml(withdrawal.status)}
+</td>
+
+<td>
+${actions}
 </td>
 
 </tr>
@@ -3161,6 +3251,114 @@ html += "</table>";
 
 container.innerHTML =
 html;
+
+}
+
+
+/* =========================================================
+   ADMIN - VALIDATION RETRAIT
+========================================================= */
+
+async function validateWithdrawal(withdrawalId){
+
+if(!confirm(
+"Voulez-vous vraiment VALIDER ce retrait ?\n\n" +
+"Le montant sera déduit du solde de l'utilisateur."
+)){
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.rpc(
+"admin_validate_withdrawal",
+{
+p_withdrawal_id:
+withdrawalId
+}
+);
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de la validation du retrait : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"RETRAIT VALIDÉ.\n\n" +
+"Le montant a été déduit du solde de l'utilisateur."
+);
+
+
+await loadAdminWithdrawals();
+
+}
+
+
+/* =========================================================
+   ADMIN - REFUS RETRAIT
+========================================================= */
+
+async function rejectWithdrawal(withdrawalId){
+
+if(!confirm(
+"Voulez-vous vraiment REFUSER ce retrait ?"
+)){
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.rpc(
+"admin_reject_withdrawal",
+{
+p_withdrawal_id:
+withdrawalId
+}
+);
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors du refus du retrait : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"Retrait refusé."
+);
+
+
+await loadAdminWithdrawals();
 
 }
 
@@ -3465,3 +3663,4 @@ initializeApp();
 
 </body>
 </html>
+```
