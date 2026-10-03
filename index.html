@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -18,77 +16,30 @@
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#f4f6f8;
+    background:#f4f7f8;
     color:#222;
 }
 
 header{
-    background:#5b3518;
+    background:#198754;
     color:white;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
+    padding:18px;
+    text-align:center;
 }
 
-.logo{
-    font-size:25px;
-    font-weight:bold;
+header h1{
+    margin:0;
+    font-size:28px;
 }
 
-nav{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-nav button{
-    border:none;
-    padding:10px 15px;
-    border-radius:6px;
-    cursor:pointer;
-    background:#fff;
-    color:#5b3518;
-    font-weight:bold;
-}
-
-nav button:hover{
-    background:#e9d8c7;
+header p{
+    margin:6px 0 0;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1000px;
     margin:auto;
     padding:20px;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.hero{
-    background:linear-gradient(135deg,#5b3518,#9b5c25);
-    color:white;
-    padding:50px 25px;
-    border-radius:12px;
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-size:42px;
-    margin:0 0 15px;
-}
-
-.hero p{
-    font-size:18px;
-    line-height:1.6;
 }
 
 .card{
@@ -96,36 +47,16 @@ nav button:hover{
     border-radius:12px;
     padding:20px;
     margin-bottom:20px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.card h2,
-.card h3{
-    color:#5b3518;
+h2,h3{
+    color:#198754;
 }
 
-.form-group{
-    margin-bottom:15px;
-}
-
-label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:bold;
-}
-
-input,
-select{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:7px;
-    font-size:16px;
-}
-
-.btn{
+button{
     border:none;
-    border-radius:7px;
+    border-radius:8px;
     padding:12px 18px;
     cursor:pointer;
     font-weight:bold;
@@ -133,11 +64,6 @@ select{
 }
 
 .btn-primary{
-    background:#5b3518;
-    color:white;
-}
-
-.btn-success{
     background:#198754;
     color:white;
 }
@@ -148,8 +74,8 @@ select{
 }
 
 .btn-warning{
-    background:#f0ad4e;
-    color:white;
+    background:#ffc107;
+    color:#000;
 }
 
 .btn-secondary{
@@ -157,19 +83,23 @@ select{
     color:white;
 }
 
-.btn:hover{
-    opacity:.9;
+input,select{
+    width:100%;
+    padding:12px;
+    margin:7px 0 14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
 }
 
-.btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+.hidden{
+    display:none !important;
 }
 
-.grid{
+.machine-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
 }
 
 .machine{
@@ -181,968 +111,511 @@ select{
 
 .machine h3{
     margin-top:0;
-    color:#5b3518;
 }
 
-.price{
-    font-size:24px;
-    font-weight:bold;
-    color:#198754;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
 }
 
-.daily{
-    font-size:18px;
-    font-weight:bold;
-    color:#5b3518;
+.stat{
+    background:#198754;
+    color:white;
+    padding:18px;
+    border-radius:12px;
 }
 
-.status{
-    padding:8px 12px;
-    border-radius:20px;
-    display:inline-block;
-    font-size:13px;
-    font-weight:bold;
+.stat strong{
+    display:block;
+    font-size:23px;
+    margin-top:8px;
 }
 
-.status-active{
-    background:#d1e7dd;
-    color:#0f5132;
-}
-
-.status-pending{
+.notice{
     background:#fff3cd;
-    color:#664d03;
-}
-
-.status-rejected{
-    background:#f8d7da;
-    color:#842029;
-}
-
-.status-free{
-    background:#cff4fc;
-    color:#055160;
-}
-
-.balance{
-    font-size:30px;
-    font-weight:bold;
-    color:#198754;
-}
-
-.info-box{
-    background:#e7f1ff;
-    border-left:5px solid #0d6efd;
+    border:1px solid #ffe69c;
     padding:15px;
-    border-radius:6px;
+    border-radius:10px;
+    margin:12px 0;
+}
+
+.payment-box{
+    background:#e8f7ee;
+    border:2px solid #198754;
+    border-radius:12px;
+    padding:18px;
     margin:15px 0;
 }
 
-.warning-box{
-    background:#fff3cd;
-    border-left:5px solid #ffc107;
-    padding:15px;
-    border-radius:6px;
-    margin:15px 0;
-}
-
-.success-box{
-    background:#d1e7dd;
+.payment-method{
+    background:white;
+    border-radius:10px;
+    padding:14px;
+    margin:10px 0;
     border-left:5px solid #198754;
-    padding:15px;
-    border-radius:6px;
-    margin:15px 0;
 }
 
-.error-box{
-    background:#f8d7da;
-    border-left:5px solid #dc3545;
-    padding:15px;
-    border-radius:6px;
-    margin:15px 0;
+.payment-number{
+    font-size:22px;
+    font-weight:bold;
+    color:#198754;
+    letter-spacing:1px;
 }
 
-.admin-card{
-    border-left:5px solid #5b3518;
-}
-
-.action-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-}
-
-.machine-selected{
-    background:#e7f1ff;
-    border:2px solid #0d6efd;
-    padding:15px;
+.warning{
+    color:#856404;
+    background:#fff3cd;
+    border:1px solid #ffe69c;
+    padding:12px;
     border-radius:8px;
-    margin-bottom:15px;
+}
+
+.success{
+    color:#0f5132;
+    background:#d1e7dd;
+    border:1px solid #badbcc;
+    padding:12px;
+    border-radius:8px;
+}
+
+.error{
+    color:#842029;
+    background:#f8d7da;
+    border:1px solid #f5c2c7;
+    padding:12px;
+    border-radius:8px;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
+    margin-top:10px;
 }
 
-th,
-td{
+th,td{
     border:1px solid #ddd;
     padding:10px;
     text-align:left;
 }
 
 th{
-    background:#5b3518;
+    background:#198754;
     color:white;
 }
 
-tr:nth-child(even){
-    background:#f8f8f8;
+.status-pending{
+    color:#856404;
+    font-weight:bold;
 }
 
-.payment-number{
-    font-size:24px;
-    font-weight:bold;
+.status-validated{
     color:#198754;
-    text-align:center;
-    padding:15px;
-    background:#eef9f1;
-    border-radius:8px;
-}
-
-.loading{
-    text-align:center;
-    padding:20px;
     font-weight:bold;
 }
 
-.empty{
-    padding:20px;
-    text-align:center;
-    color:#666;
-}
-
-.earning-info{
-    background:#eef9f1;
-    border-left:5px solid #198754;
-    padding:15px;
-    border-radius:6px;
-    margin:15px 0;
+.status-rejected{
+    color:#dc3545;
+    font-weight:bold;
 }
 
 footer{
     text-align:center;
     padding:25px;
-    margin-top:30px;
-    background:#5b3518;
-    color:white;
+    color:#777;
 }
 
 @media(max-width:600px){
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    nav{
-        width:100%;
-    }
-
-    nav button{
-        flex:1;
+    .container{
+        padding:10px;
     }
 
     table{
         font-size:13px;
-        display:block;
-        overflow-x:auto;
     }
 
-    .action-buttons{
-        flex-direction:column;
+    th,td{
+        padding:7px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-CACAO
-</div>
-
-<nav>
-
-<button onclick="showPage('home')">
-Accueil
-</button>
-
-<button
-id="navDashboard"
-onclick="showPage('dashboard')"
-style="display:none;">
-Mon espace
-</button>
-
-<button
-id="navAdmin"
-onclick="showPage('admin')"
-style="display:none;">
-Administration
-</button>
-
-<button
-id="navLogin"
-onclick="showPage('login')">
-Connexion
-</button>
-
-<button
-id="navRegister"
-onclick="showPage('register')">
-Inscription
-</button>
-
-<button
-id="navLogout"
-onclick="logout()"
-style="display:none;">
-Déconnexion
-</button>
-
-</nav>
-
+    <h1>🌱 CACAO</h1>
+    <p>Plateforme de gestion des machines</p>
 </header>
-
 
 <div class="container">
 
+<!-- ACCUEIL -->
+<section id="homeSection">
 
-<!-- =====================================================
-     ACCUEIL
-===================================================== -->
+    <div class="card">
+        <h2>Bienvenue sur CACAO</h2>
+        <p>
+            Bienvenue sur notre plateforme. Connectez-vous ou créez
+            votre compte pour accéder aux machines.
+        </p>
 
-<section id="home" class="page active">
+        <button class="btn-primary" onclick="showSection('registerSection')">
+            Créer un compte
+        </button>
 
-<div class="hero">
+        <button class="btn-secondary" onclick="showSection('loginSection')">
+            Se connecter
+        </button>
+    </div>
 
-<h1>Bienvenue sur CACAO</h1>
-
-<p>
-Plateforme de gestion des machines en libre service.
-</p>
-
-<button
-class="btn btn-primary"
-onclick="showPage('register')">
-Créer un compte
-</button>
-
-<button
-class="btn btn-success"
-onclick="showPage('login')">
-Se connecter
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h2>Comment fonctionne CACAO ?</h2>
-
-<div class="grid">
-
-<div>
-<h3>1. Inscription</h3>
-<p>
-Créez votre compte avec vos informations.
-</p>
-</div>
-
-<div>
-<h3>2. Dépôt</h3>
-<p>
-Choisissez une machine et envoyez votre demande de dépôt.
-</p>
-</div>
-
-<div>
-<h3>3. Validation</h3>
-<p>
-L'administrateur vérifie le paiement et valide la demande.
-</p>
-</div>
-
-<div>
-<h3>4. Activation</h3>
-<p>
-Après validation, la machine est activée pour l'utilisateur.
-</p>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="warning-box">
-
-<strong>Information importante</strong>
-
-<p>
-Les montants affichés dans cette application sont des
-paramètres de démonstration du prototype.
-Ils ne constituent pas une garantie de rendement.
-</p>
-
-</div>
+    <div class="card">
+        <h3>⚠️ Information importante</h3>
+        <div class="warning">
+            Les paramètres de rémunération affichés dans cette application
+            sont des paramètres de démonstration. Ils ne constituent pas
+            une garantie de rendement financier.
+        </div>
+    </div>
 
 </section>
 
 
+<!-- INSCRIPTION -->
+<section id="registerSection" class="hidden">
 
-<!-- =====================================================
-     INSCRIPTION
-===================================================== -->
+    <div class="card">
+        <h2>Créer un compte</h2>
 
-<section id="register" class="page">
+        <label>Nom complet</label>
+        <input type="text" id="registerName" placeholder="Votre nom complet">
 
-<div class="card">
+        <label>Numéro de téléphone</label>
+        <input type="text" id="registerPhone" placeholder="Votre numéro">
 
-<h2>Créer un compte</h2>
+        <label>Email</label>
+        <input type="email" id="registerEmail" placeholder="Votre email">
 
-<form onsubmit="register(event)">
+        <label>Mot de passe</label>
+        <input type="password" id="registerPassword" placeholder="Mot de passe">
 
-<div class="form-group">
+        <button class="btn-primary" onclick="registerUser()">
+            S'inscrire
+        </button>
 
-<label>Nom complet</label>
+        <button class="btn-secondary" onclick="showSection('loginSection')">
+            J'ai déjà un compte
+        </button>
 
-<input
-type="text"
-id="registerName"
-required
-placeholder="Votre nom complet">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Téléphone</label>
-
-<input
-type="tel"
-id="registerPhone"
-required
-placeholder="Votre numéro">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Email</label>
-
-<input
-type="email"
-id="registerEmail"
-required
-placeholder="Votre adresse email">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Mot de passe</label>
-
-<input
-type="password"
-id="registerPassword"
-required
-minlength="6"
-placeholder="Votre mot de passe">
-
-</div>
-
-
-<button
-class="btn btn-primary"
-type="submit">
-Créer mon compte
-</button>
-
-</form>
-
-</div>
+        <div id="registerMessage"></div>
+    </div>
 
 </section>
 
 
+<!-- CONNEXION -->
+<section id="loginSection" class="hidden">
 
-<!-- =====================================================
-     CONNEXION
-===================================================== -->
+    <div class="card">
+        <h2>Connexion</h2>
 
-<section id="login" class="page">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="Votre email">
 
-<div class="card">
+        <label>Mot de passe</label>
+        <input type="password" id="loginPassword" placeholder="Votre mot de passe">
 
-<h2>Connexion</h2>
+        <button class="btn-primary" onclick="loginUser()">
+            Se connecter
+        </button>
 
-<form onsubmit="login(event)">
+        <button class="btn-secondary" onclick="showSection('homeSection')">
+            Retour
+        </button>
 
-<div class="form-group">
-
-<label>Email</label>
-
-<input
-type="email"
-id="loginEmail"
-required
-placeholder="Votre adresse email">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Mot de passe</label>
-
-<input
-type="password"
-id="loginPassword"
-required
-placeholder="Votre mot de passe">
-
-</div>
-
-
-<button
-class="btn btn-primary"
-type="submit">
-Se connecter
-</button>
-
-</form>
-
-</div>
+        <div id="loginMessage"></div>
+    </div>
 
 </section>
 
 
+<!-- DASHBOARD UTILISATEUR -->
+<section id="dashboardSection" class="hidden">
+
+    <div class="card">
+        <h2>👤 Mon tableau de bord</h2>
+
+        <p>
+            Bienvenue <strong id="userName">Utilisateur</strong>
+        </p>
+
+        <button class="btn-danger" onclick="logoutUser()">
+            Déconnexion
+        </button>
+    </div>
+
+    <div class="stats">
 
-<!-- =====================================================
-     DASHBOARD UTILISATEUR
-===================================================== -->
+        <div class="stat">
+            💰 Solde
+            <strong id="userBalance">0 FCFA</strong>
+        </div>
 
-<section id="dashboard" class="page">
+        <div class="stat">
+            📈 Total gagné
+            <strong id="userTotalEarned">0 FCFA</strong>
+        </div>
 
-<div class="card">
+        <div class="stat">
+            ⚙️ Machines actives
+            <strong id="userMachinesCount">0</strong>
+        </div>
 
-<h2>Mon espace</h2>
+    </div>
 
-<p id="welcomeUser"></p>
+    <br>
 
+    <!-- MACHINES -->
+    <div class="card">
+        <h2>⚙️ Machines</h2>
 
-<div class="grid">
+        <div id="machinesContainer" class="machine-grid">
+            Chargement des machines...
+        </div>
+    </div>
 
-<div class="card">
 
-<h3>Mon solde</h3>
+    <!-- DEPOT -->
+    <div class="card">
+        <h2>💳 Dépôt</h2>
 
-<div
-class="balance"
-id="userBalance">
-0 FCFA
-</div>
+        <p>
+            Sélectionnez une machine pour effectuer votre dépôt.
+        </p>
 
-</div>
+        <div id="depositMachineInfo" class="notice">
+            Aucune machine sélectionnée.
+        </div>
 
+        <div class="payment-box">
 
-<div class="card">
+            <h3>📲 Effectuer le paiement</h3>
 
-<h3>Total gagné</h3>
+            <p>
+                Après avoir choisi votre machine, effectuez le paiement
+                correspondant au prix de la machine sur l'un des comptes
+                ci-dessous.
+            </p>
 
-<div
-class="balance"
-id="userTotalEarned">
-0 FCFA
-</div>
+            <div class="payment-method">
+                <strong>🟣 Wave</strong>
+                <div class="payment-number">07 19 71 32 30</div>
+            </div>
 
-</div>
+            <div class="payment-method">
+                <strong>🟠 Orange Money</strong>
+                <div class="payment-number">07 19 71 32 30</div>
+            </div>
 
-</div>
+            <div class="warning">
+                <strong>Important :</strong>
+                le paiement est effectué manuellement par l'utilisateur.
+                L'application ne vérifie pas automatiquement le paiement.
+                Après le paiement, indiquez la référence de votre transaction
+                ci-dessous.
+            </div>
 
+        </div>
 
-<div class="earning-info">
+        <label>Machine sélectionnée</label>
+        <select id="depositMachine">
+            <option value="">-- Choisir une machine --</option>
+        </select>
 
-<strong>Gains des machines</strong>
+        <label>Mode de paiement</label>
+        <select id="depositPaymentMethod">
+            <option value="">-- Choisir --</option>
+            <option value="Wave">Wave</option>
+            <option value="Orange Money">Orange Money</option>
+        </select>
 
-<p>
-Les gains sont calculés automatiquement par Supabase
-selon les machines actives et le nombre de jours écoulés.
-</p>
+        <label>Référence du paiement</label>
+        <input
+            type="text"
+            id="depositReference"
+            placeholder="Référence de la transaction"
+        >
 
-<p>
-<strong>Actualisation automatique lors de l'ouverture
-de votre espace.</strong>
-</p>
+        <button class="btn-primary" onclick="submitDeposit()">
+            📤 Envoyer la demande de dépôt
+        </button>
 
-</div>
+        <div id="depositMessage"></div>
 
+    </div>
 
-<button
-class="btn btn-success"
-onclick="showDepositForm()">
-DÉPÔT
-</button>
 
+    <!-- RETRAIT -->
+    <div class="card">
 
-<button
-class="btn btn-warning"
-onclick="showWithdrawalForm()">
-RETRAIT
-</button>
+        <h2>💸 Retrait</h2>
 
-</div>
+        <div class="warning">
 
+            <strong>Conditions de retrait :</strong>
 
+            <ul>
+                <li>Les retraits sont disponibles uniquement le vendredi.</li>
+                <li>Montant minimum : 2 500 FCFA.</li>
+                <li>Le montant doit être un multiple de 100 FCFA.</li>
+                <li>Paiement uniquement par Wave ou Orange Money.</li>
+                <li>Numéro de réception obligatoire.</li>
+                <li>Validation obligatoire par l'administrateur.</li>
+                <li>Le solde est débité uniquement après validation.</li>
+            </ul>
 
-<!-- =====================================================
-     DEPOT
-===================================================== -->
+        </div>
 
-<div
-id="depositForm"
-class="card"
-style="display:none;">
+        <label>Montant du retrait</label>
 
-<h2>Effectuer un dépôt</h2>
+        <input
+            type="number"
+            id="withdrawAmount"
+            min="2500"
+            step="100"
+            placeholder="Exemple : 2600"
+        >
 
+        <label>Mode de paiement</label>
 
-<div class="info-box">
+        <select id="withdrawPaymentMethod">
+            <option value="">-- Choisir --</option>
+            <option value="Wave">Wave</option>
+            <option value="Orange Money">Orange Money</option>
+        </select>
 
-<strong>Modes de paiement disponibles</strong>
+        <label>Numéro de réception</label>
 
-<p>
-Wave :
-<strong>0719713230</strong>
-</p>
+        <input
+            type="text"
+            id="withdrawPaymentNumber"
+            placeholder="Numéro Wave ou Orange Money"
+        >
 
-<p>
-Orange Money :
-<strong>0719713230</strong>
-</p>
+        <button class="btn-primary" onclick="submitWithdrawal()">
+            💸 Demander le retrait
+        </button>
 
-</div>
+        <div id="withdrawMessage"></div>
 
+    </div>
 
-<div
-id="selectedMachineBox"
-class="machine-selected"
-style="display:none;">
 
-<strong>Machine sélectionnée :</strong>
+    <!-- HISTORIQUE DEPOTS -->
+    <div class="card">
 
-<span id="selectedMachineName"></span>
+        <h2>📋 Mes dépôts</h2>
 
-<br>
+        <div id="myDeposits">
+            Chargement...
+        </div>
 
-<strong>Montant :</strong>
+    </div>
 
-<span id="selectedMachinePrice"></span>
 
-</div>
+    <!-- HISTORIQUE RETRAITS -->
+    <div class="card">
 
+        <h2>💸 Mes retraits</h2>
 
-<form onsubmit="submitDeposit(event)">
+        <div id="myWithdrawals">
+            Chargement...
+        </div>
 
-<div class="form-group">
-
-<label>Machine</label>
-
-<select
-id="depositMachine"
-required
-onchange="selectMachineFromForm()">
-
-<option value="">
-Sélectionner une machine
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Montant du dépôt</label>
-
-<input
-type="number"
-id="depositAmount"
-readonly
-required
-placeholder="Choisissez une machine">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Mode de paiement</label>
-
-<select
-id="depositMethod"
-required>
-
-<option value="">
-Sélectionner
-</option>
-
-<option value="Wave">
-Wave
-</option>
-
-<option value="Orange Money">
-Orange Money
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Référence de la transaction
-</label>
-
-<input
-type="text"
-id="depositReference"
-required
-placeholder="Référence du paiement">
-
-</div>
-
-
-<button
-class="btn btn-success"
-type="submit">
-Envoyer le dépôt
-</button>
-
-
-<button
-class="btn btn-secondary"
-type="button"
-onclick="hideForms()">
-Annuler
-</button>
-
-</form>
-
-</div>
-
-
-
-<!-- =====================================================
-     RETRAIT
-===================================================== -->
-
-<div
-id="withdrawalForm"
-class="card"
-style="display:none;">
-
-<h2>Demande de retrait</h2>
-
-
-<div class="warning-box">
-
-<strong>Conditions de retrait</strong>
-
-<ul>
-
-<li>
-Retraits disponibles le vendredi.
-</li>
-
-<li>
-Montant minimum : 2 500 FCFA.
-</li>
-
-<li>
-Le montant doit être un multiple de 100 FCFA.
-</li>
-
-<li>
-Le solde est vérifié directement par Supabase.
-</li>
-
-</ul>
-
-</div>
-
-
-<form onsubmit="submitWithdrawal(event)">
-
-<div class="form-group">
-
-<label>Montant du retrait</label>
-
-<input
-type="number"
-id="withdrawalAmount"
-min="2500"
-step="100"
-required
-placeholder="Exemple : 2500">
-
-</div>
-
-
-<div class="form-group">
-
-<label>Mode de paiement</label>
-
-<select
-id="withdrawalMethod"
-required>
-
-<option value="">
-Sélectionner
-</option>
-
-<option value="Wave">
-Wave
-</option>
-
-<option value="Orange Money">
-Orange Money
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Numéro de réception</label>
-
-<input
-type="tel"
-id="withdrawalPhone"
-required
-placeholder="Numéro Wave ou Orange Money">
-
-</div>
-
-
-<button
-class="btn btn-warning"
-type="submit">
-Demander le retrait
-</button>
-
-
-<button
-class="btn btn-secondary"
-type="button"
-onclick="hideForms()">
-Annuler
-</button>
-
-</form>
-
-</div>
-
-
-
-<!-- =====================================================
-     MACHINES
-===================================================== -->
-
-<div class="card">
-
-<h2>Machines disponibles</h2>
-
-<div
-id="machinesContainer"
-class="grid">
-
-<div class="loading">
-Chargement des machines...
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     DEPOTS UTILISATEUR
-===================================================== -->
-
-<div class="card">
-
-<h2>Mes dépôts</h2>
-
-<div id="userDeposits">
-
-<p>
-Chargement...
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- =====================================================
-     RETRAITS UTILISATEUR
-===================================================== -->
-
-<div class="card">
-
-<h2>Mes retraits</h2>
-
-<div id="userWithdrawals">
-
-<p>
-Chargement...
-</p>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
+<!-- ADMIN -->
+<section id="adminSection" class="hidden">
 
-<!-- =====================================================
-     ADMINISTRATION
-===================================================== -->
+    <div class="card">
 
-<section id="admin" class="page">
+        <h2>🛡️ Administration</h2>
 
-<div class="card admin-card">
+        <p>
+            Bienvenue dans l'espace administrateur.
+        </p>
 
-<h2>Administration CACAO</h2>
+        <button class="btn-danger" onclick="logoutUser()">
+            Déconnexion
+        </button>
 
-<p id="adminWelcome">
-Espace administrateur
-</p>
-
-<div class="success-box">
-
-<strong>
-Administrateur connecté
-</strong>
-
-<p>
-Vous pouvez gérer les demandes de dépôt et de retrait.
-</p>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <!-- DEPOTS ADMIN -->
+    <div class="card">
 
-<h2>Paramètres de paiement</h2>
+        <h2>💳 Demandes de dépôts</h2>
 
-<div class="info-box">
+        <button
+            class="btn-secondary"
+            onclick="loadAdminDeposits()">
+            🔄 Actualiser
+        </button>
 
-<p>
-Wave :
-<strong>0719713230</strong>
-</p>
+        <div id="adminDeposits">
+            Chargement...
+        </div>
 
-<p>
-Orange Money :
-<strong>0719713230</strong>
-</p>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <!-- RETRAITS ADMIN -->
+    <div class="card">
 
-<h2>Demandes de dépôt</h2>
+        <h2>💸 Demandes de retraits</h2>
 
-<div id="adminDepositSummary"></div>
+        <button
+            class="btn-secondary"
+            onclick="loadAdminWithdrawals()">
+            🔄 Actualiser
+        </button>
 
-<div id="adminDeposits">
+        <div id="adminWithdrawals">
+            Chargement...
+        </div>
 
-<div class="loading">
-Chargement des dépôts...
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Demandes de retrait</h2>
-
-<div id="adminWithdrawals">
-
-<div class="loading">
-Chargement des retraits...
-</div>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <!-- PROFILS ADMIN -->
+    <div class="card">
 
-<h2>Mon compte administrateur</h2>
+        <h2>👥 Utilisateurs</h2>
 
-<div id="adminUsers">
+        <button
+            class="btn-secondary"
+            onclick="loadAdminProfiles()">
+            🔄 Actualiser
+        </button>
 
-<div class="loading">
-Chargement...
-</div>
+        <div id="adminProfiles">
+            Chargement...
+        </div>
 
-</div>
-
-</div>
+    </div>
 
 </section>
 
-</div>
 
+</div>
 
 <footer>
-
-<p>
-CACAO © 2026 - Prototype
-</p>
-
+    CACAO © 2026
 </footer>
-
 
 
 <script>
@@ -1159,8 +632,8 @@ const SUPABASE_PUBLISHABLE_KEY =
 
 const supabaseClient =
 window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
 );
 
 
@@ -1168,144 +641,68 @@ SUPABASE_PUBLISHABLE_KEY
    VARIABLES
 ========================================================= */
 
-let currentAuthUser = null;
-
+let currentUser = null;
 let currentProfile = null;
-
 let machines = [];
 
-let userMachines = [];
-
-let selectedMachineId = null;
-
 
 /* =========================================================
-   NAVIGATION
+   OUTILS
 ========================================================= */
 
-function showPage(page){
+function money(value){
 
-if(
-page === "dashboard" &&
-!currentAuthUser
-){
-
-page = "login";
-
-}
-
-
-if(
-page === "admin" &&
-(
-!currentAuthUser ||
-!currentProfile ||
-currentProfile.role !== "admin"
-)
-){
-
-page = "home";
+    return Number(value || 0).toLocaleString(
+        "fr-FR",
+        {
+            minimumFractionDigits:0,
+            maximumFractionDigits:2
+        }
+    ) + " FCFA";
 
 }
 
 
-document
-.querySelectorAll(".page")
-.forEach(section => {
+function showSection(id){
 
-section.classList.remove("active");
+    const sections = [
+        "homeSection",
+        "registerSection",
+        "loginSection",
+        "dashboardSection",
+        "adminSection"
+    ];
 
-});
+    sections.forEach(section => {
 
+        const element =
+            document.getElementById(section);
 
-const target =
-document.getElementById(page);
+        if(element){
+            element.classList.add("hidden");
+        }
 
-if(target){
+    });
 
-target.classList.add("active");
+    const target =
+        document.getElementById(id);
 
-}
-
-
-if(page === "dashboard"){
-
-loadDashboard();
-
-}
-
-
-if(page === "admin"){
-
-loadAdmin();
+    if(target){
+        target.classList.remove("hidden");
+    }
 
 }
 
 
-updateNavigation();
+function message(elementId,text,type){
 
-}
+    const element =
+        document.getElementById(elementId);
 
+    if(!element) return;
 
-/* =========================================================
-   NAVIGATION HEADER
-========================================================= */
-
-function updateNavigation(){
-
-const navDashboard =
-document.getElementById("navDashboard");
-
-const navAdmin =
-document.getElementById("navAdmin");
-
-const navLogin =
-document.getElementById("navLogin");
-
-const navRegister =
-document.getElementById("navRegister");
-
-const navLogout =
-document.getElementById("navLogout");
-
-
-navDashboard.style.display = "none";
-
-navAdmin.style.display = "none";
-
-navLogin.style.display = "inline-block";
-
-navRegister.style.display = "inline-block";
-
-navLogout.style.display = "none";
-
-
-if(!currentAuthUser){
-
-return;
-
-}
-
-
-navLogin.style.display = "none";
-
-navRegister.style.display = "none";
-
-navLogout.style.display = "inline-block";
-
-
-if(
-currentProfile &&
-currentProfile.role === "admin"
-){
-
-navAdmin.style.display = "inline-block";
-
-}else{
-
-navDashboard.style.display = "inline-block";
-
-}
+    element.innerHTML =
+        `<div class="${type}">${text}</div>`;
 
 }
 
@@ -1314,113 +711,72 @@ navDashboard.style.display = "inline-block";
    INSCRIPTION
 ========================================================= */
 
-async function register(event){
+async function registerUser(){
 
-event.preventDefault();
+    const name =
+        document.getElementById("registerName").value.trim();
 
+    const phone =
+        document.getElementById("registerPhone").value.trim();
 
-const name =
-document.getElementById("registerName")
-.value.trim();
+    const email =
+        document.getElementById("registerEmail").value.trim();
 
-const phone =
-document.getElementById("registerPhone")
-.value.trim();
+    const password =
+        document.getElementById("registerPassword").value;
 
-const email =
-document.getElementById("registerEmail")
-.value.trim()
-.toLowerCase();
+    if(!name || !phone || !email || !password){
 
-const password =
-document.getElementById("registerPassword")
-.value;
+        message(
+            "registerMessage",
+            "Veuillez remplir tous les champs.",
+            "error"
+        );
 
+        return;
+    }
 
-if(password.length < 6){
+    try{
 
-alert(
-"Le mot de passe doit contenir au moins 6 caractères."
-);
+        const { data,error } =
+            await supabaseClient.auth.signUp({
 
-return;
+                email:email,
 
-}
+                password:password,
 
+                options:{
+                    data:{
+                        full_name:name,
+                        phone:phone
+                    }
+                }
 
-try{
+            });
 
-const {
-data,
-error
-} =
-await supabaseClient.auth.signUp({
+        if(error) throw error;
 
-email:email,
+        message(
+            "registerMessage",
+            "Compte créé avec succès. Vous pouvez vous connecter.",
+            "success"
+        );
 
-password:password,
+        document.getElementById("registerName").value="";
+        document.getElementById("registerPhone").value="";
+        document.getElementById("registerEmail").value="";
+        document.getElementById("registerPassword").value="";
 
-options:{
-data:{
-full_name:name,
-phone:phone
-}
-}
+    }
+    catch(error){
 
-});
+        message(
+            "registerMessage",
+            error.message,
+            "error"
+        );
 
-
-if(error){
-
-console.error(error);
-
-alert(
-"Erreur lors de la création du compte : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"Votre compte a été créé avec succès."
-);
-
-
-document.getElementById("registerName").value = "";
-
-document.getElementById("registerPhone").value = "";
-
-document.getElementById("registerEmail").value = "";
-
-document.getElementById("registerPassword").value = "";
-
-
-if(data.session){
-
-currentAuthUser = data.user;
-
-await loadCurrentUser();
-
-showPage("dashboard");
-
-}else{
-
-showPage("login");
-
-}
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Une erreur inattendue est survenue."
-);
-
-}
+    }
 
 }
 
@@ -1429,83 +785,49 @@ alert(
    CONNEXION
 ========================================================= */
 
-async function login(event){
+async function loginUser(){
 
-event.preventDefault();
+    const email =
+        document.getElementById("loginEmail").value.trim();
 
+    const password =
+        document.getElementById("loginPassword").value;
 
-const email =
-document.getElementById("loginEmail")
-.value.trim()
-.toLowerCase();
+    if(!email || !password){
 
-const password =
-document.getElementById("loginPassword")
-.value;
+        message(
+            "loginMessage",
+            "Veuillez saisir votre email et votre mot de passe.",
+            "error"
+        );
 
+        return;
+    }
 
-try{
+    try{
 
-const {
-data,
-error
-} =
-await supabaseClient.auth.signInWithPassword({
+        const { data,error } =
+            await supabaseClient.auth.signInWithPassword({
 
-email:email,
+                email:email,
+                password:password
 
-password:password
+            });
 
-});
+        if(error) throw error;
 
+        await initializeUser();
 
-if(error){
+    }
+    catch(error){
 
-console.error(error);
+        message(
+            "loginMessage",
+            error.message,
+            "error"
+        );
 
-alert(
-"Email ou mot de passe incorrect."
-);
-
-return;
-
-}
-
-
-currentAuthUser =
-data.user;
-
-
-await loadCurrentUser();
-
-
-document.getElementById("loginEmail").value = "";
-
-document.getElementById("loginPassword").value = "";
-
-
-if(
-currentProfile &&
-currentProfile.role === "admin"
-){
-
-showPage("admin");
-
-}else{
-
-showPage("dashboard");
-
-}
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Erreur de connexion."
-);
-
-}
+    }
 
 }
 
@@ -1514,172 +836,181 @@ alert(
    DECONNEXION
 ========================================================= */
 
-async function logout(){
+async function logoutUser(){
 
-const {
-error
-} =
-await supabaseClient.auth.signOut();
+    await supabaseClient.auth.signOut();
 
+    currentUser = null;
+    currentProfile = null;
 
-if(error){
-
-console.error(error);
-
-alert(
-"Erreur lors de la déconnexion."
-);
-
-return;
-
-}
-
-
-currentAuthUser = null;
-
-currentProfile = null;
-
-userMachines = [];
-
-selectedMachineId = null;
-
-updateNavigation();
-
-showPage("home");
+    showSection("homeSection");
 
 }
 
 
 /* =========================================================
-   UTILISATEUR ACTUEL
+   INITIALISATION UTILISATEUR
 ========================================================= */
 
-async function loadCurrentUser(){
+async function initializeUser(){
 
-const {
-data,
-error
-} =
-await supabaseClient.auth.getUser();
+    const {
+        data:{
+            user
+        }
+    } =
+    await supabaseClient.auth.getUser();
 
+    if(!user){
 
-if(error){
+        showSection("homeSection");
 
-console.error(error);
+        return;
 
-currentAuthUser = null;
+    }
 
-currentProfile = null;
+    currentUser = user;
 
-updateNavigation();
+    await loadProfile();
 
-return;
+    if(!currentProfile){
 
-}
+        message(
+            "loginMessage",
+            "Profil utilisateur introuvable.",
+            "error"
+        );
 
+        return;
 
-currentAuthUser =
-data.user;
+    }
 
+    if(currentProfile.role === "admin"){
 
-if(!currentAuthUser){
+        showSection("adminSection");
 
-currentProfile = null;
+        await loadAdminData();
 
-updateNavigation();
+    }
+    else{
 
-return;
+        showSection("dashboardSection");
 
-}
+        await updateMyEarnings();
 
+        await loadProfile();
 
-const {
-data:profile,
-error:profileError
-} =
-await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",currentAuthUser.id)
-.single();
+        await loadMachines();
 
+        await loadMyDeposits();
 
-if(profileError){
+        await loadMyWithdrawals();
 
-console.error(profileError);
+        updateDashboard();
 
-alert(
-"Le profil utilisateur n'a pas pu être chargé."
-);
-
-return;
-
-}
-
-
-currentProfile =
-profile;
-
-
-updateNavigation();
+    }
 
 }
 
 
 /* =========================================================
-   CALCUL AUTOMATIQUE DES GAINS
+   PROFIL
+========================================================= */
+
+async function loadProfile(){
+
+    if(!currentUser) return;
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id",currentUser.id)
+        .single();
+
+    if(error){
+
+        console.error(error);
+
+        currentProfile = null;
+
+        return;
+
+    }
+
+    currentProfile = data;
+
+}
+
+
+/* =========================================================
+   GAINS
 ========================================================= */
 
 async function updateMyEarnings(){
 
-if(!currentAuthUser){
+    if(!currentUser) return;
 
-return 0;
+    try{
 
-}
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "update_my_earnings"
+            );
 
+        if(error){
 
-try{
+            console.error(
+                "Erreur gains :",
+                error
+            );
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc("update_my_earnings");
+            return;
 
+        }
 
-if(error){
+        console.log(
+            "Gains calculés :",
+            data
+        );
 
-console.error(
-"Erreur calcul des gains :",
-error
-);
+    }
+    catch(error){
 
-return 0;
+        console.error(error);
 
-}
-
-
-console.log(
-"Gains calculés :",
-data,
-"FCFA"
-);
-
-
-return Number(data || 0);
-
-}catch(error){
-
-console.error(
-"Erreur inattendue lors du calcul des gains :",
-error
-);
-
-return 0;
+    }
 
 }
+
+
+/* =========================================================
+   TABLEAU DE BORD
+========================================================= */
+
+function updateDashboard(){
+
+    if(!currentProfile) return;
+
+    document.getElementById("userName")
+        .textContent =
+        currentProfile.full_name ||
+        "Utilisateur";
+
+    document.getElementById("userBalance")
+        .textContent =
+        money(currentProfile.balance);
+
+    document.getElementById("userTotalEarned")
+        .textContent =
+        money(currentProfile.total_earned);
 
 }
 
@@ -1688,327 +1019,117 @@ return 0;
    MACHINES
 ========================================================= */
 
-async function loadMachinesFromDatabase(){
+async function loadMachines(){
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("machines")
-.select("*")
-.eq("active",true)
-.order("id");
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("machines")
+        .select("*")
+        .eq("active",true)
+        .order("id");
 
+    if(error){
 
-if(error){
+        console.error(error);
 
-console.error(error);
+        return;
 
-alert(
-"Impossible de charger les machines."
-);
+    }
 
-return;
+    machines = data || [];
 
-}
+    const container =
+        document.getElementById("machinesContainer");
 
+    const select =
+        document.getElementById("depositMachine");
 
-machines = data || [];
+    container.innerHTML = "";
 
-}
+    select.innerHTML =
+        `<option value="">-- Choisir une machine --</option>`;
 
+    machines.forEach(machine => {
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+        const div =
+            document.createElement("div");
 
-async function loadDashboard(){
+        div.className = "machine";
 
-if(!currentAuthUser){
+        div.innerHTML = `
 
-showPage("login");
+            <h3>${escapeHtml(machine.name)}</h3>
 
-return;
+            <p>
+                <strong>Prix :</strong>
+                ${money(machine.price)}
+            </p>
 
-}
+            <p>
+                <strong>Rémunération journalière :</strong>
+                ${money(machine.daily_earning)}
+            </p>
 
+            <button
+                class="btn-primary"
+                onclick="selectMachine(${machine.id})">
+                Choisir cette machine
+            </button>
 
-if(
-currentProfile &&
-currentProfile.role === "admin"
-){
+        `;
 
-showPage("admin");
-
-return;
-
-}
-
-
-if(!currentProfile){
-
-await loadCurrentUser();
-
-}
-
-
-if(!currentProfile){
-
-return;
-
-}
+        container.appendChild(div);
 
 
-/* =====================================================
-   CALCUL AUTOMATIQUE DES GAINS
-===================================================== */
+        const option =
+            document.createElement("option");
 
-await updateMyEarnings();
+        option.value = machine.id;
 
+        option.textContent =
+            `${machine.name} - ${money(machine.price)}`;
 
-/* =====================================================
-   RECHARGER LE PROFIL APRES CALCUL
-===================================================== */
+        select.appendChild(option);
 
-await loadCurrentUser();
+    });
 
-
-if(!currentProfile){
-
-return;
-
-}
-
-
-document.getElementById("welcomeUser").innerHTML =
-"Bienvenue <strong>" +
-escapeHtml(currentProfile.full_name || "") +
-"</strong>";
-
-
-document.getElementById("userBalance").textContent =
-formatMoney(currentProfile.balance);
-
-
-document.getElementById("userTotalEarned").textContent =
-formatMoney(currentProfile.total_earned);
-
-
-await loadMachinesFromDatabase();
-
-await loadUserMachines();
-
-await loadUserDeposits();
-
-await loadUserWithdrawals();
+    await loadUserMachines();
 
 }
 
 
 /* =========================================================
-   MACHINES UTILISATEUR
+   MACHINES DE L'UTILISATEUR
 ========================================================= */
 
 async function loadUserMachines(){
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("user_machines")
-.select("*")
-.eq("user_id",currentAuthUser.id)
-.eq("active",true);
+    if(!currentUser) return;
 
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("user_machines")
+        .select("*")
+        .eq("user_id",currentUser.id)
+        .eq("active",true);
 
-if(error){
+    if(error){
 
-console.error(error);
+        console.error(error);
 
-userMachines = [];
+        return;
 
-}else{
+    }
 
-userMachines = data || [];
-
-}
-
-
-renderMachines();
-
-}
-
-
-/* =========================================================
-   AFFICHAGE MACHINES
-========================================================= */
-
-function renderMachines(){
-
-const container =
-document.getElementById("machinesContainer");
-
-
-container.innerHTML = "";
-
-
-if(!machines.length){
-
-container.innerHTML =
-"<div class='empty'>Aucune machine disponible.</div>";
-
-return;
-
-}
-
-
-machines.forEach(machine => {
-
-const active =
-userMachines.find(
-item =>
-Number(item.machine_id) ===
-Number(machine.id)
-);
-
-
-if(active){
-
-container.innerHTML += `
-
-<div class="machine">
-
-<h3>
-${escapeHtml(machine.name)}
-</h3>
-
-<p>
-Prix :
-<strong>
-${formatMoney(machine.price)}
-</strong>
-</p>
-
-<p class="daily">
-Rémunération :
-${formatNumber(machine.daily_earning)}
-FCFA / jour
-</p>
-
-<p>
-<span class="status status-active">
-MACHINE ACTIVE
-</span>
-</p>
-
-</div>
-
-`;
-
-}else{
-
-container.innerHTML += `
-
-<div class="machine">
-
-<h3>
-${escapeHtml(machine.name)}
-</h3>
-
-<p>
-Prix :
-<strong>
-${formatMoney(machine.price)}
-</strong>
-</p>
-
-<p class="daily">
-Rémunération :
-${formatNumber(machine.daily_earning)}
-FCFA / jour
-</p>
-
-<button
-class="btn btn-primary"
-onclick="prepareMachineDeposit(${machine.id})">
-
-LOUER CETTE MACHINE
-
-</button>
-
-</div>
-
-`;
-
-}
-
-});
-
-}
-
-
-/* =========================================================
-   PREPARER MACHINE
-========================================================= */
-
-function prepareMachineDeposit(machineId){
-
-const machine =
-machines.find(
-item =>
-Number(item.id) ===
-Number(machineId)
-);
-
-
-if(!machine){
-
-return;
-
-}
-
-
-selectedMachineId =
-Number(machine.id);
-
-
-showDepositForm();
-
-
-const select =
-document.getElementById("depositMachine");
-
-
-select.value =
-String(machine.id);
-
-
-document.getElementById("depositAmount").value =
-machine.price;
-
-
-document.getElementById("selectedMachineName").textContent =
-machine.name;
-
-
-document.getElementById("selectedMachinePrice").textContent =
-formatMoney(machine.price);
-
-
-document.getElementById("selectedMachineBox").style.display =
-"block";
-
-
-window.scrollTo({
-
-top:
-document.getElementById("depositForm").offsetTop,
-
-behavior:"smooth"
-
-});
+    document.getElementById("userMachinesCount")
+        .textContent =
+        (data || []).length;
 
 }
 
@@ -2017,683 +1138,535 @@ behavior:"smooth"
    SELECTION MACHINE
 ========================================================= */
 
-function selectMachineFromForm(){
+function selectMachine(machineId){
 
-const machineId =
-Number(
-document.getElementById("depositMachine").value
-);
+    const select =
+        document.getElementById("depositMachine");
 
+    select.value = machineId;
 
-selectedMachineId =
-machineId || null;
+    updateDepositMachineInfo();
 
-
-const machine =
-machines.find(
-item =>
-Number(item.id) ===
-machineId
-);
-
-
-if(!machine){
-
-document.getElementById("depositAmount").value = "";
-
-document.getElementById("selectedMachineBox").style.display =
-"none";
-
-return;
+    document
+        .getElementById("depositPaymentMethod")
+        .focus();
 
 }
 
 
-document.getElementById("depositAmount").value =
-machine.price;
+function updateDepositMachineInfo(){
 
+    const id =
+        Number(
+            document.getElementById(
+                "depositMachine"
+            ).value
+        );
 
-document.getElementById("selectedMachineName").textContent =
-machine.name;
+    const machine =
+        machines.find(
+            m => Number(m.id) === id
+        );
 
+    const info =
+        document.getElementById(
+            "depositMachineInfo"
+        );
 
-document.getElementById("selectedMachinePrice").textContent =
-formatMoney(machine.price);
+    if(!machine){
 
+        info.innerHTML =
+            "Aucune machine sélectionnée.";
 
-document.getElementById("selectedMachineBox").style.display =
-"block";
+        return;
 
-}
+    }
 
+    info.innerHTML = `
 
-/* =========================================================
-   FORMULAIRES
-========================================================= */
+        <strong>${escapeHtml(machine.name)}</strong><br>
 
-function showDepositForm(){
+        Prix du dépôt :
+        <strong>${money(machine.price)}</strong>
 
-hideForms();
+        <br><br>
 
+        Effectuez d'abord le paiement sur :
 
-const select =
-document.getElementById("depositMachine");
+        <br>
 
+        <strong>Wave : 07 19 71 32 30</strong>
 
-select.innerHTML =
-`
-<option value="">
-Sélectionner une machine
-</option>
-`;
+        <br>
 
+        <strong>Orange Money : 07 19 71 32 30</strong>
 
-machines.forEach(machine => {
-
-const active =
-userMachines.find(
-item =>
-Number(item.machine_id) ===
-Number(machine.id)
-);
-
-
-if(!active){
-
-select.innerHTML += `
-<option value="${machine.id}">
-${escapeHtml(machine.name)} - ${formatMoney(machine.price)}
-</option>
-`;
-
-}
-
-});
-
-
-if(selectedMachineId){
-
-select.value =
-String(selectedMachineId);
+    `;
 
 }
 
 
-document.getElementById("depositForm").style.display =
-"block";
-
-}
-
-
-function showWithdrawalForm(){
-
-hideForms();
-
-document.getElementById("withdrawalForm").style.display =
-"block";
-
-}
-
-
-function hideForms(){
-
-document.getElementById("depositForm").style.display =
-"none";
-
-document.getElementById("withdrawalForm").style.display =
-"none";
-
-}
+document
+    .getElementById("depositMachine")
+    .addEventListener(
+        "change",
+        updateDepositMachineInfo
+    );
 
 
 /* =========================================================
    DEPOT
 ========================================================= */
 
-async function submitDeposit(event){
+async function submitDeposit(){
 
-event.preventDefault();
+    if(!currentUser){
 
+        alert("Vous devez être connecté.");
 
-if(!currentAuthUser){
+        return;
 
-alert(
-"Veuillez vous connecter."
-);
+    }
 
-return;
+    const machineId =
+        Number(
+            document.getElementById(
+                "depositMachine"
+            ).value
+        );
 
-}
+    const paymentMethod =
+        document.getElementById(
+            "depositPaymentMethod"
+        ).value;
 
+    const reference =
+        document.getElementById(
+            "depositReference"
+        ).value.trim();
 
-const machineId =
-Number(
-document.getElementById("depositMachine").value
-);
+    const machine =
+        machines.find(
+            m => Number(m.id) === machineId
+        );
 
+    if(!machine){
 
-const amount =
-Number(
-document.getElementById("depositAmount").value
-);
+        message(
+            "depositMessage",
+            "Veuillez choisir une machine.",
+            "error"
+        );
 
+        return;
 
-const method =
-document.getElementById("depositMethod").value;
+    }
 
+    if(!paymentMethod){
 
-const reference =
-document.getElementById("depositReference")
-.value.trim();
+        message(
+            "depositMessage",
+            "Veuillez choisir Wave ou Orange Money.",
+            "error"
+        );
 
+        return;
 
-if(!machineId){
+    }
 
-alert(
-"Veuillez sélectionner une machine."
-);
+    if(!reference){
 
-return;
+        message(
+            "depositMessage",
+            "Veuillez saisir la référence du paiement.",
+            "error"
+        );
 
-}
+        return;
 
+    }
 
-const machine =
-machines.find(
-item =>
-Number(item.id) ===
-machineId
-);
+    try{
 
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("deposits")
+            .insert({
 
-if(!machine){
+                user_id:currentUser.id,
 
-alert(
-"Machine introuvable."
-);
+                machine_id:machine.id,
 
-return;
+                amount:machine.price,
 
-}
+                payment_method:paymentMethod,
 
+                payment_reference:reference,
 
-if(amount !== Number(machine.price)){
+                status:"pending"
 
-alert(
-"Le montant doit correspondre au prix de la machine."
-);
+            });
 
-return;
+        if(error) throw error;
 
-}
 
+        message(
+            "depositMessage",
+            "Demande de dépôt envoyée. Votre paiement sera vérifié et validé par l'administrateur.",
+            "success"
+        );
 
-if(!method){
 
-alert(
-"Veuillez choisir un mode de paiement."
-);
+        document.getElementById(
+            "depositReference"
+        ).value = "";
 
-return;
 
-}
+        await loadMyDeposits();
 
+    }
+    catch(error){
 
-if(!reference){
+        console.error(error);
 
-alert(
-"Veuillez entrer la référence du paiement."
-);
+        message(
+            "depositMessage",
+            error.message,
+            "error"
+        );
 
-return;
-
-}
-
-
-try{
-
-const {
-error
-} =
-await supabaseClient
-.from("deposits")
-.insert({
-
-user_id:
-currentAuthUser.id,
-
-machine_id:
-machineId,
-
-amount:
-amount,
-
-payment_method:
-method,
-
-payment_reference:
-reference,
-
-status:
-"pending"
-
-});
-
-
-if(error){
-
-console.error(error);
-
-alert(
-"Impossible d'envoyer le dépôt : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"VOTRE DEMANDE A ÉTÉ ENVOYÉE AVEC SUCCÈS ET EST EN ATTENTE DE L'ADMINISTRATEUR."
-);
-
-
-document.getElementById("depositMachine").value = "";
-
-document.getElementById("depositAmount").value = "";
-
-document.getElementById("depositMethod").value = "";
-
-document.getElementById("depositReference").value = "";
-
-document.getElementById("selectedMachineBox").style.display =
-"none";
-
-selectedMachineId = null;
-
-hideForms();
-
-await loadDashboard();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Erreur lors de l'envoi du dépôt."
-);
-
-}
+    }
 
 }
 
 
 /* =========================================================
-   RETRAIT SECURISE
+   MES DEPOTS
 ========================================================= */
 
-async function submitWithdrawal(event){
+async function loadMyDeposits(){
 
-event.preventDefault();
+    if(!currentUser) return;
 
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("deposits")
+        .select("*")
+        .eq("user_id",currentUser.id)
+        .order("id",{ascending:false});
 
-if(!currentAuthUser){
+    if(error){
 
-alert(
-"Veuillez vous connecter."
-);
+        console.error(error);
 
-return;
+        return;
 
-}
+    }
 
+    const container =
+        document.getElementById(
+            "myDeposits"
+        );
 
-/* Actualiser les gains avant la demande */
+    if(!data || data.length === 0){
 
-await updateMyEarnings();
+        container.innerHTML =
+            "<p>Aucun dépôt.</p>";
 
-await loadCurrentUser();
+        return;
 
+    }
 
-if(!currentProfile){
+    let html = `
 
-alert(
-"Impossible de charger votre solde."
-);
+        <table>
 
-return;
+        <tr>
+            <th>ID</th>
+            <th>Montant</th>
+            <th>Paiement</th>
+            <th>Référence</th>
+            <th>Statut</th>
+        </tr>
 
-}
+    `;
 
+    data.forEach(item => {
 
-const amount =
-Number(
-document.getElementById("withdrawalAmount").value
-);
+        html += `
 
+            <tr>
 
-const method =
-document.getElementById("withdrawalMethod").value;
+                <td>${item.id}</td>
 
+                <td>${money(item.amount)}</td>
 
-const phone =
-document.getElementById("withdrawalPhone")
-.value.trim();
+                <td>${escapeHtml(item.payment_method || "")}</td>
 
+                <td>${escapeHtml(item.payment_reference || "")}</td>
 
-if(!amount){
+                <td>
+                    ${statusHtml(item.status)}
+                </td>
 
-alert(
-"Veuillez saisir un montant."
-);
+            </tr>
 
-return;
+        `;
 
-}
+    });
 
+    html += "</table>";
 
-if(!method){
-
-alert(
-"Veuillez sélectionner Wave ou Orange Money."
-);
-
-return;
-
-}
-
-
-if(!phone){
-
-alert(
-"Veuillez saisir le numéro de réception."
-);
-
-return;
-
-}
-
-
-/*
-   La vérification du vendredi,
-   du minimum, du multiple de 100
-   et du solde est maintenant effectuée
-   directement par Supabase.
-*/
-
-try{
-
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
-"create_withdrawal",
-{
-p_amount:amount,
-p_payment_method:method,
-p_payment_number:phone
-}
-);
-
-
-if(error){
-
-console.error(error);
-
-alert(
-"Demande refusée : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"Votre demande de retrait a été enregistrée avec succès.\n\n" +
-"Elle est maintenant en attente de validation par l'administrateur."
-);
-
-
-document.getElementById("withdrawalAmount").value = "";
-
-document.getElementById("withdrawalMethod").value = "";
-
-document.getElementById("withdrawalPhone").value = "";
-
-hideForms();
-
-await loadDashboard();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Erreur lors de la demande de retrait."
-);
-
-}
+    container.innerHTML = html;
 
 }
 
 
 /* =========================================================
-   HISTORIQUE DEPOTS
+   RETRAIT
 ========================================================= */
 
-async function loadUserDeposits(){
+async function submitWithdrawal(){
 
-const container =
-document.getElementById("userDeposits");
+    if(!currentUser){
 
+        alert("Vous devez être connecté.");
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("deposits")
-.select("*")
-.eq("user_id",currentAuthUser.id)
-.order("created_at",{ascending:false});
+        return;
 
+    }
 
-if(error){
+    const amount =
+        Number(
+            document.getElementById(
+                "withdrawAmount"
+            ).value
+        );
 
-console.error(error);
+    const paymentMethod =
+        document.getElementById(
+            "withdrawPaymentMethod"
+        ).value;
 
-container.innerHTML =
-"<p>Impossible de charger les dépôts.</p>";
-
-return;
-
-}
-
-
-if(!data || data.length === 0){
-
-container.innerHTML =
-"<div class='empty'>Aucun dépôt.</div>";
-
-return;
-
-}
+    const paymentNumber =
+        document.getElementById(
+            "withdrawPaymentNumber"
+        ).value.trim();
 
 
-let html = `
+    if(!Number.isFinite(amount)){
 
-<table>
+        message(
+            "withdrawMessage",
+            "Veuillez saisir un montant valide.",
+            "error"
+        );
 
-<tr>
-<th>Date</th>
-<th>Machine</th>
-<th>Montant</th>
-<th>Mode</th>
-<th>Référence</th>
-<th>Statut</th>
-</tr>
+        return;
 
-`;
+    }
 
+    if(amount < 2500){
 
-data.forEach(deposit => {
+        message(
+            "withdrawMessage",
+            "Le retrait minimum est de 2 500 FCFA.",
+            "error"
+        );
 
-const machine =
-machines.find(
-item =>
-Number(item.id) ===
-Number(deposit.machine_id)
-);
+        return;
 
+    }
 
-html += `
+    if(amount % 100 !== 0){
 
-<tr>
+        message(
+            "withdrawMessage",
+            "Le montant doit être un multiple de 100 FCFA.",
+            "error"
+        );
 
-<td>
-${formatDate(deposit.created_at)}
-</td>
+        return;
 
-<td>
-${machine
-? escapeHtml(machine.name)
-: "-"
-}
-</td>
+    }
 
-<td>
-${formatMoney(deposit.amount)}
-</td>
+    if(
+        paymentMethod !== "Wave" &&
+        paymentMethod !== "Orange Money"
+    ){
 
-<td>
-${escapeHtml(deposit.payment_method)}
-</td>
+        message(
+            "withdrawMessage",
+            "Choisissez Wave ou Orange Money.",
+            "error"
+        );
 
-<td>
-${escapeHtml(deposit.payment_reference)}
-</td>
+        return;
 
-<td>
-${statusHtml(deposit.status)}
-</td>
+    }
 
-</tr>
+    if(!paymentNumber){
 
-`;
+        message(
+            "withdrawMessage",
+            "Le numéro de réception est obligatoire.",
+            "error"
+        );
 
-});
+        return;
+
+    }
 
 
-html += "</table>";
+    try{
 
-container.innerHTML =
-html;
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "create_withdrawal",
+                {
+                    p_amount:amount,
+                    p_payment_method:paymentMethod,
+                    p_payment_number:paymentNumber
+                }
+            );
+
+        if(error) throw error;
+
+
+        message(
+            "withdrawMessage",
+            "Votre demande de retrait a été enregistrée et est en attente de validation par l'administrateur.",
+            "success"
+        );
+
+
+        document.getElementById(
+            "withdrawAmount"
+        ).value = "";
+
+        document.getElementById(
+            "withdrawPaymentMethod"
+        ).value = "";
+
+        document.getElementById(
+            "withdrawPaymentNumber"
+        ).value = "";
+
+
+        await updateMyEarnings();
+
+        await loadProfile();
+
+        updateDashboard();
+
+        await loadMyWithdrawals();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        message(
+            "withdrawMessage",
+            error.message,
+            "error"
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-   HISTORIQUE RETRAITS
+   MES RETRAITS
 ========================================================= */
 
-async function loadUserWithdrawals(){
+async function loadMyWithdrawals(){
 
-const container =
-document.getElementById("userWithdrawals");
+    if(!currentUser) return;
 
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("withdrawals")
+        .select("*")
+        .eq("user_id",currentUser.id)
+        .order("id",{ascending:false});
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("withdrawals")
-.select("*")
-.eq("user_id",currentAuthUser.id)
-.order("created_at",{ascending:false});
+    if(error){
 
+        console.error(error);
 
-if(error){
+        return;
 
-console.error(error);
+    }
 
-container.innerHTML =
-"<p>Impossible de charger les retraits.</p>";
+    const container =
+        document.getElementById(
+            "myWithdrawals"
+        );
 
-return;
+    if(!data || data.length === 0){
 
-}
+        container.innerHTML =
+            "<p>Aucun retrait.</p>";
 
+        return;
 
-if(!data || data.length === 0){
+    }
 
-container.innerHTML =
-"<div class='empty'>Aucun retrait.</div>";
+    let html = `
 
-return;
+        <table>
 
-}
+        <tr>
+            <th>ID</th>
+            <th>Montant</th>
+            <th>Mode</th>
+            <th>Numéro</th>
+            <th>Statut</th>
+        </tr>
 
+    `;
 
-let html = `
+    data.forEach(item => {
 
-<table>
+        html += `
 
-<tr>
+            <tr>
 
-<th>Date</th>
-<th>Montant</th>
-<th>Mode</th>
-<th>Numéro</th>
-<th>Statut</th>
+                <td>${item.id}</td>
 
-</tr>
+                <td>${money(item.amount)}</td>
 
-`;
+                <td>${escapeHtml(item.payment_method || "")}</td>
 
+                <td>${escapeHtml(item.payment_number || "")}</td>
 
-data.forEach(withdrawal => {
+                <td>
+                    ${statusHtml(item.status)}
+                </td>
 
-html += `
+            </tr>
 
-<tr>
+        `;
 
-<td>
-${formatDate(withdrawal.created_at)}
-</td>
+    });
 
-<td>
-${formatMoney(withdrawal.amount)}
-</td>
+    html += "</table>";
 
-<td>
-${escapeHtml(withdrawal.payment_method)}
-</td>
-
-<td>
-${escapeHtml(withdrawal.payment_number)}
-</td>
-
-<td>
-${statusHtml(withdrawal.status)}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-html += "</table>";
-
-container.innerHTML =
-html;
+    container.innerHTML = html;
 
 }
 
@@ -2704,241 +1677,114 @@ html;
 
 async function loadAdminDeposits(){
 
-const container =
-document.getElementById("adminDeposits");
+    const container =
+        document.getElementById(
+            "adminDeposits"
+        );
 
-const summary =
-document.getElementById("adminDepositSummary");
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("deposits")
+        .select("*")
+        .order("id",{ascending:false});
 
+    if(error){
 
-container.innerHTML =
-"<div class='loading'>Chargement des dépôts...</div>";
+        container.innerHTML =
+            `<div class="error">${escapeHtml(error.message)}</div>`;
 
+        return;
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("deposits")
-.select("*")
-.order("created_at",{ascending:false});
+    }
 
+    if(!data || data.length === 0){
 
-if(error){
+        container.innerHTML =
+            "<p>Aucun dépôt.</p>";
 
-console.error(error);
+        return;
 
-container.innerHTML = `
-<div class="error-box">
-Impossible de charger les dépôts :
-${escapeHtml(error.message)}
-</div>
-`;
+    }
 
-return;
+    let html = `
 
-}
+        <table>
 
+        <tr>
+            <th>ID</th>
+            <th>Utilisateur</th>
+            <th>Machine</th>
+            <th>Montant</th>
+            <th>Paiement</th>
+            <th>Référence</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
 
-const pendingCount =
-(data || []).filter(
-deposit =>
-deposit.status === "pending"
-).length;
+    `;
 
+    data.forEach(item => {
 
-summary.innerHTML = `
+        let actions = "";
 
-<div class="info-box">
+        if(item.status === "pending"){
 
-<strong>
-${pendingCount}
-demande(s) en attente
-</strong>
+            actions = `
 
-</div>
+                <button
+                    class="btn-primary"
+                    onclick="validateDeposit(${item.id})">
+                    VALIDER
+                </button>
 
-`;
+                <button
+                    class="btn-danger"
+                    onclick="rejectDeposit(${item.id})">
+                    REFUSER
+                </button>
 
+            `;
 
-if(!data || data.length === 0){
+        }
+        else{
 
-container.innerHTML =
-"<div class='empty'>Aucun dépôt.</div>";
+            actions = "Traité";
 
-return;
+        }
 
-}
 
+        html += `
 
-const userIds =
-[
-...new Set(
-data.map(
-item => item.user_id
-).filter(Boolean)
-)
-];
+            <tr>
 
+                <td>${item.id}</td>
 
-let profiles = [];
+                <td>${escapeHtml(item.user_id || "")}</td>
 
+                <td>${item.machine_id || ""}</td>
 
-if(userIds.length){
+                <td>${money(item.amount)}</td>
 
-const {
-data:profileData,
-error:profileError
-} =
-await supabaseClient
-.from("profiles")
-.select("id,full_name,phone")
-.in("id",userIds);
+                <td>${escapeHtml(item.payment_method || "")}</td>
 
+                <td>${escapeHtml(item.payment_reference || "")}</td>
 
-if(profileError){
+                <td>${statusHtml(item.status)}</td>
 
-console.error(profileError);
+                <td>${actions}</td>
 
-}else{
+            </tr>
 
-profiles =
-profileData || [];
+        `;
 
-}
+    });
 
-}
+    html += "</table>";
 
-
-let html = `
-
-<table>
-
-<tr>
-
-<th>Date</th>
-<th>Utilisateur</th>
-<th>Téléphone</th>
-<th>Machine</th>
-<th>Montant</th>
-<th>Paiement</th>
-<th>Référence</th>
-<th>Statut</th>
-<th>Action</th>
-
-</tr>
-
-`;
-
-
-data.forEach(deposit => {
-
-const profile =
-profiles.find(
-item =>
-item.id ===
-deposit.user_id
-);
-
-
-const machine =
-machines.find(
-item =>
-Number(item.id) ===
-Number(deposit.machine_id)
-);
-
-
-let actions = "-";
-
-
-if(deposit.status === "pending"){
-
-actions = `
-
-<div class="action-buttons">
-
-<button
-class="btn btn-success"
-onclick="validateDeposit(${deposit.id})">
-
-VALIDER
-
-</button>
-
-<button
-class="btn btn-danger"
-onclick="rejectDeposit(${deposit.id})">
-
-REFUSER
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-html += `
-
-<tr>
-
-<td>
-${formatDate(deposit.created_at)}
-</td>
-
-<td>
-${escapeHtml(
-profile?.full_name || deposit.user_id || "-"
-)}
-</td>
-
-<td>
-${escapeHtml(
-profile?.phone || "-"
-)}
-</td>
-
-<td>
-${escapeHtml(
-machine?.name || "-"
-)}
-</td>
-
-<td>
-${formatMoney(deposit.amount)}
-</td>
-
-<td>
-${escapeHtml(deposit.payment_method)}
-</td>
-
-<td>
-${escapeHtml(deposit.payment_reference)}
-</td>
-
-<td>
-${statusHtml(deposit.status)}
-</td>
-
-<td>
-${actions}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-html += "</table>";
-
-container.innerHTML =
-html;
+    container.innerHTML = html;
 
 }
 
@@ -2947,53 +1793,41 @@ html;
    ADMIN - VALIDATION DEPOT
 ========================================================= */
 
-async function validateDeposit(depositId){
+async function validateDeposit(id){
 
-if(!confirm(
-"Voulez-vous vraiment VALIDER ce dépôt ?\n\n" +
-"Le montant sera ajouté au solde et la machine sera activée."
-)){
+    if(!confirm(
+        "Voulez-vous vraiment VALIDER ce dépôt ?"
+    )) return;
 
-return;
+    try{
 
-}
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "admin_validate_deposit",
+                {
+                    p_deposit_id:id
+                }
+            );
 
+        if(error) throw error;
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
-"admin_validate_deposit",
-{
-p_deposit_id:
-depositId
-}
-);
+        alert(data);
 
+        await loadAdminDeposits();
 
-if(error){
+    }
+    catch(error){
 
-console.error(error);
+        alert(
+            "Erreur : " +
+            error.message
+        );
 
-alert(
-"Erreur lors de la validation : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"DEPÔT VALIDÉ.\n\n" +
-"Le solde a été crédité et la machine a été activée."
-);
-
-
-await loadAdminDeposits();
+    }
 
 }
 
@@ -3002,51 +1836,41 @@ await loadAdminDeposits();
    ADMIN - REFUS DEPOT
 ========================================================= */
 
-async function rejectDeposit(depositId){
+async function rejectDeposit(id){
 
-if(!confirm(
-"Voulez-vous vraiment REFUSER ce dépôt ?"
-)){
+    if(!confirm(
+        "Voulez-vous vraiment REFUSER ce dépôt ?"
+    )) return;
 
-return;
+    try{
 
-}
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "admin_reject_deposit",
+                {
+                    p_deposit_id:id
+                }
+            );
 
+        if(error) throw error;
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
-"admin_reject_deposit",
-{
-p_deposit_id:
-depositId
-}
-);
+        alert(data);
 
+        await loadAdminDeposits();
 
-if(error){
+    }
+    catch(error){
 
-console.error(error);
+        alert(
+            "Erreur : " +
+            error.message
+        );
 
-alert(
-"Erreur lors du refus : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"Dépôt refusé."
-);
-
-
-await loadAdminDeposits();
+    }
 
 }
 
@@ -3057,200 +1881,111 @@ await loadAdminDeposits();
 
 async function loadAdminWithdrawals(){
 
-const container =
-document.getElementById("adminWithdrawals");
+    const container =
+        document.getElementById(
+            "adminWithdrawals"
+        );
 
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("withdrawals")
+        .select("*")
+        .order("id",{ascending:false});
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("withdrawals")
-.select("*")
-.order("created_at",{ascending:false});
+    if(error){
 
+        container.innerHTML =
+            `<div class="error">${escapeHtml(error.message)}</div>`;
 
-if(error){
+        return;
 
-console.error(error);
+    }
 
-container.innerHTML = `
-<div class="error-box">
-Impossible de charger les retraits :
-${escapeHtml(error.message)}
-</div>
-`;
+    if(!data || data.length === 0){
 
-return;
+        container.innerHTML =
+            "<p>Aucun retrait.</p>";
 
-}
+        return;
 
+    }
 
-if(!data || data.length === 0){
+    let html = `
 
-container.innerHTML =
-"<div class='empty'>Aucun retrait.</div>";
+        <table>
 
-return;
+        <tr>
+            <th>ID</th>
+            <th>Utilisateur</th>
+            <th>Montant</th>
+            <th>Mode</th>
+            <th>Numéro</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
 
-}
+    `;
 
+    data.forEach(item => {
 
-const userIds =
-[
-...new Set(
-data.map(
-item => item.user_id
-).filter(Boolean)
-)
-];
+        let actions = "";
 
+        if(item.status === "pending"){
 
-let profiles = [];
+            actions = `
 
+                <button
+                    class="btn-primary"
+                    onclick="validateWithdrawal(${item.id})">
+                    VALIDER
+                </button>
 
-if(userIds.length){
+                <button
+                    class="btn-danger"
+                    onclick="rejectWithdrawal(${item.id})">
+                    REFUSER
+                </button>
 
-const {
-data:profileData,
-error:profileError
-} =
-await supabaseClient
-.from("profiles")
-.select("id,full_name,phone")
-.in("id",userIds);
+            `;
 
+        }
+        else{
 
-if(!profileError){
+            actions = "Traité";
 
-profiles =
-profileData || [];
+        }
 
-}
 
-}
+        html += `
 
+            <tr>
 
-let html = `
+                <td>${item.id}</td>
 
-<table>
+                <td>${escapeHtml(item.user_id || "")}</td>
 
-<tr>
+                <td>${money(item.amount)}</td>
 
-<th>Date</th>
-<th>Utilisateur</th>
-<th>Téléphone</th>
-<th>Montant</th>
-<th>Mode</th>
-<th>Numéro réception</th>
-<th>Statut</th>
-<th>Action</th>
+                <td>${escapeHtml(item.payment_method || "")}</td>
 
-</tr>
+                <td>${escapeHtml(item.payment_number || "")}</td>
 
-`;
+                <td>${statusHtml(item.status)}</td>
 
+                <td>${actions}</td>
 
-data.forEach(withdrawal => {
+            </tr>
 
-const profile =
-profiles.find(
-item =>
-item.id ===
-withdrawal.user_id
-);
+        `;
 
+    });
 
-let actions = "-";
+    html += "</table>";
 
-
-if(withdrawal.status === "pending"){
-
-actions = `
-
-<div class="action-buttons">
-
-<button
-class="btn btn-success"
-onclick="validateWithdrawal(${withdrawal.id})">
-
-VALIDER
-
-</button>
-
-<button
-class="btn btn-danger"
-onclick="rejectWithdrawal(${withdrawal.id})">
-
-REFUSER
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-html += `
-
-<tr>
-
-<td>
-${formatDate(withdrawal.created_at)}
-</td>
-
-<td>
-${escapeHtml(
-profile?.full_name ||
-withdrawal.user_id ||
-"-"
-)}
-</td>
-
-<td>
-${escapeHtml(
-profile?.phone || "-"
-)}
-</td>
-
-<td>
-${formatMoney(withdrawal.amount)}
-</td>
-
-<td>
-${escapeHtml(
-withdrawal.payment_method || "-"
-)}
-</td>
-
-<td>
-${escapeHtml(
-withdrawal.payment_number || "-"
-)}
-</td>
-
-<td>
-${statusHtml(withdrawal.status)}
-</td>
-
-<td>
-${actions}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-html += "</table>";
-
-container.innerHTML =
-html;
+    container.innerHTML = html;
 
 }
 
@@ -3259,53 +1994,41 @@ html;
    ADMIN - VALIDATION RETRAIT
 ========================================================= */
 
-async function validateWithdrawal(withdrawalId){
+async function validateWithdrawal(id){
 
-if(!confirm(
-"Voulez-vous vraiment VALIDER ce retrait ?\n\n" +
-"Le montant sera déduit du solde de l'utilisateur."
-)){
+    if(!confirm(
+        "Voulez-vous vraiment VALIDER ce retrait ?"
+    )) return;
 
-return;
+    try{
 
-}
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "admin_validate_withdrawal",
+                {
+                    p_withdrawal_id:id
+                }
+            );
 
+        if(error) throw error;
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
-"admin_validate_withdrawal",
-{
-p_withdrawal_id:
-withdrawalId
-}
-);
+        alert(data);
 
+        await loadAdminWithdrawals();
 
-if(error){
+    }
+    catch(error){
 
-console.error(error);
+        alert(
+            "Erreur : " +
+            error.message
+        );
 
-alert(
-"Erreur lors de la validation du retrait : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"RETRAIT VALIDÉ.\n\n" +
-"Le montant a été déduit du solde de l'utilisateur."
-);
-
-
-await loadAdminWithdrawals();
+    }
 
 }
 
@@ -3314,190 +2037,137 @@ await loadAdminWithdrawals();
    ADMIN - REFUS RETRAIT
 ========================================================= */
 
-async function rejectWithdrawal(withdrawalId){
+async function rejectWithdrawal(id){
 
-if(!confirm(
-"Voulez-vous vraiment REFUSER ce retrait ?"
-)){
+    if(!confirm(
+        "Voulez-vous vraiment REFUSER ce retrait ?"
+    )) return;
 
-return;
+    try{
 
-}
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .rpc(
+                "admin_reject_withdrawal",
+                {
+                    p_withdrawal_id:id
+                }
+            );
 
+        if(error) throw error;
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
-"admin_reject_withdrawal",
-{
-p_withdrawal_id:
-withdrawalId
-}
-);
+        alert(data);
 
+        await loadAdminWithdrawals();
 
-if(error){
+    }
+    catch(error){
 
-console.error(error);
+        alert(
+            "Erreur : " +
+            error.message
+        );
 
-alert(
-"Erreur lors du refus du retrait : " +
-error.message
-);
-
-return;
-
-}
-
-
-alert(
-"Retrait refusé."
-);
-
-
-await loadAdminWithdrawals();
+    }
 
 }
 
 
 /* =========================================================
-   ADMIN - PROFIL
+   ADMIN - PROFILS
 ========================================================= */
 
-function loadAdminProfile(){
+async function loadAdminProfiles(){
 
-const container =
-document.getElementById("adminUsers");
+    const container =
+        document.getElementById(
+            "adminProfiles"
+        );
 
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("profiles")
+        .select("*")
+        .order("created_at",{ascending:false});
 
-if(!currentProfile){
+    if(error){
 
-container.innerHTML =
-"<p>Profil administrateur indisponible.</p>";
+        container.innerHTML =
+            `<div class="error">${escapeHtml(error.message)}</div>`;
 
-return;
+        return;
 
-}
+    }
 
+    if(!data || data.length === 0){
 
-container.innerHTML = `
+        container.innerHTML =
+            "<p>Aucun utilisateur.</p>";
 
-<div class="success-box">
+        return;
 
-<p>
-<strong>Nom :</strong>
-${escapeHtml(currentProfile.full_name || "-")}
-</p>
+    }
 
-<p>
-<strong>Email :</strong>
-${escapeHtml(currentAuthUser.email || "-")}
-</p>
+    let html = `
 
-<p>
-<strong>Téléphone :</strong>
-${escapeHtml(currentProfile.phone || "-")}
-</p>
+        <table>
 
-<p>
-<strong>Rôle :</strong>
+        <tr>
+            <th>Nom</th>
+            <th>Téléphone</th>
+            <th>Rôle</th>
+            <th>Solde</th>
+            <th>Total gagné</th>
+        </tr>
 
-<span class="status status-active">
-ADMIN
-</span>
+    `;
 
-</p>
+    data.forEach(profile => {
 
-</div>
+        html += `
 
-`;
+            <tr>
+
+                <td>${escapeHtml(profile.full_name || "")}</td>
+
+                <td>${escapeHtml(profile.phone || "")}</td>
+
+                <td>${escapeHtml(profile.role || "")}</td>
+
+                <td>${money(profile.balance)}</td>
+
+                <td>${money(profile.total_earned)}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+    html += "</table>";
+
+    container.innerHTML = html;
 
 }
 
 
 /* =========================================================
-   ADMIN
+   ADMIN - TOUT CHARGER
 ========================================================= */
 
-async function loadAdmin(){
+async function loadAdminData(){
 
-if(
-!currentAuthUser ||
-!currentProfile ||
-currentProfile.role !== "admin"
-){
+    await loadAdminDeposits();
 
-showPage("home");
+    await loadAdminWithdrawals();
 
-return;
-
-}
-
-
-document.getElementById("adminWelcome").innerHTML =
-"Bienvenue <strong>" +
-escapeHtml(
-currentProfile.full_name || "Administrateur"
-) +
-"</strong>";
-
-
-await loadMachinesFromDatabase();
-
-loadAdminProfile();
-
-await loadAdminDeposits();
-
-await loadAdminWithdrawals();
-
-}
-
-
-/* =========================================================
-   FORMATAGE ARGENT
-========================================================= */
-
-function formatMoney(value){
-
-return Number(value || 0)
-.toLocaleString(
-"fr-FR",
-{
-maximumFractionDigits:3
-}
-)
-+ " FCFA";
-
-}
-
-
-function formatNumber(value){
-
-return Number(value || 0)
-.toLocaleString(
-"fr-FR",
-{
-maximumFractionDigits:3
-}
-);
-
-}
-
-
-function formatDate(value){
-
-if(!value){
-
-return "-";
-
-}
-
-
-return new Date(value)
-.toLocaleString("fr-FR");
+    await loadAdminProfiles();
 
 }
 
@@ -3508,148 +2178,114 @@ return new Date(value)
 
 function statusHtml(status){
 
-if(status === "validated"){
+    if(status === "validated"){
 
-return `
+        return `
+            <span class="status-validated">
+                VALIDÉ
+            </span>
+        `;
 
-<span class="status status-active">
-VALIDÉ
-</span>
+    }
 
-`;
+    if(status === "rejected"){
 
-}
+        return `
+            <span class="status-rejected">
+                REFUSÉ
+            </span>
+        `;
 
+    }
 
-if(status === "pending"){
-
-return `
-
-<span class="status status-pending">
-EN ATTENTE
-</span>
-
-`;
-
-}
-
-
-if(status === "rejected"){
-
-return `
-
-<span class="status status-rejected">
-REJETÉ
-</span>
-
-`;
-
-}
-
-
-return escapeHtml(status || "");
+    return `
+        <span class="status-pending">
+            EN ATTENTE
+        </span>
+    `;
 
 }
 
 
 /* =========================================================
-   PROTECTION HTML
+   SECURITE AFFICHAGE
 ========================================================= */
 
 function escapeHtml(value){
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================================
-   INITIALISATION
+   DEMARRAGE
 ========================================================= */
 
-async function initializeApp(){
+async function startApp(){
 
-try{
+    try{
 
-const {
-data
-} =
-await supabaseClient.auth.getSession();
+        const {
+            data:{
+                session
+            }
+        } =
+        await supabaseClient.auth.getSession();
 
+        if(session){
 
-if(data && data.session){
+            await initializeUser();
 
-currentAuthUser =
-data.session.user;
+        }
+        else{
 
+            showSection("homeSection");
 
-await loadCurrentUser();
+        }
 
+    }
+    catch(error){
 
-if(
-currentProfile &&
-currentProfile.role === "admin"
-){
+        console.error(error);
 
-showPage("admin");
+        showSection("homeSection");
 
-}else{
-
-showPage("dashboard");
-
-}
-
-}else{
-
-currentAuthUser = null;
-
-currentProfile = null;
-
-showPage("home");
-
-}
-
-}catch(error){
-
-console.error(error);
-
-showPage("home");
-
-}
+    }
 
 }
 
 
 /* =========================================================
-   SURVEILLANCE SESSION
+   ECOUTE AUTHENTIFICATION
 ========================================================= */
 
 supabaseClient.auth.onAuthStateChange(
-async (event, session) => {
+    async (event,session) => {
 
-if(session){
+        if(event === "SIGNED_IN" && session){
 
-currentAuthUser =
-session.user;
+            currentUser =
+                session.user;
 
-await loadCurrentUser();
+        }
 
-}else{
+        if(event === "SIGNED_OUT"){
 
-currentAuthUser = null;
+            currentUser = null;
 
-currentProfile = null;
+            currentProfile = null;
 
-updateNavigation();
+            showSection("homeSection");
 
-}
+        }
 
-}
+    }
 );
 
 
@@ -3657,10 +2293,9 @@ updateNavigation();
    LANCEMENT
 ========================================================= */
 
-initializeApp();
+startApp();
 
 </script>
 
 </body>
 </html>
-```
