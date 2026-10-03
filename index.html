@@ -6,6 +6,9 @@
 
 <title>CACAO - Plateforme</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{
     box-sizing:border-box;
@@ -285,6 +288,12 @@ tr:nth-child(even){
     border-radius:8px;
 }
 
+.loading{
+    text-align:center;
+    padding:20px;
+    font-weight:bold;
+}
+
 footer{
     text-align:center;
     padding:25px;
@@ -294,6 +303,7 @@ footer{
 }
 
 @media(max-width:600px){
+
     .hero h1{
         font-size:30px;
     }
@@ -308,6 +318,8 @@ footer{
 
     table{
         font-size:13px;
+        display:block;
+        overflow-x:auto;
     }
 }
 </style>
@@ -500,7 +512,7 @@ footer{
                     type="password"
                     id="registerPassword"
                     required
-                    minlength="4"
+                    minlength="6"
                     placeholder="Votre mot de passe">
 
             </div>
@@ -566,7 +578,7 @@ footer{
 
 
 
-<!-- ================= DASHBOARD UTILISATEUR ================= -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboard" class="page">
 
@@ -602,28 +614,24 @@ footer{
         </div>
 
 
-        <div>
-
-            <button
-                class="btn btn-success"
-                onclick="showDepositForm()">
-                DÉPÔT
-            </button>
+        <button
+            class="btn btn-success"
+            onclick="showDepositForm()">
+            DÉPÔT
+        </button>
 
 
-            <button
-                class="btn btn-warning"
-                onclick="showWithdrawalForm()">
-                RETRAIT
-            </button>
-
-        </div>
+        <button
+            class="btn btn-warning"
+            onclick="showWithdrawalForm()">
+            RETRAIT
+        </button>
 
     </div>
 
 
 
-    <!-- FORMULAIRE DEPOT -->
+    <!-- DEPOT -->
 
     <div id="depositForm"
          class="card"
@@ -636,11 +644,13 @@ footer{
             <strong>Modes de paiement disponibles</strong>
 
             <p>
-                Wave : <strong>0719713230</strong>
+                Wave :
+                <strong>0719713230</strong>
             </p>
 
             <p>
-                Orange Money : <strong>0719713230</strong>
+                Orange Money :
+                <strong>0719713230</strong>
             </p>
 
         </div>
@@ -706,6 +716,7 @@ footer{
                 Envoyer le dépôt
             </button>
 
+
             <button
                 class="btn btn-secondary"
                 type="button"
@@ -719,7 +730,7 @@ footer{
 
 
 
-    <!-- FORMULAIRE RETRAIT -->
+    <!-- RETRAIT -->
 
     <div id="withdrawalForm"
          class="card"
@@ -732,9 +743,19 @@ footer{
             <strong>Conditions de retrait</strong>
 
             <ul>
-                <li>Retraits disponibles le vendredi.</li>
-                <li>Montant minimum : 2 500 FCFA.</li>
-                <li>Le montant doit être un multiple de 100 FCFA.</li>
+
+                <li>
+                    Retraits disponibles le vendredi.
+                </li>
+
+                <li>
+                    Montant minimum : 2 500 FCFA.
+                </li>
+
+                <li>
+                    Le montant doit être un multiple de 100 FCFA.
+                </li>
+
             </ul>
 
         </div>
@@ -776,6 +797,7 @@ footer{
                 Demander le retrait
             </button>
 
+
             <button
                 class="btn btn-secondary"
                 type="button"
@@ -795,28 +817,39 @@ footer{
 
         <h2>Machines disponibles</h2>
 
-        <div id="machinesContainer" class="grid"></div>
+        <div id="machinesContainer" class="grid">
+            <div class="loading">
+                Chargement des machines...
+            </div>
+        </div>
 
     </div>
 
 
 
-    <!-- HISTORIQUE -->
+    <!-- DEPOTS -->
 
     <div class="card">
 
         <h2>Mes dépôts</h2>
 
-        <div id="userDeposits"></div>
+        <div id="userDeposits">
+            <p>Chargement...</p>
+        </div>
 
     </div>
 
+
+
+    <!-- RETRAITS -->
 
     <div class="card">
 
         <h2>Mes retraits</h2>
 
-        <div id="userWithdrawals"></div>
+        <div id="userWithdrawals">
+            <p>Chargement...</p>
+        </div>
 
     </div>
 
@@ -836,85 +869,78 @@ footer{
             Gestion des utilisateurs, dépôts, retraits et machines.
         </p>
 
+        <div class="warning-box">
+
+            <strong>
+                Espace administrateur
+            </strong>
+
+            <p>
+                Les opérations administratives seront sécurisées
+                directement par Supabase.
+            </p>
+
+        </div>
+
     </div>
 
-
-
-    <!-- PARAMETRES PAIEMENT -->
 
     <div class="card">
 
         <h2>Paramètres de paiement</h2>
 
-        <form onsubmit="savePaymentSettings(event)">
+        <div class="info-box">
 
-            <div class="form-group">
+            <p>
+                Wave :
+                <strong>0719713230</strong>
+            </p>
 
-                <label>Numéro Wave</label>
+            <p>
+                Orange Money :
+                <strong>0719713230</strong>
+            </p>
 
-                <input
-                    type="tel"
-                    id="adminWaveNumber"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Numéro Orange Money</label>
-
-                <input
-                    type="tel"
-                    id="adminOrangeNumber"
-                    required>
-
-            </div>
-
-
-            <button
-                class="btn btn-success"
-                type="submit">
-                Enregistrer
-            </button>
-
-        </form>
+        </div>
 
     </div>
 
-
-
-    <!-- DEPOTS -->
 
     <div class="card">
 
-        <h2>Gestion des dépôts</h2>
+        <h2>Dépôts en ligne</h2>
 
-        <div id="adminDeposits"></div>
+        <div id="adminDeposits">
+            <p>
+                Chargement des dépôts...
+            </p>
+        </div>
 
     </div>
 
-
-
-    <!-- RETRAITS -->
 
     <div class="card">
 
-        <h2>Gestion des retraits</h2>
+        <h2>Retraits en ligne</h2>
 
-        <div id="adminWithdrawals"></div>
+        <div id="adminWithdrawals">
+            <p>
+                Chargement des retraits...
+            </p>
+        </div>
 
     </div>
 
-
-
-    <!-- UTILISATEURS -->
 
     <div class="card">
 
         <h2>Utilisateurs</h2>
 
-        <div id="adminUsers"></div>
+        <div id="adminUsers">
+            <p>
+                Chargement des utilisateurs...
+            </p>
+        </div>
 
     </div>
 
@@ -937,175 +963,32 @@ footer{
 <script>
 
 /* =========================================================
-   DONNEES DES MACHINES
+   CONFIGURATION SUPABASE
 ========================================================= */
 
-const machines = [
+const SUPABASE_URL =
+    "https://hlotghrrxsxqnjulqqxa.supabase.co";
 
-    {
-        id:1,
-        name:"Machine 1",
-        price:12000,
-        daily:645.123
-    },
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_NK5rI4yWM093bd-vNiNkIQ_BNWCsWTO";
 
-    {
-        id:2,
-        name:"Machine 2",
-        price:18000,
-        daily:1100.234
-    },
 
-    {
-        id:3,
-        name:"Machine 3",
-        price:25000,
-        daily:1800
-    },
-
-    {
-        id:4,
-        name:"Machine 4",
-        price:35000,
-        daily:1850.46
-    },
-
-    {
-        id:5,
-        name:"Machine 5",
-        price:50000,
-        daily:2450
-    }
-
-];
-
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
 
 
 /* =========================================================
-   STOCKAGE
+   VARIABLES
 ========================================================= */
 
-let users =
-    JSON.parse(localStorage.getItem("cacaoUsers")) || [];
+let currentAuthUser = null;
 
-let deposits =
-    JSON.parse(localStorage.getItem("cacaoDeposits")) || [];
+let currentProfile = null;
 
-let withdrawals =
-    JSON.parse(localStorage.getItem("cacaoWithdrawals")) || [];
-
-let currentUserId =
-    localStorage.getItem("cacaoCurrentUser") || null;
-
-let paymentSettings =
-    JSON.parse(localStorage.getItem("cacaoPaymentSettings")) || {
-
-        wave:"0719713230",
-
-        orange:"0719713230"
-
-    };
-
-
-
-/* =========================================================
-   CREATION ADMIN PROTOTYPE
-========================================================= */
-
-function ensureAdmin(){
-
-    let admin =
-        users.find(user => user.role === "admin");
-
-    if(!admin){
-
-        admin = {
-
-            id:"ADMIN",
-
-            name:"Administrateur CACAO",
-
-            email:"admin@cacao.com",
-
-            phone:"",
-
-            password:"admin123",
-
-            role:"admin",
-
-            balance:0,
-
-            machines:[],
-
-            lastCalculated:null,
-
-            totalEarned:0
-
-        };
-
-        users.push(admin);
-
-        saveUsers();
-
-    }
-
-}
-
-ensureAdmin();
-
-
-
-/* =========================================================
-   UTILITAIRES
-========================================================= */
-
-function saveUsers(){
-
-    localStorage.setItem(
-        "cacaoUsers",
-        JSON.stringify(users)
-    );
-
-}
-
-
-function saveDeposits(){
-
-    localStorage.setItem(
-        "cacaoDeposits",
-        JSON.stringify(deposits)
-    );
-
-}
-
-
-function saveWithdrawals(){
-
-    localStorage.setItem(
-        "cacaoWithdrawals",
-        JSON.stringify(withdrawals)
-    );
-
-}
-
-
-function savePaymentSettings(){
-
-    localStorage.setItem(
-        "cacaoPaymentSettings",
-        JSON.stringify(paymentSettings)
-    );
-
-}
-
-
-function getCurrentUser(){
-
-    return users.find(
-        user => user.id === currentUserId
-    ) || null;
-
-}
+let machines = [];
 
 
 
@@ -1113,96 +996,23 @@ function getCurrentUser(){
    NAVIGATION
 ========================================================= */
 
-function updateNavigation(){
-
-    const navDashboard =
-        document.getElementById("navDashboard");
-
-    const navAdmin =
-        document.getElementById("navAdmin");
-
-    const navLogin =
-        document.getElementById("navLogin");
-
-    const navRegister =
-        document.getElementById("navRegister");
-
-    const navLogout =
-        document.getElementById("navLogout");
-
-
-    navDashboard.style.display = "none";
-
-    navAdmin.style.display = "none";
-
-    navLogin.style.display = "inline-block";
-
-    navRegister.style.display = "inline-block";
-
-    navLogout.style.display = "none";
-
-
-    if(!currentUserId){
-
-        return;
-
-    }
-
-
-    navLogin.style.display = "none";
-
-    navRegister.style.display = "none";
-
-    navLogout.style.display = "inline-block";
-
-
-    const user = getCurrentUser();
-
-
-    if(!user){
-
-        currentUserId = null;
-
-        localStorage.removeItem(
-            "cacaoCurrentUser"
-        );
-
-        return;
-
-    }
-
-
-    if(user.role === "admin"){
-
-        navAdmin.style.display = "inline-block";
-
-    }else{
-
-        navDashboard.style.display = "inline-block";
-
-    }
-
-}
-
-
-
-/* =========================================================
-   AFFICHAGE DES PAGES
-========================================================= */
-
 function showPage(page){
 
-    /*
-       PROTECTION ADMINISTRATEUR
-       Une personne non administratrice
-       ne peut pas afficher cette page.
-    */
+    if(
+        page === "dashboard" &&
+        !currentAuthUser
+    ){
+
+        page = "login";
+
+    }
+
 
     if(
         page === "admin" &&
-        (!currentUserId ||
-         !getCurrentUser() ||
-         getCurrentUser().role !== "admin")
+        (!currentAuthUser ||
+         !currentProfile ||
+         currentProfile.role !== "admin")
     ){
 
         page = "home";
@@ -1250,145 +1060,106 @@ function showPage(page){
 
 
 
-/* =========================================================
-   INSCRIPTION
-========================================================= */
+function updateNavigation(){
 
-function register(event){
+    const navDashboard =
+        document.getElementById("navDashboard");
 
-    event.preventDefault();
+    const navAdmin =
+        document.getElementById("navAdmin");
 
+    const navLogin =
+        document.getElementById("navLogin");
 
-    const name =
-        document.getElementById("registerName")
-        .value.trim();
+    const navRegister =
+        document.getElementById("navRegister");
 
-
-    const phone =
-        document.getElementById("registerPhone")
-        .value.trim();
-
-
-    const email =
-        document.getElementById("registerEmail")
-        .value.trim()
-        .toLowerCase();
+    const navLogout =
+        document.getElementById("navLogout");
 
 
-    const password =
-        document.getElementById("registerPassword")
-        .value;
+    navDashboard.style.display = "none";
+
+    navAdmin.style.display = "none";
+
+    navLogin.style.display = "inline-block";
+
+    navRegister.style.display = "inline-block";
+
+    navLogout.style.display = "none";
 
 
-    const exists =
-        users.some(
-            user => user.email === email
-        );
-
-
-    if(exists){
-
-        alert(
-            "Cette adresse email existe déjà."
-        );
+    if(!currentAuthUser){
 
         return;
 
     }
 
 
-    const user = {
+    navLogin.style.display = "none";
 
-        id:
-            "USER-" +
-            Date.now(),
+    navRegister.style.display = "none";
 
-        name:name,
-
-        phone:phone,
-
-        email:email,
-
-        password:password,
-
-        role:"user",
-
-        balance:0,
-
-        machines:[],
-
-        lastCalculated:null,
-
-        totalEarned:0
-
-    };
+    navLogout.style.display = "inline-block";
 
 
-    users.push(user);
+    if(
+        currentProfile &&
+        currentProfile.role === "admin"
+    ){
 
-    saveUsers();
+        navAdmin.style.display =
+            "inline-block";
 
+    }else{
 
-    alert(
-        "Votre compte a été créé avec succès."
-    );
+        navDashboard.style.display =
+            "inline-block";
 
-
-    document
-        .getElementById("registerName")
-        .value = "";
-
-    document
-        .getElementById("registerPhone")
-        .value = "";
-
-    document
-        .getElementById("registerEmail")
-        .value = "";
-
-    document
-        .getElementById("registerPassword")
-        .value = "";
-
-
-    showPage("login");
+    }
 
 }
 
 
 
 /* =========================================================
-   CONNEXION
+   INSCRIPTION SUPABASE
 ========================================================= */
 
-function login(event){
+async function register(event){
 
     event.preventDefault();
 
 
+    const name =
+        document
+        .getElementById("registerName")
+        .value.trim();
+
+
+    const phone =
+        document
+        .getElementById("registerPhone")
+        .value.trim();
+
+
     const email =
-        document.getElementById("loginEmail")
+        document
+        .getElementById("registerEmail")
         .value.trim()
         .toLowerCase();
 
 
     const password =
-        document.getElementById("loginPassword")
+        document
+        .getElementById("registerPassword")
         .value;
 
 
-    const user =
-        users.find(
-            item =>
-                item.email === email &&
-                item.password === password
-        );
-
-
-    if(!user){
+    if(password.length < 6){
 
         alert(
-            "Email ou mot de passe incorrect."
+            "Le mot de passe doit contenir au moins 6 caractères."
         );
 
         return;
@@ -1396,31 +1167,187 @@ function login(event){
     }
 
 
-    currentUserId = user.id;
+    try{
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.signUp({
+
+                email:email,
+
+                password:password,
+
+                options:{
+
+                    data:{
+
+                        full_name:name,
+
+                        phone:phone
+
+                    }
+
+                }
+
+            });
 
 
-    localStorage.setItem(
-        "cacaoCurrentUser",
-        currentUserId
-    );
+        if(error){
+
+            console.error(error);
+
+            alert(
+                "Erreur lors de la création du compte : " +
+                error.message
+            );
+
+            return;
+
+        }
 
 
-    document
+        /*
+           Le trigger Supabase créé précédemment
+           doit automatiquement créer le profil.
+        */
+
+
+        alert(
+            "Votre compte a été créé avec succès."
+        );
+
+
+        document
+            .getElementById("registerName")
+            .value = "";
+
+        document
+            .getElementById("registerPhone")
+            .value = "";
+
+        document
+            .getElementById("registerEmail")
+            .value = "";
+
+        document
+            .getElementById("registerPassword")
+            .value = "";
+
+
+        if(data.session){
+
+            await loadCurrentUser();
+
+            showPage("dashboard");
+
+        }else{
+
+            showPage("login");
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Une erreur inattendue est survenue."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CONNEXION SUPABASE
+========================================================= */
+
+async function login(event){
+
+    event.preventDefault();
+
+
+    const email =
+        document
         .getElementById("loginEmail")
-        .value = "";
+        .value.trim()
+        .toLowerCase();
 
-    document
+
+    const password =
+        document
         .getElementById("loginPassword")
-        .value = "";
+        .value;
 
 
-    if(user.role === "admin"){
+    try{
 
-        showPage("admin");
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.signInWithPassword({
 
-    }else{
+                email:email,
 
-        showPage("dashboard");
+                password:password
+
+            });
+
+
+        if(error){
+
+            console.error(error);
+
+            alert(
+                "Email ou mot de passe incorrect."
+            );
+
+            return;
+
+        }
+
+
+        currentAuthUser =
+            data.user;
+
+
+        await loadCurrentUser();
+
+
+        document
+            .getElementById("loginEmail")
+            .value = "";
+
+        document
+            .getElementById("loginPassword")
+            .value = "";
+
+
+        if(
+            currentProfile &&
+            currentProfile.role === "admin"
+        ){
+
+            showPage("admin");
+
+        }else{
+
+            showPage("dashboard");
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Erreur de connexion."
+        );
 
     }
 
@@ -1432,13 +1359,30 @@ function login(event){
    DECONNEXION
 ========================================================= */
 
-function logout(){
+async function logout(){
 
-    currentUserId = null;
+    const {
+        error
+    } =
+        await supabaseClient.auth.signOut();
 
-    localStorage.removeItem(
-        "cacaoCurrentUser"
-    );
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Erreur lors de la déconnexion."
+        );
+
+        return;
+
+    }
+
+
+    currentAuthUser = null;
+
+    currentProfile = null;
 
 
     showPage("home");
@@ -1448,15 +1392,126 @@ function logout(){
 
 
 /* =========================================================
-   DASHBOARD UTILISATEUR
+   CHARGER UTILISATEUR ACTUEL
 ========================================================= */
 
-function loadDashboard(){
+async function loadCurrentUser(){
 
-    const user = getCurrentUser();
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getUser();
 
 
-    if(!user){
+    if(error){
+
+        console.error(error);
+
+        currentAuthUser = null;
+
+        currentProfile = null;
+
+        updateNavigation();
+
+        return;
+
+    }
+
+
+    currentAuthUser =
+        data.user;
+
+
+    if(!currentAuthUser){
+
+        currentProfile = null;
+
+        updateNavigation();
+
+        return;
+
+    }
+
+
+    const {
+        data:profile,
+        error:profileError
+    } =
+        await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id",currentAuthUser.id)
+        .single();
+
+
+    if(profileError){
+
+        console.error(profileError);
+
+        alert(
+            "Le profil utilisateur n'a pas pu être chargé."
+        );
+
+        return;
+
+    }
+
+
+    currentProfile =
+        profile;
+
+
+    updateNavigation();
+
+}
+
+
+
+/* =========================================================
+   CHARGER LES MACHINES
+========================================================= */
+
+async function loadMachinesFromDatabase(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("machines")
+        .select("*")
+        .eq("active",true)
+        .order("id");
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Impossible de charger les machines."
+        );
+
+        return;
+
+    }
+
+
+    machines =
+        data || [];
+
+}
+
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+async function loadDashboard(){
+
+    if(!currentAuthUser){
 
         showPage("login");
 
@@ -1465,15 +1520,26 @@ function loadDashboard(){
     }
 
 
-    /*
-       Protection supplémentaire :
-       un administrateur ne doit pas utiliser
-       l'espace utilisateur.
-    */
-
-    if(user.role === "admin"){
+    if(
+        currentProfile &&
+        currentProfile.role === "admin"
+    ){
 
         showPage("admin");
+
+        return;
+
+    }
+
+
+    if(!currentProfile){
+
+        await loadCurrentUser();
+
+    }
+
+
+    if(!currentProfile){
 
         return;
 
@@ -1484,114 +1550,88 @@ function loadDashboard(){
         .getElementById("welcomeUser")
         .innerHTML =
             "Bienvenue <strong>" +
-            escapeHtml(user.name) +
+            escapeHtml(
+                currentProfile.full_name || ""
+            ) +
             "</strong>";
-
-
-    calculateDailyEarnings(user);
 
 
     document
         .getElementById("userBalance")
         .textContent =
-            formatMoney(user.balance);
+            formatMoney(
+                currentProfile.balance
+            );
 
 
     document
         .getElementById("userTotalEarned")
         .textContent =
-            formatMoney(user.totalEarned);
+            formatMoney(
+                currentProfile.total_earned
+            );
 
 
-    loadMachines(user);
+    await loadMachinesFromDatabase();
 
-    loadUserDeposits(user);
+    await loadUserMachines();
 
-    loadUserWithdrawals(user);
+    await loadUserDeposits();
 
-}
-
-
-
-/* =========================================================
-   CALCUL DES GAINS
-========================================================= */
-
-function calculateDailyEarnings(user){
-
-    if(!user.machines){
-
-        user.machines = [];
-
-    }
-
-
-    const today =
-        new Date()
-        .toISOString()
-        .slice(0,10);
-
-
-    if(user.lastCalculated === today){
-
-        return;
-
-    }
-
-
-    let totalDaily = 0;
-
-
-    user.machines.forEach(machine => {
-
-        if(machine.active){
-
-            const machineInfo =
-                machines.find(
-                    item => item.id === machine.machineId
-                );
-
-
-            if(machineInfo){
-
-                totalDaily +=
-                    Number(machineInfo.daily);
-
-            }
-
-        }
-
-    });
-
-
-    if(totalDaily > 0){
-
-        user.balance =
-            Number(user.balance || 0) +
-            totalDaily;
-
-
-        user.totalEarned =
-            Number(user.totalEarned || 0) +
-            totalDaily;
-
-    }
-
-
-    user.lastCalculated = today;
-
-
-    saveUsers();
+    await loadUserWithdrawals();
 
 }
 
 
 
 /* =========================================================
-   AFFICHAGE DES MACHINES
+   MACHINES DE L'UTILISATEUR
 ========================================================= */
 
-function loadMachines(user){
+let userMachines = [];
+
+
+async function loadUserMachines(){
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("user_machines")
+        .select("*")
+        .eq(
+            "user_id",
+            currentAuthUser.id
+        )
+        .eq("active",true);
+
+
+    if(error){
+
+        console.error(error);
+
+        userMachines = [];
+
+    }else{
+
+        userMachines =
+            data || [];
+
+    }
+
+
+    renderMachines();
+
+}
+
+
+
+/* =========================================================
+   AFFICHAGE MACHINES
+========================================================= */
+
+function renderMachines(){
 
     const container =
         document.getElementById(
@@ -1604,25 +1644,22 @@ function loadMachines(user){
 
     machines.forEach(machine => {
 
-        const rented =
-            (user.machines || [])
-            .find(
+        const active =
+            userMachines.find(
                 item =>
-                    item.machineId === machine.id
+                    Number(item.machine_id) ===
+                    Number(machine.id)
             );
 
 
-        let html = "";
+        if(active){
 
-
-        if(rented && rented.active){
-
-            html = `
+            container.innerHTML += `
 
                 <div class="machine">
 
                     <h3>
-                        ${machine.name}
+                        ${escapeHtml(machine.name)}
                     </h3>
 
                     <p>
@@ -1633,15 +1670,21 @@ function loadMachines(user){
                     </p>
 
                     <p class="daily">
+
                         Rémunération :
-                        ${formatNumber(machine.daily)}
+                        ${formatNumber(machine.daily_earning)}
                         FCFA / jour
+
                     </p>
 
                     <p>
+
                         <span class="status status-active">
+
                             MACHINE ACTIVE
+
                         </span>
+
                     </p>
 
                 </div>
@@ -1650,64 +1693,44 @@ function loadMachines(user){
 
         }else{
 
-            const pending =
-                deposits.find(
-                    deposit =>
-                        deposit.userId === user.id &&
-                        deposit.machineId === machine.id &&
-                        deposit.status === "pending"
-                );
-
-
-            html = `
+            container.innerHTML += `
 
                 <div class="machine">
 
                     <h3>
-                        ${machine.name}
+                        ${escapeHtml(machine.name)}
                     </h3>
 
                     <p>
+
                         Prix :
                         <strong>
                             ${formatMoney(machine.price)}
                         </strong>
+
                     </p>
 
                     <p class="daily">
+
                         Rémunération :
-                        ${formatNumber(machine.daily)}
+                        ${formatNumber(machine.daily_earning)}
                         FCFA / jour
+
                     </p>
 
-                    ${
-                        pending
-                        ?
-                        `
-                        <p>
-                            <span class="status status-pending">
-                                DÉPÔT EN ATTENTE
-                            </span>
-                        </p>
-                        `
-                        :
-                        `
-                        <button
-                            class="btn btn-primary"
-                            onclick="prepareMachineDeposit(${machine.id})">
-                            LOUER CETTE MACHINE
-                        </button>
-                        `
-                    }
+                    <button
+                        class="btn btn-primary"
+                        onclick="prepareMachineDeposit(${machine.id})">
+
+                        LOUER CETTE MACHINE
+
+                    </button>
 
                 </div>
 
             `;
 
         }
-
-
-        container.innerHTML += html;
 
     });
 
@@ -1723,7 +1746,9 @@ function prepareMachineDeposit(machineId){
 
     const machine =
         machines.find(
-            item => item.id === machineId
+            item =>
+                Number(item.id) ===
+                Number(machineId)
         );
 
 
@@ -1739,20 +1764,25 @@ function prepareMachineDeposit(machineId){
 
     document
         .getElementById("depositAmount")
-        .value = machine.price;
+        .value =
+            machine.price;
 
 
     document
         .getElementById("depositAmount")
         .dataset.machineId =
-            machineId;
+            machine.id;
 
 
     window.scrollTo({
-        top:document
+
+        top:
+            document
             .getElementById("depositForm")
             .offsetTop,
+
         behavior:"smooth"
+
     });
 
 }
@@ -1760,7 +1790,7 @@ function prepareMachineDeposit(machineId){
 
 
 /* =========================================================
-   FORMULAIRE DEPOT
+   FORMULAIRES
 ========================================================= */
 
 function showDepositForm(){
@@ -1770,7 +1800,21 @@ function showDepositForm(){
 
     document
         .getElementById("depositForm")
-        .style.display = "block";
+        .style.display =
+            "block";
+
+}
+
+
+function showWithdrawalForm(){
+
+    hideForms();
+
+
+    document
+        .getElementById("withdrawalForm")
+        .style.display =
+            "block";
 
 }
 
@@ -1779,32 +1823,33 @@ function hideForms(){
 
     document
         .getElementById("depositForm")
-        .style.display = "none";
+        .style.display =
+            "none";
 
 
     document
         .getElementById("withdrawalForm")
-        .style.display = "none";
+        .style.display =
+            "none";
 
 }
 
 
 
 /* =========================================================
-   DEPOT
+   DEPOT SUPABASE
 ========================================================= */
 
-function submitDeposit(event){
+async function submitDeposit(event){
 
     event.preventDefault();
 
 
-    const user = getCurrentUser();
+    if(!currentAuthUser){
 
-
-    if(!user){
-
-        alert("Veuillez vous connecter.");
+        alert(
+            "Veuillez vous connecter."
+        );
 
         return;
 
@@ -1872,95 +1917,136 @@ function submitDeposit(event){
     }
 
 
-    const deposit = {
+    if(
+        machineId &&
+        machines.length > 0
+    ){
 
-        id:
-            "DEP-" +
-            Date.now(),
-
-        userId:user.id,
-
-        userName:user.name,
-
-        amount:amount,
-
-        method:method,
-
-        reference:reference,
-
-        machineId:machineId,
-
-        status:"pending",
-
-        date:
-            new Date().toLocaleString("fr-FR")
-
-    };
+        const machine =
+            machines.find(
+                item =>
+                    Number(item.id) ===
+                    Number(machineId)
+            );
 
 
-    deposits.push(deposit);
+        if(
+            machine &&
+            Number(amount) !==
+            Number(machine.price)
+        ){
 
-    saveDeposits();
+            alert(
+                "Le montant doit correspondre au prix de la machine."
+            );
 
+            return;
 
-    alert(
-        "Votre dépôt a été envoyé. Il doit être validé par l'administrateur."
-    );
+        }
 
-
-    document
-        .getElementById("depositAmount")
-        .value = "";
-
-    document
-        .getElementById("depositMethod")
-        .value = "";
-
-    document
-        .getElementById("depositReference")
-        .value = "";
+    }
 
 
-    delete document
-        .getElementById("depositAmount")
-        .dataset.machineId;
+    try{
+
+        const {
+            error
+        } =
+            await supabaseClient
+            .from("deposits")
+            .insert({
+
+                user_id:
+                    currentAuthUser.id,
+
+                machine_id:
+                    machineId,
+
+                amount:
+                    amount,
+
+                payment_method:
+                    method,
+
+                payment_reference:
+                    reference,
+
+                status:
+                    "pending"
+
+            });
 
 
-    hideForms();
+        if(error){
 
-    loadDashboard();
+            console.error(error);
+
+            alert(
+                "Impossible d'envoyer le dépôt : " +
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Votre dépôt a été envoyé avec succès. Il est maintenant en attente de validation par l'administrateur."
+        );
+
+
+        document
+            .getElementById("depositAmount")
+            .value = "";
+
+        document
+            .getElementById("depositMethod")
+            .value = "";
+
+        document
+            .getElementById("depositReference")
+            .value = "";
+
+
+        delete document
+            .getElementById("depositAmount")
+            .dataset.machineId;
+
+
+        hideForms();
+
+
+        await loadDashboard();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Erreur lors de l'envoi du dépôt."
+        );
+
+    }
 
 }
 
 
 
 /* =========================================================
-   RETRAIT
+   RETRAIT SUPABASE
 ========================================================= */
 
-function showWithdrawalForm(){
-
-    hideForms();
-
-
-    document
-        .getElementById("withdrawalForm")
-        .style.display = "block";
-
-}
-
-
-function submitWithdrawal(event){
+async function submitWithdrawal(event){
 
     event.preventDefault();
 
 
-    const user = getCurrentUser();
+    if(!currentAuthUser){
 
-
-    if(!user){
-
-        alert("Veuillez vous connecter.");
+        alert(
+            "Veuillez vous connecter."
+        );
 
         return;
 
@@ -2003,7 +2089,10 @@ function submitWithdrawal(event){
     }
 
 
-    if(amount > Number(user.balance || 0)){
+    if(
+        amount >
+        Number(currentProfile.balance || 0)
+    ){
 
         alert(
             "Votre solde est insuffisant."
@@ -2018,16 +2107,7 @@ function submitWithdrawal(event){
         new Date();
 
 
-    const day =
-        today.getDay();
-
-
-    /*
-       0 = dimanche
-       5 = vendredi
-    */
-
-    if(day !== 5){
+    if(today.getDay() !== 5){
 
         alert(
             "Les retraits sont disponibles uniquement le vendredi."
@@ -2038,72 +2118,85 @@ function submitWithdrawal(event){
     }
 
 
-    const withdrawal = {
+    try{
 
-        id:
-            "RET-" +
-            Date.now(),
+        const {
+            error
+        } =
+            await supabaseClient
+            .from("withdrawals")
+            .insert({
 
-        userId:user.id,
+                user_id:
+                    currentAuthUser.id,
 
-        userName:user.name,
+                amount:
+                    amount,
 
-        amount:amount,
+                payment_method:
+                    "Wave ou Orange Money",
 
-        phone:phone,
+                payment_number:
+                    phone,
 
-        status:"pending",
+                status:
+                    "pending"
 
-        date:
-            new Date().toLocaleString("fr-FR")
-
-    };
-
-
-    /*
-       Le montant est réservé immédiatement.
-    */
-
-    user.balance =
-        Number(user.balance || 0) -
-        amount;
+            });
 
 
-    withdrawals.push(withdrawal);
+        if(error){
+
+            console.error(error);
+
+            alert(
+                "Impossible d'envoyer la demande : " +
+                error.message
+            );
+
+            return;
+
+        }
 
 
-    saveUsers();
-
-    saveWithdrawals();
-
-
-    alert(
-        "Votre demande de retrait a été envoyée à l'administrateur."
-    );
+        alert(
+            "Votre demande de retrait a été envoyée à l'administrateur."
+        );
 
 
-    document
-        .getElementById("withdrawalAmount")
-        .value = "";
+        document
+            .getElementById("withdrawalAmount")
+            .value = "";
 
-    document
-        .getElementById("withdrawalPhone")
-        .value = "";
+        document
+            .getElementById("withdrawalPhone")
+            .value = "";
 
 
-    hideForms();
+        hideForms();
 
-    loadDashboard();
+
+        await loadDashboard();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Erreur lors de la demande de retrait."
+        );
+
+    }
 
 }
 
 
 
 /* =========================================================
-   HISTORIQUE DEPOTS UTILISATEUR
+   HISTORIQUE DEPOTS
 ========================================================= */
 
-function loadUserDeposits(user){
+async function loadUserDeposits(){
 
     const container =
         document.getElementById(
@@ -2111,14 +2204,38 @@ function loadUserDeposits(user){
         );
 
 
-    const list =
-        deposits.filter(
-            deposit =>
-                deposit.userId === user.id
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("deposits")
+        .select("*")
+        .eq(
+            "user_id",
+            currentAuthUser.id
+        )
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
         );
 
 
-    if(list.length === 0){
+    if(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Impossible de charger les dépôts.</p>";
+
+        return;
+
+    }
+
+
+    if(!data || data.length === 0){
 
         container.innerHTML =
             "<p>Aucun dépôt.</p>";
@@ -2133,24 +2250,26 @@ function loadUserDeposits(user){
         <table>
 
             <tr>
+
                 <th>Date</th>
                 <th>Montant</th>
                 <th>Mode</th>
                 <th>Référence</th>
                 <th>Statut</th>
+
             </tr>
 
     `;
 
 
-    list.forEach(deposit => {
+    data.forEach(deposit => {
 
         html += `
 
             <tr>
 
                 <td>
-                    ${escapeHtml(deposit.date)}
+                    ${formatDate(deposit.created_at)}
                 </td>
 
                 <td>
@@ -2158,15 +2277,21 @@ function loadUserDeposits(user){
                 </td>
 
                 <td>
-                    ${escapeHtml(deposit.method)}
+                    ${escapeHtml(
+                        deposit.payment_method
+                    )}
                 </td>
 
                 <td>
-                    ${escapeHtml(deposit.reference)}
+                    ${escapeHtml(
+                        deposit.payment_reference
+                    )}
                 </td>
 
                 <td>
-                    ${statusHtml(deposit.status)}
+                    ${statusHtml(
+                        deposit.status
+                    )}
                 </td>
 
             </tr>
@@ -2179,17 +2304,18 @@ function loadUserDeposits(user){
     html += "</table>";
 
 
-    container.innerHTML = html;
+    container.innerHTML =
+        html;
 
 }
 
 
 
 /* =========================================================
-   HISTORIQUE RETRAITS UTILISATEUR
+   HISTORIQUE RETRAITS
 ========================================================= */
 
-function loadUserWithdrawals(user){
+async function loadUserWithdrawals(){
 
     const container =
         document.getElementById(
@@ -2197,14 +2323,38 @@ function loadUserWithdrawals(user){
         );
 
 
-    const list =
-        withdrawals.filter(
-            withdrawal =>
-                withdrawal.userId === user.id
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+        .from("withdrawals")
+        .select("*")
+        .eq(
+            "user_id",
+            currentAuthUser.id
+        )
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
         );
 
 
-    if(list.length === 0){
+    if(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Impossible de charger les retraits.</p>";
+
+        return;
+
+    }
+
+
+    if(!data || data.length === 0){
 
         container.innerHTML =
             "<p>Aucun retrait.</p>";
@@ -2219,35 +2369,45 @@ function loadUserWithdrawals(user){
         <table>
 
             <tr>
+
                 <th>Date</th>
                 <th>Montant</th>
                 <th>Numéro</th>
                 <th>Statut</th>
+
             </tr>
 
     `;
 
 
-    list.forEach(withdrawal => {
+    data.forEach(withdrawal => {
 
         html += `
 
             <tr>
 
                 <td>
-                    ${escapeHtml(withdrawal.date)}
+                    ${formatDate(
+                        withdrawal.created_at
+                    )}
                 </td>
 
                 <td>
-                    ${formatMoney(withdrawal.amount)}
+                    ${formatMoney(
+                        withdrawal.amount
+                    )}
                 </td>
 
                 <td>
-                    ${escapeHtml(withdrawal.phone)}
+                    ${escapeHtml(
+                        withdrawal.payment_number
+                    )}
                 </td>
 
                 <td>
-                    ${statusHtml(withdrawal.status)}
+                    ${statusHtml(
+                        withdrawal.status
+                    )}
                 </td>
 
             </tr>
@@ -2260,30 +2420,23 @@ function loadUserWithdrawals(user){
     html += "</table>";
 
 
-    container.innerHTML = html;
+    container.innerHTML =
+        html;
 
 }
 
 
 
 /* =========================================================
-   ADMINISTRATION
+   ADMIN
 ========================================================= */
 
-function loadAdmin(){
-
-    const admin = getCurrentUser();
-
-
-    /*
-       SECURITE :
-       seul un administrateur peut charger
-       les données administratives.
-    */
+async function loadAdmin(){
 
     if(
-        !admin ||
-        admin.role !== "admin"
+        !currentAuthUser ||
+        !currentProfile ||
+        currentProfile.role !== "admin"
     ){
 
         showPage("home");
@@ -2293,728 +2446,55 @@ function loadAdmin(){
     }
 
 
-    document
-        .getElementById("adminWaveNumber")
-        .value =
-            paymentSettings.wave;
-
-
-    document
-        .getElementById("adminOrangeNumber")
-        .value =
-            paymentSettings.orange;
-
-
-    loadAdminDeposits();
-
-    loadAdminWithdrawals();
-
-    loadAdminUsers();
-
-}
-
-
-
-/* =========================================================
-   ADMIN DEPOTS
-========================================================= */
-
-function loadAdminDeposits(){
-
-    const container =
-        document.getElementById(
-            "adminDeposits"
-        );
-
-
-    if(deposits.length === 0){
-
-        container.innerHTML =
-            "<p>Aucun dépôt.</p>";
-
-        return;
-
-    }
-
-
-    let html = `
-
-        <table>
-
-            <tr>
-
-                <th>Date</th>
-                <th>Utilisateur</th>
-                <th>Montant</th>
-                <th>Mode</th>
-                <th>Référence</th>
-                <th>Machine</th>
-                <th>Statut</th>
-                <th>Action</th>
-
-            </tr>
-
-    `;
-
-
-    deposits.forEach(deposit => {
-
-        const machine =
-            machines.find(
-                item =>
-                    item.id === deposit.machineId
-            );
-
-
-        html += `
-
-            <tr>
-
-                <td>
-                    ${escapeHtml(deposit.date)}
-                </td>
-
-                <td>
-                    ${escapeHtml(deposit.userName)}
-                </td>
-
-                <td>
-                    ${formatMoney(deposit.amount)}
-                </td>
-
-                <td>
-                    ${escapeHtml(deposit.method)}
-                </td>
-
-                <td>
-                    ${escapeHtml(deposit.reference)}
-                </td>
-
-                <td>
-                    ${
-                        machine
-                        ?
-                        escapeHtml(machine.name)
-                        :
-                        "-"
-                    }
-                </td>
-
-                <td>
-                    ${statusHtml(deposit.status)}
-                </td>
-
-                <td>
-
-                    ${
-                        deposit.status === "pending"
-                        ?
-                        `
-
-                        <button
-                            class="btn btn-success"
-                            onclick="validateDeposit('${deposit.id}')">
-                            Valider
-                        </button>
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="rejectDeposit('${deposit.id}')">
-                            Rejeter
-                        </button>
-
-                        `
-                        :
-                        "-"
-                    }
-
-                </td>
-
-            </tr>
-
-        `;
-
-    });
-
-
-    html += "</table>";
-
-
-    container.innerHTML = html;
-
-}
-
-
-
-/* =========================================================
-   VALIDATION DEPOT
-========================================================= */
-
-function validateDeposit(depositId){
-
-    const admin = getCurrentUser();
-
-
-    if(!admin || admin.role !== "admin"){
-
-        alert("Accès refusé.");
-
-        return;
-
-    }
-
-
-    const deposit =
-        deposits.find(
-            item =>
-                item.id === depositId
-        );
-
-
-    if(!deposit){
-
-        return;
-
-    }
-
-
-    if(deposit.status !== "pending"){
-
-        return;
-
-    }
-
-
-    const user =
-        users.find(
-            item =>
-                item.id === deposit.userId
-        );
-
-
-    if(!user){
-
-        alert(
-            "Utilisateur introuvable."
-        );
-
-        return;
-
-    }
-
-
-    deposit.status = "validated";
-
-
     /*
-       Si le dépôt correspond à une machine,
-       on active la machine.
+       Pour l'instant, l'espace admin affiche
+       l'état de connexion.
 
-       Sinon, le montant est ajouté au solde.
+       Les opérations de validation seront branchées
+       après sécurisation des fonctions SQL.
     */
 
-    if(deposit.machineId){
+    document
+        .getElementById("adminDeposits")
+        .innerHTML = `
 
-        const machine =
-            machines.find(
-                item =>
-                    item.id === deposit.machineId
-            );
+            <div class="warning-box">
 
+                Les demandes administratives
+                seront connectées à la base
+                sécurisée à l'étape suivante.
 
-        if(machine){
-
-            if(!user.machines){
-
-                user.machines = [];
-
-            }
-
-
-            const already =
-                user.machines.find(
-                    item =>
-                        item.machineId === machine.id
-                );
-
-
-            if(!already){
-
-                user.machines.push({
-
-                    machineId:machine.id,
-
-                    active:true,
-
-                    activationDate:
-                        new Date().toLocaleString("fr-FR")
-
-                });
-
-            }
-
-        }
-
-    }else{
-
-        user.balance =
-            Number(user.balance || 0) +
-            Number(deposit.amount);
-
-    }
-
-
-    saveUsers();
-
-    saveDeposits();
-
-
-    alert(
-        "Dépôt validé avec succès."
-    );
-
-
-    loadAdmin();
-
-}
-
-
-
-/* =========================================================
-   REJET DEPOT
-========================================================= */
-
-function rejectDeposit(depositId){
-
-    const admin = getCurrentUser();
-
-
-    if(!admin || admin.role !== "admin"){
-
-        alert("Accès refusé.");
-
-        return;
-
-    }
-
-
-    const deposit =
-        deposits.find(
-            item =>
-                item.id === depositId
-        );
-
-
-    if(!deposit){
-
-        return;
-
-    }
-
-
-    deposit.status = "rejected";
-
-
-    saveDeposits();
-
-
-    alert(
-        "Dépôt rejeté."
-    );
-
-
-    loadAdmin();
-
-}
-
-
-
-/* =========================================================
-   ADMIN RETRAITS
-========================================================= */
-
-function loadAdminWithdrawals(){
-
-    const container =
-        document.getElementById(
-            "adminWithdrawals"
-        );
-
-
-    if(withdrawals.length === 0){
-
-        container.innerHTML =
-            "<p>Aucun retrait.</p>";
-
-        return;
-
-    }
-
-
-    let html = `
-
-        <table>
-
-            <tr>
-
-                <th>Date</th>
-                <th>Utilisateur</th>
-                <th>Montant</th>
-                <th>Numéro</th>
-                <th>Statut</th>
-                <th>Action</th>
-
-            </tr>
-
-    `;
-
-
-    withdrawals.forEach(withdrawal => {
-
-        html += `
-
-            <tr>
-
-                <td>
-                    ${escapeHtml(withdrawal.date)}
-                </td>
-
-                <td>
-                    ${escapeHtml(withdrawal.userName)}
-                </td>
-
-                <td>
-                    ${formatMoney(withdrawal.amount)}
-                </td>
-
-                <td>
-                    ${escapeHtml(withdrawal.phone)}
-                </td>
-
-                <td>
-                    ${statusHtml(withdrawal.status)}
-                </td>
-
-                <td>
-
-                    ${
-                        withdrawal.status === "pending"
-                        ?
-                        `
-
-                        <button
-                            class="btn btn-success"
-                            onclick="validateWithdrawal('${withdrawal.id}')">
-                            Valider
-                        </button>
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="rejectWithdrawal('${withdrawal.id}')">
-                            Rejeter
-                        </button>
-
-                        `
-                        :
-                        "-"
-                    }
-
-                </td>
-
-            </tr>
+            </div>
 
         `;
 
-    });
 
+    document
+        .getElementById("adminWithdrawals")
+        .innerHTML = `
 
-    html += "</table>";
+            <div class="warning-box">
 
+                Les demandes de retrait seront
+                connectées à l'espace administrateur
+                sécurisé à l'étape suivante.
 
-    container.innerHTML = html;
-
-}
-
-
-
-/* =========================================================
-   VALIDATION RETRAIT
-========================================================= */
-
-function validateWithdrawal(withdrawalId){
-
-    const admin = getCurrentUser();
-
-
-    if(!admin || admin.role !== "admin"){
-
-        alert("Accès refusé.");
-
-        return;
-
-    }
-
-
-    const withdrawal =
-        withdrawals.find(
-            item =>
-                item.id === withdrawalId
-        );
-
-
-    if(!withdrawal){
-
-        return;
-
-    }
-
-
-    if(withdrawal.status !== "pending"){
-
-        return;
-
-    }
-
-
-    withdrawal.status = "validated";
-
-
-    saveWithdrawals();
-
-
-    alert(
-        "Retrait validé."
-    );
-
-
-    loadAdmin();
-
-}
-
-
-
-/* =========================================================
-   REJET RETRAIT
-========================================================= */
-
-function rejectWithdrawal(withdrawalId){
-
-    const admin = getCurrentUser();
-
-
-    if(!admin || admin.role !== "admin"){
-
-        alert("Accès refusé.");
-
-        return;
-
-    }
-
-
-    const withdrawal =
-        withdrawals.find(
-            item =>
-                item.id === withdrawalId
-        );
-
-
-    if(!withdrawal){
-
-        return;
-
-    }
-
-
-    if(withdrawal.status !== "pending"){
-
-        return;
-
-    }
-
-
-    /*
-       En cas de rejet,
-       on restitue le montant à l'utilisateur.
-    */
-
-    const user =
-        users.find(
-            item =>
-                item.id === withdrawal.userId
-        );
-
-
-    if(user){
-
-        user.balance =
-            Number(user.balance || 0) +
-            Number(withdrawal.amount);
-
-    }
-
-
-    withdrawal.status = "rejected";
-
-
-    saveUsers();
-
-    saveWithdrawals();
-
-
-    alert(
-        "Retrait rejeté. Le montant a été restitué."
-    );
-
-
-    loadAdmin();
-
-}
-
-
-
-/* =========================================================
-   ADMIN UTILISATEURS
-========================================================= */
-
-function loadAdminUsers(){
-
-    const container =
-        document.getElementById(
-            "adminUsers"
-        );
-
-
-    const normalUsers =
-        users.filter(
-            user =>
-                user.role !== "admin"
-        );
-
-
-    if(normalUsers.length === 0){
-
-        container.innerHTML =
-            "<p>Aucun utilisateur.</p>";
-
-        return;
-
-    }
-
-
-    let html = `
-
-        <table>
-
-            <tr>
-
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Téléphone</th>
-                <th>Solde</th>
-                <th>Total gagné</th>
-                <th>Machines</th>
-
-            </tr>
-
-    `;
-
-
-    normalUsers.forEach(user => {
-
-        const activeMachines =
-            (user.machines || [])
-            .filter(
-                machine =>
-                    machine.active
-            ).length;
-
-
-        html += `
-
-            <tr>
-
-                <td>
-                    ${escapeHtml(user.name)}
-                </td>
-
-                <td>
-                    ${escapeHtml(user.email)}
-                </td>
-
-                <td>
-                    ${escapeHtml(user.phone)}
-                </td>
-
-                <td>
-                    ${formatMoney(user.balance)}
-                </td>
-
-                <td>
-                    ${formatMoney(user.totalEarned)}
-                </td>
-
-                <td>
-                    ${activeMachines}
-                </td>
-
-            </tr>
+            </div>
 
         `;
 
-    });
 
+    document
+        .getElementById("adminUsers")
+        .innerHTML = `
 
-    html += "</table>";
+            <div class="success-box">
 
+                Connexion administrateur Supabase active.
 
-    container.innerHTML = html;
+            </div>
 
-}
-
-
-
-/* =========================================================
-   PARAMETRES PAIEMENT
-========================================================= */
-
-function savePaymentSettings(event){
-
-    event.preventDefault();
-
-
-    const admin = getCurrentUser();
-
-
-    if(!admin || admin.role !== "admin"){
-
-        alert("Accès refusé.");
-
-        return;
-
-    }
-
-
-    paymentSettings.wave =
-        document
-        .getElementById("adminWaveNumber")
-        .value.trim();
-
-
-    paymentSettings.orange =
-        document
-        .getElementById("adminOrangeNumber")
-        .value.trim();
-
-
-    localStorage.setItem(
-        "cacaoPaymentSettings",
-        JSON.stringify(paymentSettings)
-    );
-
-
-    alert(
-        "Paramètres de paiement enregistrés."
-    );
+        `;
 
 }
 
@@ -3026,13 +2506,14 @@ function savePaymentSettings(event){
 
 function formatMoney(value){
 
-    return (
-        Number(value || 0)
-        .toLocaleString("fr-FR",{
-            maximumFractionDigits:3
-        })
-        + " FCFA"
-    );
+    return Number(value || 0)
+        .toLocaleString(
+            "fr-FR",
+            {
+                maximumFractionDigits:3
+            }
+        )
+        + " FCFA";
 
 }
 
@@ -3040,21 +2521,48 @@ function formatMoney(value){
 function formatNumber(value){
 
     return Number(value || 0)
-        .toLocaleString("fr-FR",{
-            maximumFractionDigits:3
-        });
+        .toLocaleString(
+            "fr-FR",
+            {
+                maximumFractionDigits:3
+            }
+        );
 
 }
 
+
+function formatDate(value){
+
+    if(!value){
+
+        return "-";
+
+    }
+
+
+    return new Date(value)
+        .toLocaleString("fr-FR");
+
+}
+
+
+
+/* =========================================================
+   STATUT
+========================================================= */
 
 function statusHtml(status){
 
     if(status === "validated"){
 
         return `
+
             <span class="status status-active">
+
                 VALIDÉ
+
             </span>
+
         `;
 
     }
@@ -3063,9 +2571,13 @@ function statusHtml(status){
     if(status === "pending"){
 
         return `
+
             <span class="status status-pending">
+
                 EN ATTENTE
+
             </span>
+
         `;
 
     }
@@ -3074,22 +2586,26 @@ function statusHtml(status){
     if(status === "rejected"){
 
         return `
+
             <span class="status status-rejected">
+
                 REJETÉ
+
             </span>
+
         `;
 
     }
 
 
-    return status;
+    return escapeHtml(status || "");
 
 }
 
 
 
 /* =========================================================
-   PROTECTION CONTRE L'INJECTION HTML
+   PROTECTION HTML
 ========================================================= */
 
 function escapeHtml(value){
@@ -3109,28 +2625,51 @@ function escapeHtml(value){
    INITIALISATION
 ========================================================= */
 
-function initializeApp(){
+async function initializeApp(){
 
-    updateNavigation();
+    try{
+
+        const {
+            data
+        } =
+            await supabaseClient.auth.getSession();
 
 
-    const user =
-        getCurrentUser();
+        if(data && data.session){
+
+            currentAuthUser =
+                data.session.user;
 
 
-    if(user){
+            await loadCurrentUser();
 
-        if(user.role === "admin"){
 
-            showPage("admin");
+            if(
+                currentProfile &&
+                currentProfile.role === "admin"
+            ){
+
+                showPage("admin");
+
+            }else{
+
+                showPage("dashboard");
+
+            }
 
         }else{
 
-            showPage("dashboard");
+            currentAuthUser = null;
+
+            currentProfile = null;
+
+            showPage("home");
 
         }
 
-    }else{
+    }catch(error){
+
+        console.error(error);
 
         showPage("home");
 
@@ -3138,6 +2677,40 @@ function initializeApp(){
 
 }
 
+
+
+/* =========================================================
+   SURVEILLANCE SESSION SUPABASE
+========================================================= */
+
+supabaseClient.auth.onAuthStateChange(
+    async (event, session) => {
+
+        if(session){
+
+            currentAuthUser =
+                session.user;
+
+            await loadCurrentUser();
+
+        }else{
+
+            currentAuthUser = null;
+
+            currentProfile = null;
+
+            updateNavigation();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   LANCEMENT
+========================================================= */
 
 initializeApp();
 
