@@ -225,7 +225,95 @@ footer{
     color:#777;
 }
 
+
+/* =========================================================
+   COMMUNAUTÉ CACAO-2
+========================================================= */
+
+.community-box{
+    background:linear-gradient(135deg,#e8f7ee,#ffffff);
+    border:2px solid #198754;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.community-box h2{
+    text-align:center;
+    margin-top:0;
+    color:#198754;
+}
+
+.community-description{
+    text-align:center;
+    color:#555;
+    line-height:1.6;
+}
+
+.community-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.community-btn{
+    display:block;
+    width:100%;
+    padding:15px 10px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:0;
+}
+
+.community-whatsapp{
+    background:#25D366;
+}
+
+.community-news{
+    background:#0d6efd;
+}
+
+.community-help{
+    background:#f59e0b;
+}
+
+.community-btn:hover{
+    opacity:.9;
+    transform:translateY(-1px);
+}
+
+.community-message{
+    margin-top:18px;
+    padding:16px;
+    background:white;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+.community-message h3{
+    margin-top:0;
+}
+
+.community-close{
+    background:#6c757d;
+    color:white;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:600px){
+
     .container{
         padding:10px;
     }
@@ -236,6 +324,14 @@ footer{
 
     th,td{
         padding:7px;
+    }
+
+    .community-buttons{
+        grid-template-columns:1fr;
+    }
+
+    .community-btn{
+        padding:14px;
     }
 }
 </style>
@@ -250,212 +346,454 @@ footer{
 
 <div class="container">
 
-<!-- ACCUEIL -->
+<!-- =====================================================
+     ACCUEIL
+===================================================== -->
+
 <section id="homeSection">
 
     <div class="card">
+
         <h2>Bienvenue sur CACAO</h2>
+
         <p>
             Bienvenue sur notre plateforme. Connectez-vous ou créez
             votre compte pour accéder aux machines.
         </p>
 
-        <button class="btn-primary" onclick="showSection('registerSection')">
+        <button
+            class="btn-primary"
+            onclick="showSection('registerSection')">
             Créer un compte
         </button>
 
-        <button class="btn-secondary" onclick="showSection('loginSection')">
+        <button
+            class="btn-secondary"
+            onclick="showSection('loginSection')">
             Se connecter
         </button>
+
     </div>
 
     <div class="card">
+
         <h3>⚠️ Information importante</h3>
+
         <div class="warning">
+
             Les paramètres de rémunération affichés dans cette application
             sont des paramètres de démonstration. Ils ne constituent pas
             une garantie de rendement financier.
+
         </div>
+
     </div>
 
 </section>
 
 
-<!-- INSCRIPTION -->
+<!-- =====================================================
+     INSCRIPTION
+===================================================== -->
+
 <section id="registerSection" class="hidden">
 
     <div class="card">
+
         <h2>Créer un compte</h2>
 
         <label>Nom complet</label>
-        <input type="text" id="registerName" placeholder="Votre nom complet">
+
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Votre nom complet"
+        >
 
         <label>Numéro de téléphone</label>
-        <input type="text" id="registerPhone" placeholder="Votre numéro">
+
+        <input
+            type="text"
+            id="registerPhone"
+            placeholder="Votre numéro"
+        >
 
         <label>Email</label>
-        <input type="email" id="registerEmail" placeholder="Votre email">
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="Votre email"
+        >
 
         <label>Mot de passe</label>
-        <input type="password" id="registerPassword" placeholder="Mot de passe">
 
-        <button class="btn-primary" onclick="registerUser()">
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Mot de passe"
+        >
+
+        <button
+            class="btn-primary"
+            onclick="registerUser()">
             S'inscrire
         </button>
 
-        <button class="btn-secondary" onclick="showSection('loginSection')">
+        <button
+            class="btn-secondary"
+            onclick="showSection('loginSection')">
             J'ai déjà un compte
         </button>
 
         <div id="registerMessage"></div>
+
     </div>
 
 </section>
 
 
-<!-- CONNEXION -->
+<!-- =====================================================
+     CONNEXION
+===================================================== -->
+
 <section id="loginSection" class="hidden">
 
     <div class="card">
+
         <h2>Connexion</h2>
 
         <label>Email</label>
-        <input type="email" id="loginEmail" placeholder="Votre email">
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Votre email"
+        >
 
         <label>Mot de passe</label>
-        <input type="password" id="loginPassword" placeholder="Votre mot de passe">
 
-        <button class="btn-primary" onclick="loginUser()">
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Votre mot de passe"
+        >
+
+        <button
+            class="btn-primary"
+            onclick="loginUser()">
             Se connecter
         </button>
 
-        <button class="btn-secondary" onclick="showSection('homeSection')">
+        <button
+            class="btn-secondary"
+            onclick="showSection('homeSection')">
             Retour
         </button>
 
         <div id="loginMessage"></div>
+
     </div>
 
 </section>
 
 
-<!-- DASHBOARD UTILISATEUR -->
+<!-- =====================================================
+     DASHBOARD UTILISATEUR
+===================================================== -->
+
 <section id="dashboardSection" class="hidden">
 
     <div class="card">
+
         <h2>👤 Mon tableau de bord</h2>
 
         <p>
-            Bienvenue <strong id="userName">Utilisateur</strong>
+            Bienvenue
+            <strong id="userName">Utilisateur</strong>
         </p>
 
-        <button class="btn-danger" onclick="logoutUser()">
+        <button
+            class="btn-danger"
+            onclick="logoutUser()">
             Déconnexion
         </button>
+
     </div>
+
+
+    <!-- =================================================
+         COMMUNAUTÉ CACAO-2
+    ================================================== -->
+
+    <div class="community-box">
+
+        <h2>🌱 Communauté CACAO-2</h2>
+
+        <p class="community-description">
+
+            Bienvenue dans la communauté CACAO-2.
+            Retrouvez nos actualités, échangez avec les membres
+            et obtenez de l'assistance.
+
+        </p>
+
+        <div class="community-buttons">
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://chat.whatsapp.com/EHOWJ7axYL0FY8TRSTmvNS"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="community-btn community-whatsapp">
+
+                💬 Rejoindre WhatsApp
+
+            </a>
+
+
+            <!-- ACTUALITÉS -->
+
+            <button
+                class="community-btn community-news"
+                onclick="showCommunityMessage(
+                    '📰 Actualités CACAO-2',
+                    'Les nouvelles informations et annonces concernant CACAO-2 seront publiées dans cet espace.'
+                )">
+
+                📰 Actualités
+
+            </button>
+
+
+            <!-- ASSISTANCE -->
+
+            <button
+                class="community-btn community-help"
+                onclick="showCommunityMessage(
+                    '🆘 Assistance CACAO-2',
+                    'Pour toute difficulté concernant votre compte, votre dépôt, votre machine ou votre retrait, contactez l’administrateur.'
+                )">
+
+                🆘 Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- MESSAGE COMMUNAUTÉ -->
+
+        <div
+            id="communityMessage"
+            class="community-message"
+            style="display:none;">
+
+            <h3 id="communityMessageTitle"></h3>
+
+            <p id="communityMessageText"></p>
+
+            <button
+                class="community-close"
+                onclick="closeCommunityMessage()">
+
+                Fermer
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         STATISTIQUES
+    ================================================== -->
 
     <div class="stats">
 
         <div class="stat">
+
             💰 Solde
-            <strong id="userBalance">0 FCFA</strong>
+
+            <strong id="userBalance">
+                0 FCFA
+            </strong>
+
         </div>
 
         <div class="stat">
+
             📈 Total gagné
-            <strong id="userTotalEarned">0 FCFA</strong>
+
+            <strong id="userTotalEarned">
+                0 FCFA
+            </strong>
+
         </div>
 
         <div class="stat">
+
             ⚙️ Machines actives
-            <strong id="userMachinesCount">0</strong>
+
+            <strong id="userMachinesCount">
+                0
+            </strong>
+
         </div>
 
     </div>
 
     <br>
 
-    <!-- MACHINES -->
+
+    <!-- =================================================
+         MACHINES
+    ================================================== -->
+
     <div class="card">
+
         <h2>⚙️ Machines</h2>
 
-        <div id="machinesContainer" class="machine-grid">
+        <div
+            id="machinesContainer"
+            class="machine-grid">
+
             Chargement des machines...
+
         </div>
+
     </div>
 
 
-    <!-- DEPOT -->
+    <!-- =================================================
+         DEPOT
+    ================================================== -->
+
     <div class="card">
+
         <h2>💳 Dépôt</h2>
 
         <p>
             Sélectionnez une machine pour effectuer votre dépôt.
         </p>
 
-        <div id="depositMachineInfo" class="notice">
+        <div
+            id="depositMachineInfo"
+            class="notice">
+
             Aucune machine sélectionnée.
+
         </div>
+
 
         <div class="payment-box">
 
             <h3>📲 Effectuer le paiement</h3>
 
             <p>
+
                 Après avoir choisi votre machine, effectuez le paiement
                 correspondant au prix de la machine sur l'un des comptes
                 ci-dessous.
+
             </p>
 
-            <div class="payment-method">
-                <strong>🟣 Wave</strong>
-                <div class="payment-number">07 19 71 32 30</div>
-            </div>
 
             <div class="payment-method">
-                <strong>🟠 Orange Money</strong>
-                <div class="payment-number">07 19 71 32 30</div>
+
+                <strong>🟣 Wave</strong>
+
+                <div class="payment-number">
+                    07 19 71 32 30
+                </div>
+
             </div>
+
+
+            <div class="payment-method">
+
+                <strong>🟠 Orange Money</strong>
+
+                <div class="payment-number">
+                    07 19 71 32 30
+                </div>
+
+            </div>
+
 
             <div class="warning">
+
                 <strong>Important :</strong>
+
                 le paiement est effectué manuellement par l'utilisateur.
                 L'application ne vérifie pas automatiquement le paiement.
                 Après le paiement, indiquez la référence de votre transaction
                 ci-dessous.
+
             </div>
 
         </div>
 
+
         <label>Machine sélectionnée</label>
+
         <select id="depositMachine">
-            <option value="">-- Choisir une machine --</option>
+
+            <option value="">
+                -- Choisir une machine --
+            </option>
+
         </select>
+
 
         <label>Mode de paiement</label>
+
         <select id="depositPaymentMethod">
-            <option value="">-- Choisir --</option>
-            <option value="Wave">Wave</option>
-            <option value="Orange Money">Orange Money</option>
+
+            <option value="">
+                -- Choisir --
+            </option>
+
+            <option value="Wave">
+                Wave
+            </option>
+
+            <option value="Orange Money">
+                Orange Money
+            </option>
+
         </select>
 
+
         <label>Référence du paiement</label>
+
         <input
             type="text"
             id="depositReference"
             placeholder="Référence de la transaction"
         >
 
-        <button class="btn-primary" onclick="submitDeposit()">
+
+        <button
+            class="btn-primary"
+            onclick="submitDeposit()">
+
             📤 Envoyer la demande de dépôt
+
         </button>
+
 
         <div id="depositMessage"></div>
 
     </div>
 
 
-    <!-- RETRAIT -->
+    <!-- =================================================
+         RETRAIT
+    ================================================== -->
+
     <div class="card">
 
         <h2>💸 Retrait</h2>
@@ -465,16 +803,39 @@ footer{
             <strong>Conditions de retrait :</strong>
 
             <ul>
-                <li>Les retraits sont disponibles uniquement le vendredi.</li>
-                <li>Montant minimum : 2 500 FCFA.</li>
-                <li>Le montant doit être un multiple de 100 FCFA.</li>
-                <li>Paiement uniquement par Wave ou Orange Money.</li>
-                <li>Numéro de réception obligatoire.</li>
-                <li>Validation obligatoire par l'administrateur.</li>
-                <li>Le solde est débité uniquement après validation.</li>
+
+                <li>
+                    Les retraits sont disponibles uniquement le vendredi.
+                </li>
+
+                <li>
+                    Montant minimum : 2 500 FCFA.
+                </li>
+
+                <li>
+                    Le montant doit être un multiple de 100 FCFA.
+                </li>
+
+                <li>
+                    Paiement uniquement par Wave ou Orange Money.
+                </li>
+
+                <li>
+                    Numéro de réception obligatoire.
+                </li>
+
+                <li>
+                    Validation obligatoire par l'administrateur.
+                </li>
+
+                <li>
+                    Le solde est débité uniquement après validation.
+                </li>
+
             </ul>
 
         </div>
+
 
         <label>Montant du retrait</label>
 
@@ -486,13 +847,25 @@ footer{
             placeholder="Exemple : 2600"
         >
 
+
         <label>Mode de paiement</label>
 
         <select id="withdrawPaymentMethod">
-            <option value="">-- Choisir --</option>
-            <option value="Wave">Wave</option>
-            <option value="Orange Money">Orange Money</option>
+
+            <option value="">
+                -- Choisir --
+            </option>
+
+            <option value="Wave">
+                Wave
+            </option>
+
+            <option value="Orange Money">
+                Orange Money
+            </option>
+
         </select>
+
 
         <label>Numéro de réception</label>
 
@@ -502,16 +875,25 @@ footer{
             placeholder="Numéro Wave ou Orange Money"
         >
 
-        <button class="btn-primary" onclick="submitWithdrawal()">
+
+        <button
+            class="btn-primary"
+            onclick="submitWithdrawal()">
+
             💸 Demander le retrait
+
         </button>
+
 
         <div id="withdrawMessage"></div>
 
     </div>
 
 
-    <!-- HISTORIQUE DEPOTS -->
+    <!-- =================================================
+         HISTORIQUE DEPOTS
+    ================================================== -->
+
     <div class="card">
 
         <h2>📋 Mes dépôts</h2>
@@ -523,7 +905,10 @@ footer{
     </div>
 
 
-    <!-- HISTORIQUE RETRAITS -->
+    <!-- =================================================
+         HISTORIQUE RETRAITS
+    ================================================== -->
+
     <div class="card">
 
         <h2>💸 Mes retraits</h2>
@@ -537,7 +922,10 @@ footer{
 </section>
 
 
-<!-- ADMIN -->
+<!-- =====================================================
+     ADMIN
+===================================================== -->
+
 <section id="adminSection" class="hidden">
 
     <div class="card">
@@ -548,14 +936,19 @@ footer{
             Bienvenue dans l'espace administrateur.
         </p>
 
-        <button class="btn-danger" onclick="logoutUser()">
+        <button
+            class="btn-danger"
+            onclick="logoutUser()">
+
             Déconnexion
+
         </button>
 
     </div>
 
 
     <!-- DEPOTS ADMIN -->
+
     <div class="card">
 
         <h2>💳 Demandes de dépôts</h2>
@@ -563,7 +956,9 @@ footer{
         <button
             class="btn-secondary"
             onclick="loadAdminDeposits()">
+
             🔄 Actualiser
+
         </button>
 
         <div id="adminDeposits">
@@ -574,6 +969,7 @@ footer{
 
 
     <!-- RETRAITS ADMIN -->
+
     <div class="card">
 
         <h2>💸 Demandes de retraits</h2>
@@ -581,7 +977,9 @@ footer{
         <button
             class="btn-secondary"
             onclick="loadAdminWithdrawals()">
+
             🔄 Actualiser
+
         </button>
 
         <div id="adminWithdrawals">
@@ -592,6 +990,7 @@ footer{
 
 
     <!-- PROFILS ADMIN -->
+
     <div class="card">
 
         <h2>👥 Utilisateurs</h2>
@@ -599,7 +998,9 @@ footer{
         <button
             class="btn-secondary"
             onclick="loadAdminProfiles()">
+
             🔄 Actualiser
+
         </button>
 
         <div id="adminProfiles">
@@ -610,8 +1011,8 @@ footer{
 
 </section>
 
-
 </div>
+
 
 <footer>
     CACAO © 2026
@@ -703,6 +1104,56 @@ function message(elementId,text,type){
 
     element.innerHTML =
         `<div class="${type}">${text}</div>`;
+
+}
+
+
+/* =========================================================
+   COMMUNAUTÉ CACAO-2
+========================================================= */
+
+function showCommunityMessage(title,messageText){
+
+    const titleElement =
+        document.getElementById(
+            "communityMessageTitle"
+        );
+
+    const textElement =
+        document.getElementById(
+            "communityMessageText"
+        );
+
+    const box =
+        document.getElementById(
+            "communityMessage"
+        );
+
+    if(titleElement){
+        titleElement.textContent = title;
+    }
+
+    if(textElement){
+        textElement.textContent = messageText;
+    }
+
+    if(box){
+        box.style.display = "block";
+    }
+
+}
+
+
+function closeCommunityMessage(){
+
+    const box =
+        document.getElementById(
+            "communityMessage"
+        );
+
+    if(box){
+        box.style.display = "none";
+    }
 
 }
 
@@ -1076,7 +1527,9 @@ async function loadMachines(){
             <button
                 class="btn-primary"
                 onclick="selectMachine(${machine.id})">
+
                 Choisir cette machine
+
             </button>
 
         `;
@@ -1737,13 +2190,17 @@ async function loadAdminDeposits(){
                 <button
                     class="btn-primary"
                     onclick="validateDeposit(${item.id})">
+
                     VALIDER
+
                 </button>
 
                 <button
                     class="btn-danger"
                     onclick="rejectDeposit(${item.id})">
+
                     REFUSER
+
                 </button>
 
             `;
@@ -1940,13 +2397,17 @@ async function loadAdminWithdrawals(){
                 <button
                     class="btn-primary"
                     onclick="validateWithdrawal(${item.id})">
+
                     VALIDER
+
                 </button>
 
                 <button
                     class="btn-danger"
                     onclick="rejectWithdrawal(${item.id})">
+
                     REFUSER
+
                 </button>
 
             `;
