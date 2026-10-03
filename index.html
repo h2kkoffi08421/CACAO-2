@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CACAO - Plateforme</title>
 
@@ -263,7 +259,6 @@ select{
     padding:15px;
     border-radius:6px;
     margin:15px 0;
-    word-break:break-word;
 }
 
 .admin-card{
@@ -328,17 +323,20 @@ tr:nth-child(even){
     color:#666;
 }
 
+.earning-info{
+    background:#eef9f1;
+    border-left:5px solid #198754;
+    padding:15px;
+    border-radius:6px;
+    margin:15px 0;
+}
+
 footer{
     text-align:center;
     padding:25px;
     margin-top:30px;
     background:#5b3518;
     color:white;
-}
-
-.small-text{
-    font-size:13px;
-    color:#666;
 }
 
 @media(max-width:600px){
@@ -364,15 +362,12 @@ footer{
     .action-buttons{
         flex-direction:column;
     }
-
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <header>
 
@@ -382,8 +377,7 @@ CACAO
 
 <nav>
 
-<button
-onclick="showPage('home')">
+<button onclick="showPage('home')">
 Accueil
 </button>
 
@@ -429,18 +423,14 @@ Déconnexion
 
 
 <!-- =====================================================
-ACCUEIL
+     ACCUEIL
 ===================================================== -->
 
-<section
-id="home"
-class="page active">
+<section id="home" class="page active">
 
 <div class="hero">
 
-<h1>
-Bienvenue sur CACAO
-</h1>
+<h1>Bienvenue sur CACAO</h1>
 
 <p>
 Plateforme de gestion des machines en libre service.
@@ -449,17 +439,13 @@ Plateforme de gestion des machines en libre service.
 <button
 class="btn btn-primary"
 onclick="showPage('register')">
-
 Créer un compte
-
 </button>
 
 <button
 class="btn btn-success"
 onclick="showPage('login')">
-
 Se connecter
-
 </button>
 
 </div>
@@ -467,61 +453,36 @@ Se connecter
 
 <div class="card">
 
-<h2>
-Comment fonctionne CACAO ?
-</h2>
+<h2>Comment fonctionne CACAO ?</h2>
 
 <div class="grid">
 
 <div>
-
-<h3>
-1. Inscription
-</h3>
-
+<h3>1. Inscription</h3>
 <p>
 Créez votre compte avec vos informations.
 </p>
-
 </div>
 
-
 <div>
-
-<h3>
-2. Dépôt
-</h3>
-
+<h3>2. Dépôt</h3>
 <p>
 Choisissez une machine et envoyez votre demande de dépôt.
 </p>
-
 </div>
 
-
 <div>
-
-<h3>
-3. Validation
-</h3>
-
+<h3>3. Validation</h3>
 <p>
 L'administrateur vérifie le paiement et valide la demande.
 </p>
-
 </div>
 
-
 <div>
-
-<h3>
-4. Activation
-</h3>
-
+<h3>4. Activation</h3>
 <p>
-Après validation, la machine est automatiquement activée.
+Après validation, la machine est activée pour l'utilisateur.
 </p>
-
 </div>
 
 </div>
@@ -531,9 +492,7 @@ Après validation, la machine est automatiquement activée.
 
 <div class="warning-box">
 
-<strong>
-Information importante
-</strong>
+<strong>Information importante</strong>
 
 <p>
 Les montants affichés dans cette application sont des
@@ -548,27 +507,20 @@ Ils ne constituent pas une garantie de rendement.
 
 
 <!-- =====================================================
-INSCRIPTION
+     INSCRIPTION
 ===================================================== -->
 
-<section
-id="register"
-class="page">
+<section id="register" class="page">
 
 <div class="card">
 
-<h2>
-Créer un compte
-</h2>
+<h2>Créer un compte</h2>
 
-<form
-onsubmit="register(event)">
+<form onsubmit="register(event)">
 
 <div class="form-group">
 
-<label>
-Nom complet
-</label>
+<label>Nom complet</label>
 
 <input
 type="text"
@@ -581,9 +533,7 @@ placeholder="Votre nom complet">
 
 <div class="form-group">
 
-<label>
-Téléphone
-</label>
+<label>Téléphone</label>
 
 <input
 type="tel"
@@ -596,9 +546,7 @@ placeholder="Votre numéro">
 
 <div class="form-group">
 
-<label>
-Email
-</label>
+<label>Email</label>
 
 <input
 type="email"
@@ -611,9 +559,7 @@ placeholder="Votre adresse email">
 
 <div class="form-group">
 
-<label>
-Mot de passe
-</label>
+<label>Mot de passe</label>
 
 <input
 type="password"
@@ -628,9 +574,7 @@ placeholder="Votre mot de passe">
 <button
 class="btn btn-primary"
 type="submit">
-
 Créer mon compte
-
 </button>
 
 </form>
@@ -642,27 +586,20 @@ Créer mon compte
 
 
 <!-- =====================================================
-CONNEXION
+     CONNEXION
 ===================================================== -->
 
-<section
-id="login"
-class="page">
+<section id="login" class="page">
 
 <div class="card">
 
-<h2>
-Connexion
-</h2>
+<h2>Connexion</h2>
 
-<form
-onsubmit="login(event)">
+<form onsubmit="login(event)">
 
 <div class="form-group">
 
-<label>
-Email
-</label>
+<label>Email</label>
 
 <input
 type="email"
@@ -675,9 +612,7 @@ placeholder="Votre adresse email">
 
 <div class="form-group">
 
-<label>
-Mot de passe
-</label>
+<label>Mot de passe</label>
 
 <input
 type="password"
@@ -691,9 +626,7 @@ placeholder="Votre mot de passe">
 <button
 class="btn btn-primary"
 type="submit">
-
 Se connecter
-
 </button>
 
 </form>
@@ -705,39 +638,28 @@ Se connecter
 
 
 <!-- =====================================================
-DASHBOARD
+     DASHBOARD UTILISATEUR
 ===================================================== -->
 
-<section
-id="dashboard"
-class="page">
+<section id="dashboard" class="page">
 
 <div class="card">
 
-<h2>
-Mon espace
-</h2>
+<h2>Mon espace</h2>
 
-<p id="welcomeUser">
-Chargement...
-</p>
+<p id="welcomeUser"></p>
 
 
 <div class="grid">
 
-
 <div class="card">
 
-<h3>
-Mon solde
-</h3>
+<h3>Mon solde</h3>
 
 <div
 class="balance"
 id="userBalance">
-
 0 FCFA
-
 </div>
 
 </div>
@@ -745,20 +667,28 @@ id="userBalance">
 
 <div class="card">
 
-<h3>
-Total gagné
-</h3>
+<h3>Total gagné</h3>
 
 <div
 class="balance"
 id="userTotalEarned">
-
 0 FCFA
-
 </div>
 
 </div>
 
+</div>
+
+
+<div
+class="earning-info">
+
+<strong>Gains des machines</strong>
+
+<p>
+Les gains sont calculés automatiquement par Supabase
+selon les machines actives et le nombre de jours écoulés.
+</p>
 
 </div>
 
@@ -766,18 +696,14 @@ id="userTotalEarned">
 <button
 class="btn btn-success"
 onclick="showDepositForm()">
-
 DÉPÔT
-
 </button>
 
 
 <button
 class="btn btn-warning"
 onclick="showWithdrawalForm()">
-
 RETRAIT
-
 </button>
 
 </div>
@@ -785,7 +711,7 @@ RETRAIT
 
 
 <!-- =====================================================
-DEPOT
+     DEPOT
 ===================================================== -->
 
 <div
@@ -793,29 +719,21 @@ id="depositForm"
 class="card"
 style="display:none;">
 
-<h2>
-Effectuer un dépôt
-</h2>
+<h2>Effectuer un dépôt</h2>
 
 
 <div class="info-box">
 
-<strong>
-Modes de paiement disponibles
-</strong>
+<strong>Modes de paiement disponibles</strong>
 
 <p>
 Wave :
-<strong>
-0719713230
-</strong>
+<strong>0719713230</strong>
 </p>
 
 <p>
 Orange Money :
-<strong>
-0719713230
-</strong>
+<strong>0719713230</strong>
 </p>
 
 </div>
@@ -826,36 +744,24 @@ id="selectedMachineBox"
 class="machine-selected"
 style="display:none;">
 
-<strong>
-Machine sélectionnée :
-</strong>
+<strong>Machine sélectionnée :</strong>
 
-<span
-id="selectedMachineName">
-</span>
+<span id="selectedMachineName"></span>
 
 <br>
 
-<strong>
-Montant :
-</strong>
+<strong>Montant :</strong>
 
-<span
-id="selectedMachinePrice">
-</span>
+<span id="selectedMachinePrice"></span>
 
 </div>
 
 
-<form
-onsubmit="submitDeposit(event)">
-
+<form onsubmit="submitDeposit(event)">
 
 <div class="form-group">
 
-<label>
-Machine
-</label>
+<label>Machine</label>
 
 <select
 id="depositMachine"
@@ -873,9 +779,7 @@ Sélectionner une machine
 
 <div class="form-group">
 
-<label>
-Montant du dépôt
-</label>
+<label>Montant du dépôt</label>
 
 <input
 type="number"
@@ -889,9 +793,7 @@ placeholder="Choisissez une machine">
 
 <div class="form-group">
 
-<label>
-Mode de paiement
-</label>
+<label>Mode de paiement</label>
 
 <select
 id="depositMethod"
@@ -932,9 +834,7 @@ placeholder="Référence du paiement">
 <button
 class="btn btn-success"
 type="submit">
-
 Envoyer le dépôt
-
 </button>
 
 
@@ -942,9 +842,7 @@ Envoyer le dépôt
 class="btn btn-secondary"
 type="button"
 onclick="hideForms()">
-
 Annuler
-
 </button>
 
 </form>
@@ -954,7 +852,7 @@ Annuler
 
 
 <!-- =====================================================
-RETRAIT
+     RETRAIT
 ===================================================== -->
 
 <div
@@ -962,16 +860,12 @@ id="withdrawalForm"
 class="card"
 style="display:none;">
 
-<h2>
-Demande de retrait
-</h2>
+<h2>Demande de retrait</h2>
 
 
 <div class="warning-box">
 
-<strong>
-Conditions de retrait
-</strong>
+<strong>Conditions de retrait</strong>
 
 <ul>
 
@@ -992,15 +886,11 @@ Le montant doit être un multiple de 100 FCFA.
 </div>
 
 
-<form
-onsubmit="submitWithdrawal(event)">
-
+<form onsubmit="submitWithdrawal(event)">
 
 <div class="form-group">
 
-<label>
-Montant du retrait
-</label>
+<label>Montant du retrait</label>
 
 <input
 type="number"
@@ -1015,9 +905,7 @@ placeholder="Exemple : 2500">
 
 <div class="form-group">
 
-<label>
-Numéro de réception
-</label>
+<label>Numéro de réception</label>
 
 <input
 type="tel"
@@ -1031,9 +919,7 @@ placeholder="Numéro Wave ou Orange Money">
 <button
 class="btn btn-warning"
 type="submit">
-
 Demander le retrait
-
 </button>
 
 
@@ -1041,9 +927,7 @@ Demander le retrait
 class="btn btn-secondary"
 type="button"
 onclick="hideForms()">
-
 Annuler
-
 </button>
 
 </form>
@@ -1053,23 +937,19 @@ Annuler
 
 
 <!-- =====================================================
-MACHINES
+     MACHINES
 ===================================================== -->
 
 <div class="card">
 
-<h2>
-Machines disponibles
-</h2>
+<h2>Machines disponibles</h2>
 
 <div
 id="machinesContainer"
 class="grid">
 
 <div class="loading">
-
-Connexion aux machines...
-
+Chargement des machines...
 </div>
 
 </div>
@@ -1079,20 +959,18 @@ Connexion aux machines...
 
 
 <!-- =====================================================
-DEPOTS UTILISATEUR
+     DEPOTS UTILISATEUR
 ===================================================== -->
 
 <div class="card">
 
-<h2>
-Mes dépôts
-</h2>
+<h2>Mes dépôts</h2>
 
 <div id="userDeposits">
 
-<div class="loading">
+<p>
 Chargement...
-</div>
+</p>
 
 </div>
 
@@ -1101,20 +979,18 @@ Chargement...
 
 
 <!-- =====================================================
-RETRAITS UTILISATEUR
+     RETRAITS UTILISATEUR
 ===================================================== -->
 
 <div class="card">
 
-<h2>
-Mes retraits
-</h2>
+<h2>Mes retraits</h2>
 
 <div id="userWithdrawals">
 
-<div class="loading">
+<p>
 Chargement...
-</div>
+</p>
 
 </div>
 
@@ -1125,24 +1001,18 @@ Chargement...
 
 
 <!-- =====================================================
-ADMINISTRATION
+     ADMINISTRATION
 ===================================================== -->
 
-<section
-id="admin"
-class="page">
-
+<section id="admin" class="page">
 
 <div class="card admin-card">
 
-<h2>
-Administration CACAO
-</h2>
+<h2>Administration CACAO</h2>
 
 <p id="adminWelcome">
 Espace administrateur
 </p>
-
 
 <div class="success-box">
 
@@ -1151,7 +1021,7 @@ Administrateur connecté
 </strong>
 
 <p>
-Vous pouvez gérer les demandes.
+Vous pouvez gérer les demandes de dépôt.
 </p>
 
 </div>
@@ -1159,27 +1029,20 @@ Vous pouvez gérer les demandes.
 </div>
 
 
-
 <div class="card">
 
-<h2>
-Paramètres de paiement
-</h2>
+<h2>Paramètres de paiement</h2>
 
 <div class="info-box">
 
 <p>
 Wave :
-<strong>
-0719713230
-</strong>
+<strong>0719713230</strong>
 </p>
 
 <p>
 Orange Money :
-<strong>
-0719713230
-</strong>
+<strong>0719713230</strong>
 </p>
 
 </div>
@@ -1187,15 +1050,11 @@ Orange Money :
 </div>
 
 
-
 <div class="card">
 
-<h2>
-Demandes de dépôt
-</h2>
+<h2>Demandes de dépôt</h2>
 
-<div id="adminDepositSummary">
-</div>
+<div id="adminDepositSummary"></div>
 
 <div id="adminDeposits">
 
@@ -1208,12 +1067,9 @@ Chargement des dépôts...
 </div>
 
 
-
 <div class="card">
 
-<h2>
-Demandes de retrait
-</h2>
+<h2>Demandes de retrait</h2>
 
 <div id="adminWithdrawals">
 
@@ -1226,12 +1082,9 @@ Chargement des retraits...
 </div>
 
 
-
 <div class="card">
 
-<h2>
-Mon compte administrateur
-</h2>
+<h2>Mon compte administrateur</h2>
 
 <div id="adminUsers">
 
@@ -1248,7 +1101,6 @@ Chargement...
 </div>
 
 
-
 <footer>
 
 <p>
@@ -1261,36 +1113,25 @@ CACAO © 2026 - Prototype
 
 <script>
 
-
 /* =========================================================
-CONFIGURATION SUPABASE
+   CONFIGURATION SUPABASE
 ========================================================= */
 
 const SUPABASE_URL =
 "https://hlotghrrxsxqnjulqqxa.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_NK5rI4yWM093bd-vNiNkIQ_BNWCsWTO";
 
-
 const supabaseClient =
 window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY,
-    {
-        auth:{
-            persistSession:true,
-            autoRefreshToken:true,
-            detectSessionInUrl:true
-        }
-    }
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
 );
 
 
-
 /* =========================================================
-VARIABLES
+   VARIABLES
 ========================================================= */
 
 let currentAuthUser = null;
@@ -1303,3326 +1144,2319 @@ let userMachines = [];
 
 let selectedMachineId = null;
 
-let applicationStarted = false;
 
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(page){
+
+if(
+page === "dashboard" &&
+!currentAuthUser
+){
+
+page = "login";
+
+}
+
+
+if(
+page === "admin" &&
+(
+!currentAuthUser ||
+!currentProfile ||
+currentProfile.role !== "admin"
+)
+){
+
+page = "home";
+
+}
+
+
+document
+.querySelectorAll(".page")
+.forEach(section => {
+
+section.classList.remove("active");
+
+});
+
+
+const target =
+document.getElementById(page);
+
+if(target){
+
+target.classList.add("active");
+
+}
+
+
+if(page === "dashboard"){
+
+loadDashboard();
+
+}
+
+
+if(page === "admin"){
+
+loadAdmin();
+
+}
+
+
+updateNavigation();
+
+}
 
 
 /* =========================================================
-FORMATAGE
+   NAVIGATION HEADER
+========================================================= */
+
+function updateNavigation(){
+
+const navDashboard =
+document.getElementById("navDashboard");
+
+const navAdmin =
+document.getElementById("navAdmin");
+
+const navLogin =
+document.getElementById("navLogin");
+
+const navRegister =
+document.getElementById("navRegister");
+
+const navLogout =
+document.getElementById("navLogout");
+
+
+navDashboard.style.display = "none";
+
+navAdmin.style.display = "none";
+
+navLogin.style.display = "inline-block";
+
+navRegister.style.display = "inline-block";
+
+navLogout.style.display = "none";
+
+
+if(!currentAuthUser){
+
+return;
+
+}
+
+
+navLogin.style.display = "none";
+
+navRegister.style.display = "none";
+
+navLogout.style.display = "inline-block";
+
+
+if(
+currentProfile &&
+currentProfile.role === "admin"
+){
+
+navAdmin.style.display = "inline-block";
+
+}else{
+
+navDashboard.style.display = "inline-block";
+
+}
+
+}
+
+
+/* =========================================================
+   INSCRIPTION
+========================================================= */
+
+async function register(event){
+
+event.preventDefault();
+
+
+const name =
+document.getElementById("registerName")
+.value.trim();
+
+const phone =
+document.getElementById("registerPhone")
+.value.trim();
+
+const email =
+document.getElementById("registerEmail")
+.value.trim()
+.toLowerCase();
+
+const password =
+document.getElementById("registerPassword")
+.value;
+
+
+if(password.length < 6){
+
+alert(
+"Le mot de passe doit contenir au moins 6 caractères."
+);
+
+return;
+
+}
+
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.signUp({
+
+email:email,
+
+password:password,
+
+options:{
+data:{
+full_name:name,
+phone:phone
+}
+}
+
+});
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de la création du compte : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"Votre compte a été créé avec succès."
+);
+
+
+document.getElementById("registerName").value = "";
+
+document.getElementById("registerPhone").value = "";
+
+document.getElementById("registerEmail").value = "";
+
+document.getElementById("registerPassword").value = "";
+
+
+if(data.session){
+
+currentAuthUser = data.user;
+
+await loadCurrentUser();
+
+showPage("dashboard");
+
+}else{
+
+showPage("login");
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Une erreur inattendue est survenue."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   CONNEXION
+========================================================= */
+
+async function login(event){
+
+event.preventDefault();
+
+
+const email =
+document.getElementById("loginEmail")
+.value.trim()
+.toLowerCase();
+
+const password =
+document.getElementById("loginPassword")
+.value;
+
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Email ou mot de passe incorrect."
+);
+
+return;
+
+}
+
+
+currentAuthUser =
+data.user;
+
+
+await loadCurrentUser();
+
+
+document.getElementById("loginEmail").value = "";
+
+document.getElementById("loginPassword").value = "";
+
+
+if(
+currentProfile &&
+currentProfile.role === "admin"
+){
+
+showPage("admin");
+
+}else{
+
+showPage("dashboard");
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Erreur de connexion."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   DECONNEXION
+========================================================= */
+
+async function logout(){
+
+const {
+error
+} =
+await supabaseClient.auth.signOut();
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de la déconnexion."
+);
+
+return;
+
+}
+
+
+currentAuthUser = null;
+
+currentProfile = null;
+
+userMachines = [];
+
+selectedMachineId = null;
+
+updateNavigation();
+
+showPage("home");
+
+}
+
+
+/* =========================================================
+   UTILISATEUR ACTUEL
+========================================================= */
+
+async function loadCurrentUser(){
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.getUser();
+
+
+if(error){
+
+console.error(error);
+
+currentAuthUser = null;
+
+currentProfile = null;
+
+updateNavigation();
+
+return;
+
+}
+
+
+currentAuthUser =
+data.user;
+
+
+if(!currentAuthUser){
+
+currentProfile = null;
+
+updateNavigation();
+
+return;
+
+}
+
+
+const {
+data:profile,
+error:profileError
+} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentAuthUser.id)
+.single();
+
+
+if(profileError){
+
+console.error(profileError);
+
+alert(
+"Le profil utilisateur n'a pas pu être chargé."
+);
+
+return;
+
+}
+
+
+currentProfile =
+profile;
+
+
+updateNavigation();
+
+}
+
+
+/* =========================================================
+   CALCUL AUTOMATIQUE DES GAINS
+========================================================= */
+
+async function updateMyEarnings(){
+
+if(!currentAuthUser){
+
+return;
+
+}
+
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient
+.rpc("update_my_earnings");
+
+
+if(error){
+
+console.error(
+"Erreur calcul des gains :",
+error
+);
+
+return;
+
+}
+
+
+console.log(
+"Gains calculés :",
+data,
+"FCFA"
+);
+
+
+}catch(error){
+
+console.error(
+"Erreur inattendue lors du calcul des gains :",
+error
+);
+
+}
+
+}
+
+
+/* =========================================================
+   MACHINES
+========================================================= */
+
+async function loadMachinesFromDatabase(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("machines")
+.select("*")
+.eq("active",true)
+.order("id");
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Impossible de charger les machines."
+);
+
+return;
+
+}
+
+
+machines = data || [];
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+async function loadDashboard(){
+
+if(!currentAuthUser){
+
+showPage("login");
+
+return;
+
+}
+
+
+if(
+currentProfile &&
+currentProfile.role === "admin"
+){
+
+showPage("admin");
+
+return;
+
+}
+
+
+if(!currentProfile){
+
+await loadCurrentUser();
+
+}
+
+
+if(!currentProfile){
+
+return;
+
+}
+
+
+/* CALCUL DES GAINS */
+
+await updateMyEarnings();
+
+
+/* RECHARGEMENT DU PROFIL */
+
+await loadCurrentUser();
+
+
+if(!currentProfile){
+
+return;
+
+}
+
+
+document.getElementById("welcomeUser").innerHTML =
+"Bienvenue <strong>" +
+escapeHtml(currentProfile.full_name || "") +
+"</strong>";
+
+
+document.getElementById("userBalance").textContent =
+formatMoney(currentProfile.balance);
+
+
+document.getElementById("userTotalEarned").textContent =
+formatMoney(currentProfile.total_earned);
+
+
+await loadMachinesFromDatabase();
+
+await loadUserMachines();
+
+await loadUserDeposits();
+
+await loadUserWithdrawals();
+
+}
+
+
+/* =========================================================
+   MACHINES UTILISATEUR
+========================================================= */
+
+async function loadUserMachines(){
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("user_machines")
+.select("*")
+.eq("user_id",currentAuthUser.id)
+.eq("active",true);
+
+
+if(error){
+
+console.error(error);
+
+userMachines = [];
+
+}else{
+
+userMachines = data || [];
+
+}
+
+
+renderMachines();
+
+}
+
+
+/* =========================================================
+   AFFICHAGE MACHINES
+========================================================= */
+
+function renderMachines(){
+
+const container =
+document.getElementById("machinesContainer");
+
+
+container.innerHTML = "";
+
+
+if(!machines.length){
+
+container.innerHTML =
+"<div class='empty'>Aucune machine disponible.</div>";
+
+return;
+
+}
+
+
+machines.forEach(machine => {
+
+const active =
+userMachines.find(
+item =>
+Number(item.machine_id) ===
+Number(machine.id)
+);
+
+
+if(active){
+
+container.innerHTML += `
+
+<div class="machine">
+
+<h3>
+${escapeHtml(machine.name)}
+</h3>
+
+<p>
+Prix :
+<strong>
+${formatMoney(machine.price)}
+</strong>
+</p>
+
+<p class="daily">
+Rémunération :
+${formatNumber(machine.daily_earning)}
+FCFA / jour
+</p>
+
+<p>
+<span class="status status-active">
+MACHINE ACTIVE
+</span>
+</p>
+
+</div>
+
+`;
+
+}else{
+
+container.innerHTML += `
+
+<div class="machine">
+
+<h3>
+${escapeHtml(machine.name)}
+</h3>
+
+<p>
+Prix :
+<strong>
+${formatMoney(machine.price)}
+</strong>
+</p>
+
+<p class="daily">
+Rémunération :
+${formatNumber(machine.daily_earning)}
+FCFA / jour
+</p>
+
+<button
+class="btn btn-primary"
+onclick="prepareMachineDeposit(${machine.id})">
+
+LOUER CETTE MACHINE
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+}
+
+
+/* =========================================================
+   PREPARER MACHINE
+========================================================= */
+
+function prepareMachineDeposit(machineId){
+
+const machine =
+machines.find(
+item =>
+Number(item.id) ===
+Number(machineId)
+);
+
+
+if(!machine){
+
+return;
+
+}
+
+
+selectedMachineId =
+Number(machine.id);
+
+
+showDepositForm();
+
+
+const select =
+document.getElementById("depositMachine");
+
+
+select.value =
+String(machine.id);
+
+
+document.getElementById("depositAmount").value =
+machine.price;
+
+
+document.getElementById("selectedMachineName").textContent =
+machine.name;
+
+
+document.getElementById("selectedMachinePrice").textContent =
+formatMoney(machine.price);
+
+
+document.getElementById("selectedMachineBox").style.display =
+"block";
+
+
+window.scrollTo({
+
+top:
+document.getElementById("depositForm").offsetTop,
+
+behavior:"smooth"
+
+});
+
+}
+
+
+/* =========================================================
+   SELECTION MACHINE
+========================================================= */
+
+function selectMachineFromForm(){
+
+const machineId =
+Number(
+document.getElementById("depositMachine").value
+);
+
+
+selectedMachineId =
+machineId || null;
+
+
+const machine =
+machines.find(
+item =>
+Number(item.id) ===
+machineId
+);
+
+
+if(!machine){
+
+document.getElementById("depositAmount").value = "";
+
+document.getElementById("selectedMachineBox").style.display =
+"none";
+
+return;
+
+}
+
+
+document.getElementById("depositAmount").value =
+machine.price;
+
+
+document.getElementById("selectedMachineName").textContent =
+machine.name;
+
+
+document.getElementById("selectedMachinePrice").textContent =
+formatMoney(machine.price);
+
+
+document.getElementById("selectedMachineBox").style.display =
+"block";
+
+}
+
+
+/* =========================================================
+   FORMULAIRES
+========================================================= */
+
+function showDepositForm(){
+
+hideForms();
+
+
+const select =
+document.getElementById("depositMachine");
+
+
+select.innerHTML =
+`
+<option value="">
+Sélectionner une machine
+</option>
+`;
+
+
+machines.forEach(machine => {
+
+const active =
+userMachines.find(
+item =>
+Number(item.machine_id) ===
+Number(machine.id)
+);
+
+
+if(!active){
+
+select.innerHTML += `
+<option value="${machine.id}">
+${escapeHtml(machine.name)} - ${formatMoney(machine.price)}
+</option>
+`;
+
+}
+
+});
+
+
+if(selectedMachineId){
+
+select.value =
+String(selectedMachineId);
+
+}
+
+
+document.getElementById("depositForm").style.display =
+"block";
+
+}
+
+
+function showWithdrawalForm(){
+
+hideForms();
+
+document.getElementById("withdrawalForm").style.display =
+"block";
+
+}
+
+
+function hideForms(){
+
+document.getElementById("depositForm").style.display =
+"none";
+
+document.getElementById("withdrawalForm").style.display =
+"none";
+
+}
+
+
+/* =========================================================
+   DEPOT
+========================================================= */
+
+async function submitDeposit(event){
+
+event.preventDefault();
+
+
+if(!currentAuthUser){
+
+alert(
+"Veuillez vous connecter."
+);
+
+return;
+
+}
+
+
+const machineId =
+Number(
+document.getElementById("depositMachine").value
+);
+
+
+const amount =
+Number(
+document.getElementById("depositAmount").value
+);
+
+
+const method =
+document.getElementById("depositMethod").value;
+
+
+const reference =
+document.getElementById("depositReference")
+.value.trim();
+
+
+if(!machineId){
+
+alert(
+"Veuillez sélectionner une machine."
+);
+
+return;
+
+}
+
+
+const machine =
+machines.find(
+item =>
+Number(item.id) ===
+machineId
+);
+
+
+if(!machine){
+
+alert(
+"Machine introuvable."
+);
+
+return;
+
+}
+
+
+if(amount !== Number(machine.price)){
+
+alert(
+"Le montant doit correspondre au prix de la machine."
+);
+
+return;
+
+}
+
+
+if(!method){
+
+alert(
+"Veuillez choisir un mode de paiement."
+);
+
+return;
+
+}
+
+
+if(!reference){
+
+alert(
+"Veuillez entrer la référence du paiement."
+);
+
+return;
+
+}
+
+
+try{
+
+const {
+error
+} =
+await supabaseClient
+.from("deposits")
+.insert({
+
+user_id:
+currentAuthUser.id,
+
+machine_id:
+machineId,
+
+amount:
+amount,
+
+payment_method:
+method,
+
+payment_reference:
+reference,
+
+status:
+"pending"
+
+});
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Impossible d'envoyer le dépôt : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"VOTRE DEMANDE A ÉTÉ ENVOYÉE AVEC SUCCÈS ET EST EN ATTENTE DE L'ADMINISTRATEUR."
+);
+
+
+document.getElementById("depositMachine").value = "";
+
+document.getElementById("depositAmount").value = "";
+
+document.getElementById("depositMethod").value = "";
+
+document.getElementById("depositReference").value = "";
+
+document.getElementById("selectedMachineBox").style.display =
+"none";
+
+selectedMachineId = null;
+
+hideForms();
+
+await loadDashboard();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de l'envoi du dépôt."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   RETRAIT
+========================================================= */
+
+async function submitWithdrawal(event){
+
+event.preventDefault();
+
+
+if(!currentAuthUser){
+
+alert(
+"Veuillez vous connecter."
+);
+
+return;
+
+}
+
+
+/* Actualiser les gains avant de vérifier le solde */
+
+await updateMyEarnings();
+
+await loadCurrentUser();
+
+
+const amount =
+Number(
+document.getElementById("withdrawalAmount").value
+);
+
+
+const phone =
+document.getElementById("withdrawalPhone")
+.value.trim();
+
+
+if(amount < 2500){
+
+alert(
+"Le retrait minimum est de 2 500 FCFA."
+);
+
+return;
+
+}
+
+
+if(amount % 100 !== 0){
+
+alert(
+"Le montant doit être un multiple de 100 FCFA."
+);
+
+return;
+
+}
+
+
+if(
+amount >
+Number(currentProfile.balance || 0)
+){
+
+alert(
+"Votre solde est insuffisant."
+);
+
+return;
+
+}
+
+
+const today =
+new Date();
+
+
+if(today.getDay() !== 5){
+
+alert(
+"Les retraits sont disponibles uniquement le vendredi."
+);
+
+return;
+
+}
+
+
+try{
+
+const {
+error
+} =
+await supabaseClient
+.from("withdrawals")
+.insert({
+
+user_id:
+currentAuthUser.id,
+
+amount:
+amount,
+
+payment_method:
+"Wave ou Orange Money",
+
+payment_number:
+phone,
+
+status:
+"pending"
+
+});
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Impossible d'envoyer la demande : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"Votre demande de retrait a été envoyée à l'administrateur."
+);
+
+
+document.getElementById("withdrawalAmount").value = "";
+
+document.getElementById("withdrawalPhone").value = "";
+
+hideForms();
+
+await loadDashboard();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de la demande de retrait."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   HISTORIQUE DEPOTS
+========================================================= */
+
+async function loadUserDeposits(){
+
+const container =
+document.getElementById("userDeposits");
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("deposits")
+.select("*")
+.eq("user_id",currentAuthUser.id)
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+"<p>Impossible de charger les dépôts.</p>";
+
+return;
+
+}
+
+
+if(!data || data.length === 0){
+
+container.innerHTML =
+"<div class='empty'>Aucun dépôt.</div>";
+
+return;
+
+}
+
+
+let html = `
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Machine</th>
+<th>Montant</th>
+<th>Mode</th>
+<th>Référence</th>
+<th>Statut</th>
+</tr>
+
+`;
+
+
+data.forEach(deposit => {
+
+const machine =
+machines.find(
+item =>
+Number(item.id) ===
+Number(deposit.machine_id)
+);
+
+
+html += `
+
+<tr>
+
+<td>
+${formatDate(deposit.created_at)}
+</td>
+
+<td>
+${machine
+? escapeHtml(machine.name)
+: "-"
+}
+</td>
+
+<td>
+${formatMoney(deposit.amount)}
+</td>
+
+<td>
+${escapeHtml(deposit.payment_method)}
+</td>
+
+<td>
+${escapeHtml(deposit.payment_reference)}
+</td>
+
+<td>
+${statusHtml(deposit.status)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html += "</table>";
+
+container.innerHTML =
+html;
+
+}
+
+
+/* =========================================================
+   HISTORIQUE RETRAITS
+========================================================= */
+
+async function loadUserWithdrawals(){
+
+const container =
+document.getElementById("userWithdrawals");
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("withdrawals")
+.select("*")
+.eq("user_id",currentAuthUser.id)
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+"<p>Impossible de charger les retraits.</p>";
+
+return;
+
+}
+
+
+if(!data || data.length === 0){
+
+container.innerHTML =
+"<div class='empty'>Aucun retrait.</div>";
+
+return;
+
+}
+
+
+let html = `
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Montant</th>
+<th>Numéro</th>
+<th>Statut</th>
+
+</tr>
+
+`;
+
+
+data.forEach(withdrawal => {
+
+html += `
+
+<tr>
+
+<td>
+${formatDate(withdrawal.created_at)}
+</td>
+
+<td>
+${formatMoney(withdrawal.amount)}
+</td>
+
+<td>
+${escapeHtml(withdrawal.payment_number)}
+</td>
+
+<td>
+${statusHtml(withdrawal.status)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html += "</table>";
+
+container.innerHTML =
+html;
+
+}
+
+
+/* =========================================================
+   ADMIN - DEPOTS
+========================================================= */
+
+async function loadAdminDeposits(){
+
+const container =
+document.getElementById("adminDeposits");
+
+const summary =
+document.getElementById("adminDepositSummary");
+
+
+container.innerHTML =
+"<div class='loading'>Chargement des dépôts...</div>";
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("deposits")
+.select("*")
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML = `
+<div class="error-box">
+Impossible de charger les dépôts :
+${escapeHtml(error.message)}
+</div>
+`;
+
+return;
+
+}
+
+
+const pendingCount =
+(data || []).filter(
+deposit =>
+deposit.status === "pending"
+).length;
+
+
+summary.innerHTML = `
+
+<div class="info-box">
+
+<strong>
+${pendingCount}
+demande(s) en attente
+</strong>
+
+</div>
+
+`;
+
+
+if(!data || data.length === 0){
+
+container.innerHTML =
+"<div class='empty'>Aucun dépôt.</div>";
+
+return;
+
+}
+
+
+const userIds =
+[
+...new Set(
+data.map(
+item => item.user_id
+).filter(Boolean)
+)
+];
+
+
+let profiles = [];
+
+
+if(userIds.length){
+
+const {
+data:profileData,
+error:profileError
+} =
+await supabaseClient
+.from("profiles")
+.select("id,full_name,phone")
+.in("id",userIds);
+
+
+if(profileError){
+
+console.error(profileError);
+
+}else{
+
+profiles =
+profileData || [];
+
+}
+
+}
+
+
+let html = `
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Utilisateur</th>
+<th>Téléphone</th>
+<th>Machine</th>
+<th>Montant</th>
+<th>Paiement</th>
+<th>Référence</th>
+<th>Statut</th>
+<th>Action</th>
+
+</tr>
+
+`;
+
+
+data.forEach(deposit => {
+
+const profile =
+profiles.find(
+item =>
+item.id ===
+deposit.user_id
+);
+
+
+const machine =
+machines.find(
+item =>
+Number(item.id) ===
+Number(deposit.machine_id)
+);
+
+
+let actions = "-";
+
+
+if(deposit.status === "pending"){
+
+actions = `
+
+<div class="action-buttons">
+
+<button
+class="btn btn-success"
+onclick="validateDeposit(${deposit.id})">
+
+VALIDER
+
+</button>
+
+<button
+class="btn btn-danger"
+onclick="rejectDeposit(${deposit.id})">
+
+REFUSER
+
+</button>
+
+</div>
+
+`;
+
+}
+
+
+html += `
+
+<tr>
+
+<td>
+${formatDate(deposit.created_at)}
+</td>
+
+<td>
+${escapeHtml(
+profile?.full_name || deposit.user_id || "-"
+)}
+</td>
+
+<td>
+${escapeHtml(
+profile?.phone || "-"
+)}
+</td>
+
+<td>
+${escapeHtml(
+machine?.name || "-"
+)}
+</td>
+
+<td>
+${formatMoney(deposit.amount)}
+</td>
+
+<td>
+${escapeHtml(deposit.payment_method)}
+</td>
+
+<td>
+${escapeHtml(deposit.payment_reference)}
+</td>
+
+<td>
+${statusHtml(deposit.status)}
+</td>
+
+<td>
+${actions}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html += "</table>";
+
+container.innerHTML =
+html;
+
+}
+
+
+/* =========================================================
+   ADMIN - VALIDATION DEPOT
+========================================================= */
+
+async function validateDeposit(depositId){
+
+if(!confirm(
+"Voulez-vous vraiment VALIDER ce dépôt ? La machine sera activée."
+)){
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.rpc(
+"admin_validate_deposit",
+{
+p_deposit_id:
+depositId
+}
+);
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors de la validation : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"DEPÔT VALIDÉ.\n\nLa machine a été activée pour l'utilisateur."
+);
+
+
+await loadAdminDeposits();
+
+}
+
+
+/* =========================================================
+   ADMIN - REFUS DEPOT
+========================================================= */
+
+async function rejectDeposit(depositId){
+
+if(!confirm(
+"Voulez-vous vraiment REFUSER ce dépôt ?"
+)){
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.rpc(
+"admin_reject_deposit",
+{
+p_deposit_id:
+depositId
+}
+);
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erreur lors du refus : " +
+error.message
+);
+
+return;
+
+}
+
+
+alert(
+"Dépôt refusé."
+);
+
+
+await loadAdminDeposits();
+
+}
+
+
+/* =========================================================
+   ADMIN - RETRAITS
+========================================================= */
+
+async function loadAdminWithdrawals(){
+
+const container =
+document.getElementById("adminWithdrawals");
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("withdrawals")
+.select("*")
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+console.error(error);
+
+container.innerHTML = `
+<div class="error-box">
+Impossible de charger les retraits :
+${escapeHtml(error.message)}
+</div>
+`;
+
+return;
+
+}
+
+
+if(!data || data.length === 0){
+
+container.innerHTML =
+"<div class='empty'>Aucun retrait.</div>";
+
+return;
+
+}
+
+
+const userIds =
+[
+...new Set(
+data.map(
+item => item.user_id
+).filter(Boolean)
+)
+];
+
+
+let profiles = [];
+
+
+if(userIds.length){
+
+const {
+data:profileData,
+error:profileError
+} =
+await supabaseClient
+.from("profiles")
+.select("id,full_name,phone")
+.in("id",userIds);
+
+
+if(!profileError){
+
+profiles =
+profileData || [];
+
+}
+
+}
+
+
+let html = `
+
+<table>
+
+<tr>
+
+<th>Date</th>
+<th>Utilisateur</th>
+<th>Téléphone</th>
+<th>Montant</th>
+<th>Numéro réception</th>
+<th>Statut</th>
+
+</tr>
+
+`;
+
+
+data.forEach(withdrawal => {
+
+const profile =
+profiles.find(
+item =>
+item.id ===
+withdrawal.user_id
+);
+
+
+html += `
+
+<tr>
+
+<td>
+${formatDate(withdrawal.created_at)}
+</td>
+
+<td>
+${escapeHtml(
+profile?.full_name ||
+withdrawal.user_id ||
+"-"
+)}
+</td>
+
+<td>
+${escapeHtml(
+profile?.phone || "-"
+)}
+</td>
+
+<td>
+${formatMoney(withdrawal.amount)}
+</td>
+
+<td>
+${escapeHtml(
+withdrawal.payment_number
+)}
+</td>
+
+<td>
+${statusHtml(withdrawal.status)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html += "</table>";
+
+container.innerHTML =
+html;
+
+}
+
+
+/* =========================================================
+   ADMIN - PROFIL
+========================================================= */
+
+function loadAdminProfile(){
+
+const container =
+document.getElementById("adminUsers");
+
+
+if(!currentProfile){
+
+container.innerHTML =
+"<p>Profil administrateur indisponible.</p>";
+
+return;
+
+}
+
+
+container.innerHTML = `
+
+<div class="success-box">
+
+<p>
+<strong>Nom :</strong>
+${escapeHtml(currentProfile.full_name || "-")}
+</p>
+
+<p>
+<strong>Email :</strong>
+${escapeHtml(currentAuthUser.email || "-")}
+</p>
+
+<p>
+<strong>Téléphone :</strong>
+${escapeHtml(currentProfile.phone || "-")}
+</p>
+
+<p>
+<strong>Rôle :</strong>
+
+<span class="status status-active">
+ADMIN
+</span>
+
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+async function loadAdmin(){
+
+if(
+!currentAuthUser ||
+!currentProfile ||
+currentProfile.role !== "admin"
+){
+
+showPage("home");
+
+return;
+
+}
+
+
+document.getElementById("adminWelcome").innerHTML =
+"Bienvenue <strong>" +
+escapeHtml(
+currentProfile.full_name || "Administrateur"
+) +
+"</strong>";
+
+
+await loadMachinesFromDatabase();
+
+loadAdminProfile();
+
+await loadAdminDeposits();
+
+await loadAdminWithdrawals();
+
+}
+
+
+/* =========================================================
+   FORMATAGE ARGENT
 ========================================================= */
 
 function formatMoney(value){
 
-    return Number(value || 0)
-    .toLocaleString(
-        "fr-FR",
-        {
-            maximumFractionDigits:3
-        }
-    )
-    + " FCFA";
+return Number(value || 0)
+.toLocaleString(
+"fr-FR",
+{
+maximumFractionDigits:3
+}
+)
++ " FCFA";
 
 }
 
 
 function formatNumber(value){
 
-    return Number(value || 0)
-    .toLocaleString(
-        "fr-FR",
-        {
-            maximumFractionDigits:3
-        }
-    );
+return Number(value || 0)
+.toLocaleString(
+"fr-FR",
+{
+maximumFractionDigits:3
+}
+);
 
 }
 
 
 function formatDate(value){
 
-    if(!value){
+if(!value){
 
-        return "-";
-
-    }
-
-
-    try{
-
-        return new Date(value)
-        .toLocaleString("fr-FR");
-
-    }catch(error){
-
-        return "-";
-
-    }
+return "-";
 
 }
 
 
-
-function escapeHtml(value){
-
-    return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return new Date(value)
+.toLocaleString("fr-FR");
 
 }
 
 
+/* =========================================================
+   STATUT
+========================================================= */
 
 function statusHtml(status){
 
-    if(status === "validated"){
+if(status === "validated"){
 
-        return `
-        <span class="status status-active">
-        VALIDÉ
-        </span>
-        `;
+return `
 
-    }
+<span class="status status-active">
+VALIDÉ
+</span>
 
-
-    if(status === "pending"){
-
-        return `
-        <span class="status status-pending">
-        EN ATTENTE
-        </span>
-        `;
-
-    }
-
-
-    if(status === "rejected"){
-
-        return `
-        <span class="status status-rejected">
-        REJETÉ
-        </span>
-        `;
-
-    }
-
-
-    return escapeHtml(status || "");
+`;
 
 }
 
 
+if(status === "pending"){
+
+return `
+
+<span class="status status-pending">
+EN ATTENTE
+</span>
+
+`;
+
+}
+
+
+if(status === "rejected"){
+
+return `
+
+<span class="status status-rejected">
+REJETÉ
+</span>
+
+`;
+
+}
+
+
+return escapeHtml(status || "");
+
+}
+
 
 /* =========================================================
-AFFICHAGE ERREUR
+   PROTECTION HTML
 ========================================================= */
 
-function showDatabaseError(title,error){
+function escapeHtml(value){
 
-    console.error(
-        title,
-        error
-    );
-
-
-    let message =
-        title;
-
-
-    if(error){
-
-        if(error.message){
-
-            message +=
-                "\n\nMessage : " +
-                error.message;
-
-        }
-
-
-        if(error.code){
-
-            message +=
-                "\nCode : " +
-                error.code;
-
-        }
-
-
-        if(error.details){
-
-            message +=
-                "\nDétails : " +
-                error.details;
-
-        }
-
-
-        if(error.hint){
-
-            message +=
-                "\nConseil : " +
-                error.hint;
-
-        }
-
-    }
-
-
-    alert(message);
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
-
 
 
 /* =========================================================
-NAVIGATION
-========================================================= */
-
-function showPage(page){
-
-    if(
-        page === "dashboard" &&
-        !currentAuthUser
-    ){
-
-        page = "login";
-
-    }
-
-
-    if(
-        page === "admin" &&
-        (
-            !currentAuthUser ||
-            !currentProfile ||
-            currentProfile.role !== "admin"
-        )
-    ){
-
-        page = "home";
-
-    }
-
-
-    document
-    .querySelectorAll(".page")
-    .forEach(section => {
-
-        section.classList.remove("active");
-
-    });
-
-
-    const target =
-        document.getElementById(page);
-
-
-    if(target){
-
-        target.classList.add("active");
-
-    }
-
-
-    updateNavigation();
-
-
-    if(page === "dashboard"){
-
-        loadDashboard();
-
-    }
-
-
-    if(page === "admin"){
-
-        loadAdmin();
-
-    }
-
-}
-
-
-
-/* =========================================================
-NAVIGATION HEADER
-========================================================= */
-
-function updateNavigation(){
-
-    const navDashboard =
-        document.getElementById(
-            "navDashboard"
-        );
-
-
-    const navAdmin =
-        document.getElementById(
-            "navAdmin"
-        );
-
-
-    const navLogin =
-        document.getElementById(
-            "navLogin"
-        );
-
-
-    const navRegister =
-        document.getElementById(
-            "navRegister"
-        );
-
-
-    const navLogout =
-        document.getElementById(
-            "navLogout"
-        );
-
-
-    navDashboard.style.display =
-        "none";
-
-
-    navAdmin.style.display =
-        "none";
-
-
-    navLogin.style.display =
-        "inline-block";
-
-
-    navRegister.style.display =
-        "inline-block";
-
-
-    navLogout.style.display =
-        "none";
-
-
-    if(!currentAuthUser){
-
-        return;
-
-    }
-
-
-    navLogin.style.display =
-        "none";
-
-
-    navRegister.style.display =
-        "none";
-
-
-    navLogout.style.display =
-        "inline-block";
-
-
-    if(
-        currentProfile &&
-        currentProfile.role === "admin"
-    ){
-
-        navAdmin.style.display =
-            "inline-block";
-
-    }else{
-
-        navDashboard.style.display =
-            "inline-block";
-
-    }
-
-}
-
-
-
-/* =========================================================
-INSCRIPTION
-========================================================= */
-
-async function register(event){
-
-    event.preventDefault();
-
-
-    const name =
-        document
-        .getElementById(
-            "registerName"
-        )
-        .value
-        .trim();
-
-
-    const phone =
-        document
-        .getElementById(
-            "registerPhone"
-        )
-        .value
-        .trim();
-
-
-    const email =
-        document
-        .getElementById(
-            "registerEmail"
-        )
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const password =
-        document
-        .getElementById(
-            "registerPassword"
-        )
-        .value;
-
-
-    if(password.length < 6){
-
-        alert(
-            "Le mot de passe doit contenir au moins 6 caractères."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .auth
-        .signUp({
-
-            email:email,
-
-            password:password,
-
-            options:{
-                data:{
-                    full_name:name,
-                    phone:phone
-                }
-            }
-
-        });
-
-
-        if(error){
-
-            showDatabaseError(
-                "Impossible de créer le compte.",
-                error
-            );
-
-            return;
-
-        }
-
-
-        document.getElementById(
-            "registerName"
-        ).value = "";
-
-
-        document.getElementById(
-            "registerPhone"
-        ).value = "";
-
-
-        document.getElementById(
-            "registerEmail"
-        ).value = "";
-
-
-        document.getElementById(
-            "registerPassword"
-        ).value = "";
-
-
-        if(
-            data &&
-            data.session
-        ){
-
-            currentAuthUser =
-                data.user;
-
-
-            const loaded =
-                await loadCurrentUser();
-
-
-            if(!loaded){
-
-                return;
-
-            }
-
-
-            if(
-                currentProfile &&
-                currentProfile.role === "admin"
-            ){
-
-                showPage("admin");
-
-            }else{
-
-                showPage("dashboard");
-
-            }
-
-        }else{
-
-            alert(
-                "Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter."
-            );
-
-
-            showPage("login");
-
-        }
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur inattendue lors de l'inscription.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-CONNEXION
-========================================================= */
-
-async function login(event){
-
-    event.preventDefault();
-
-
-    const email =
-        document
-        .getElementById(
-            "loginEmail"
-        )
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const password =
-        document
-        .getElementById(
-            "loginPassword"
-        )
-        .value;
-
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .auth
-        .signInWithPassword({
-
-            email:email,
-
-            password:password
-
-        });
-
-
-        if(error){
-
-            showDatabaseError(
-                "Connexion impossible.",
-                error
-            );
-
-            return;
-
-        }
-
-
-        currentAuthUser =
-            data.user;
-
-
-        const loaded =
-            await loadCurrentUser();
-
-
-        if(!loaded){
-
-            return;
-
-        }
-
-
-        document.getElementById(
-            "loginEmail"
-        ).value = "";
-
-
-        document.getElementById(
-            "loginPassword"
-        ).value = "";
-
-
-        if(
-            currentProfile &&
-            currentProfile.role === "admin"
-        ){
-
-            showPage("admin");
-
-        }else{
-
-            showPage("dashboard");
-
-        }
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur inattendue lors de la connexion.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-DECONNEXION
-========================================================= */
-
-async function logout(){
-
-    try{
-
-        const {
-            error
-        } =
-        await supabaseClient
-        .auth
-        .signOut();
-
-
-        if(error){
-
-            showDatabaseError(
-                "Erreur lors de la déconnexion.",
-                error
-            );
-
-            return;
-
-        }
-
-
-        currentAuthUser = null;
-
-        currentProfile = null;
-
-        machines = [];
-
-        userMachines = [];
-
-        selectedMachineId = null;
-
-
-        updateNavigation();
-
-
-        showPage("home");
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur lors de la déconnexion.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-UTILISATEUR ACTUEL
-========================================================= */
-
-async function loadCurrentUser(){
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .auth
-        .getUser();
-
-
-        if(error){
-
-            console.error(
-                "Erreur getUser :",
-                error
-            );
-
-
-            currentAuthUser = null;
-
-            currentProfile = null;
-
-            updateNavigation();
-
-
-            showDatabaseError(
-                "Impossible de vérifier votre session.",
-                error
-            );
-
-
-            return false;
-
-        }
-
-
-        if(
-            !data ||
-            !data.user
-        ){
-
-            currentAuthUser = null;
-
-            currentProfile = null;
-
-            updateNavigation();
-
-
-            return false;
-
-        }
-
-
-        currentAuthUser =
-            data.user;
-
-
-        console.log(
-            "Utilisateur connecté :",
-            currentAuthUser.id,
-            currentAuthUser.email
-        );
-
-
-        const {
-            data:profile,
-            error:profileError
-        } =
-        await supabaseClient
-        .from("profiles")
-        .select("*")
-        .eq(
-            "id",
-            currentAuthUser.id
-        )
-        .maybeSingle();
-
-
-        if(profileError){
-
-            console.error(
-                "Erreur profil :",
-                profileError
-            );
-
-
-            currentProfile = null;
-
-            updateNavigation();
-
-
-            showDatabaseError(
-                "Le profil utilisateur n'a pas pu être chargé.",
-                profileError
-            );
-
-
-            return false;
-
-        }
-
-
-        if(!profile){
-
-            currentProfile = null;
-
-            updateNavigation();
-
-
-            alert(
-                "Votre compte existe dans Authentification, mais aucun profil n'a été trouvé dans la table profiles."
-            );
-
-
-            return false;
-
-        }
-
-
-        currentProfile =
-            profile;
-
-
-        console.log(
-            "Profil chargé :",
-            currentProfile
-        );
-
-
-        updateNavigation();
-
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Erreur loadCurrentUser :",
-            error
-        );
-
-
-        showDatabaseError(
-            "Erreur lors du chargement du profil.",
-            error
-        );
-
-
-        return false;
-
-    }
-
-}
-
-
-
-/* =========================================================
-MACHINES
-========================================================= */
-
-async function loadMachinesFromDatabase(){
-
-    const container =
-        document.getElementById(
-            "machinesContainer"
-        );
-
-
-    if(container){
-
-        container.innerHTML =
-        `
-        <div class="loading">
-        Connexion aux machines...
-        </div>
-        `;
-
-    }
-
-
-    try{
-
-        console.log(
-            "Chargement des machines..."
-        );
-
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .from("machines")
-        .select("*")
-        .eq(
-            "active",
-            true
-        )
-        .order("id");
-
-
-        if(error){
-
-            console.error(
-                "Erreur machines :",
-                error
-            );
-
-
-            if(container){
-
-                container.innerHTML =
-                `
-                <div class="error-box">
-
-                <strong>
-                Impossible de charger les machines.
-                </strong>
-
-                <p>
-                ${escapeHtml(
-                    error.message
-                )}
-                </p>
-
-                <p>
-                Code :
-                ${escapeHtml(
-                    error.code || "-"
-                )}
-                </p>
-
-                <p>
-                Détails :
-                ${escapeHtml(
-                    error.details || "-"
-                )}
-                </p>
-
-                </div>
-                `;
-
-            }
-
-
-            return false;
-
-        }
-
-
-        machines =
-            data || [];
-
-
-        console.log(
-            "Machines chargées :",
-            machines
-        );
-
-
-        return true;
-
-    }catch(error){
-
-        console.error(
-            "Erreur machines :",
-            error
-        );
-
-
-        if(container){
-
-            container.innerHTML =
-            `
-            <div class="error-box">
-
-            Erreur pendant le chargement des machines.
-
-            <br><br>
-
-            ${escapeHtml(
-                error.message ||
-                error
-            )}
-
-            </div>
-            `;
-
-        }
-
-
-        return false;
-
-    }
-
-}
-
-
-
-/* =========================================================
-DASHBOARD
-========================================================= */
-
-async function loadDashboard(){
-
-    if(!currentAuthUser){
-
-        showPage("login");
-
-        return;
-
-    }
-
-
-    if(!currentProfile){
-
-        const loaded =
-            await loadCurrentUser();
-
-
-        if(!loaded){
-
-            return;
-
-        }
-
-    }
-
-
-    if(
-        currentProfile &&
-        currentProfile.role === "admin"
-    ){
-
-        showPage("admin");
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "welcomeUser"
-    ).innerHTML =
-        "Bienvenue <strong>" +
-        escapeHtml(
-            currentProfile.full_name || ""
-        ) +
-        "</strong>";
-
-
-    document.getElementById(
-        "userBalance"
-    ).textContent =
-        formatMoney(
-            currentProfile.balance
-        );
-
-
-    document.getElementById(
-        "userTotalEarned"
-    ).textContent =
-        formatMoney(
-            currentProfile.total_earned
-        );
-
-
-    await loadMachinesFromDatabase();
-
-
-    await loadUserMachines();
-
-
-    renderMachines();
-
-
-    await loadUserDeposits();
-
-
-    await loadUserWithdrawals();
-
-}
-
-
-
-/* =========================================================
-MACHINES UTILISATEUR
-========================================================= */
-
-async function loadUserMachines(){
-
-    if(!currentAuthUser){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .from("user_machines")
-    .select("*")
-    .eq(
-        "user_id",
-        currentAuthUser.id
-    )
-    .eq(
-        "active",
-        true
-    );
-
-
-    if(error){
-
-        console.error(
-            "Erreur user_machines :",
-            error
-        );
-
-
-        userMachines = [];
-
-
-        return;
-
-    }
-
-
-    userMachines =
-        data || [];
-
-
-    console.log(
-        "Machines utilisateur :",
-        userMachines
-    );
-
-}
-
-
-
-/* =========================================================
-AFFICHAGE MACHINES
-========================================================= */
-
-function renderMachines(){
-
-    const container =
-        document.getElementById(
-            "machinesContainer"
-        );
-
-
-    if(!container){
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    if(!machines.length){
-
-        container.innerHTML =
-        `
-        <div class="empty">
-        Aucune machine disponible.
-        </div>
-        `;
-
-        return;
-
-    }
-
-
-    machines.forEach(
-        machine => {
-
-
-        const active =
-            userMachines.find(
-                item =>
-                    Number(
-                        item.machine_id
-                    ) ===
-                    Number(
-                        machine.id
-                    )
-            );
-
-
-        if(active){
-
-            container.innerHTML +=
-            `
-
-            <div class="machine">
-
-            <h3>
-            ${escapeHtml(
-                machine.name
-            )}
-            </h3>
-
-            <p>
-            Prix :
-            <strong>
-            ${formatMoney(
-                machine.price
-            )}
-            </strong>
-            </p>
-
-            <p class="daily">
-            Rémunération :
-            ${formatNumber(
-                machine.daily_earning
-            )}
-            FCFA / jour
-            </p>
-
-            <p>
-
-            <span
-            class="status status-active">
-
-            MACHINE ACTIVE
-
-            </span>
-
-            </p>
-
-            </div>
-
-            `;
-
-        }else{
-
-            container.innerHTML +=
-            `
-
-            <div class="machine">
-
-            <h3>
-            ${escapeHtml(
-                machine.name
-            )}
-            </h3>
-
-            <p>
-            Prix :
-            <strong>
-            ${formatMoney(
-                machine.price
-            )}
-            </strong>
-            </p>
-
-            <p class="daily">
-            Rémunération :
-            ${formatNumber(
-                machine.daily_earning
-            )}
-            FCFA / jour
-            </p>
-
-            <button
-            class="btn btn-primary"
-            onclick="prepareMachineDeposit(
-                ${machine.id}
-            )">
-
-            LOUER CETTE MACHINE
-
-            </button>
-
-            </div>
-
-            `;
-
-        }
-
-    });
-
-}
-
-
-
-/* =========================================================
-PREPARER MACHINE
-========================================================= */
-
-function prepareMachineDeposit(
-    machineId
-){
-
-    const machine =
-        machines.find(
-            item =>
-                Number(item.id) ===
-                Number(machineId)
-        );
-
-
-    if(!machine){
-
-        alert(
-            "Machine introuvable."
-        );
-
-        return;
-
-    }
-
-
-    selectedMachineId =
-        Number(
-            machine.id
-        );
-
-
-    showDepositForm();
-
-
-    const select =
-        document.getElementById(
-            "depositMachine"
-        );
-
-
-    select.value =
-        String(
-            machine.id
-        );
-
-
-    document.getElementById(
-        "depositAmount"
-    ).value =
-        machine.price;
-
-
-    document.getElementById(
-        "selectedMachineName"
-    ).textContent =
-        machine.name;
-
-
-    document.getElementById(
-        "selectedMachinePrice"
-    ).textContent =
-        formatMoney(
-            machine.price
-        );
-
-
-    document.getElementById(
-        "selectedMachineBox"
-    ).style.display =
-        "block";
-
-
-    window.scrollTo({
-
-        top:
-        document.getElementById(
-            "depositForm"
-        ).offsetTop,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-
-/* =========================================================
-SELECTION MACHINE
-========================================================= */
-
-function selectMachineFromForm(){
-
-    const machineId =
-        Number(
-            document.getElementById(
-                "depositMachine"
-            ).value
-        );
-
-
-    selectedMachineId =
-        machineId || null;
-
-
-    const machine =
-        machines.find(
-            item =>
-                Number(
-                    item.id
-                ) ===
-                machineId
-        );
-
-
-    if(!machine){
-
-        document.getElementById(
-            "depositAmount"
-        ).value = "";
-
-
-        document.getElementById(
-            "selectedMachineBox"
-        ).style.display =
-            "none";
-
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "depositAmount"
-    ).value =
-        machine.price;
-
-
-    document.getElementById(
-        "selectedMachineName"
-    ).textContent =
-        machine.name;
-
-
-    document.getElementById(
-        "selectedMachinePrice"
-    ).textContent =
-        formatMoney(
-            machine.price
-        );
-
-
-    document.getElementById(
-        "selectedMachineBox"
-    ).style.display =
-        "block";
-
-}
-
-
-
-/* =========================================================
-FORMULAIRES
-========================================================= */
-
-function showDepositForm(){
-
-    hideForms();
-
-
-    const select =
-        document.getElementById(
-            "depositMachine"
-        );
-
-
-    select.innerHTML =
-    `
-    <option value="">
-    Sélectionner une machine
-    </option>
-    `;
-
-
-    machines.forEach(
-        machine => {
-
-
-        const active =
-            userMachines.find(
-                item =>
-                    Number(
-                        item.machine_id
-                    ) ===
-                    Number(
-                        machine.id
-                    )
-            );
-
-
-        if(!active){
-
-            select.innerHTML +=
-            `
-            <option
-            value="${machine.id}">
-
-            ${escapeHtml(
-                machine.name
-            )}
-            -
-            ${formatMoney(
-                machine.price
-            )}
-
-            </option>
-            `;
-
-        }
-
-    });
-
-
-    if(selectedMachineId){
-
-        select.value =
-            String(
-                selectedMachineId
-            );
-
-    }
-
-
-    document.getElementById(
-        "depositForm"
-    ).style.display =
-        "block";
-
-}
-
-
-
-function showWithdrawalForm(){
-
-    hideForms();
-
-
-    document.getElementById(
-        "withdrawalForm"
-    ).style.display =
-        "block";
-
-}
-
-
-
-function hideForms(){
-
-    document.getElementById(
-        "depositForm"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "withdrawalForm"
-    ).style.display =
-        "none";
-
-}
-
-
-
-/* =========================================================
-DEPOT
-========================================================= */
-
-async function submitDeposit(event){
-
-    event.preventDefault();
-
-
-    if(!currentAuthUser){
-
-        alert(
-            "Veuillez vous connecter."
-        );
-
-        return;
-
-    }
-
-
-    const machineId =
-        Number(
-            document.getElementById(
-                "depositMachine"
-            ).value
-        );
-
-
-    const amount =
-        Number(
-            document.getElementById(
-                "depositAmount"
-            ).value
-        );
-
-
-    const method =
-        document.getElementById(
-            "depositMethod"
-        ).value;
-
-
-    const reference =
-        document.getElementById(
-            "depositReference"
-        )
-        .value
-        .trim();
-
-
-    if(!machineId){
-
-        alert(
-            "Veuillez sélectionner une machine."
-        );
-
-        return;
-
-    }
-
-
-    const machine =
-        machines.find(
-            item =>
-                Number(
-                    item.id
-                ) ===
-                machineId
-        );
-
-
-    if(!machine){
-
-        alert(
-            "Machine introuvable."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        amount !==
-        Number(machine.price)
-    ){
-
-        alert(
-            "Le montant doit correspondre au prix de la machine."
-        );
-
-        return;
-
-    }
-
-
-    if(!method){
-
-        alert(
-            "Veuillez choisir un mode de paiement."
-        );
-
-        return;
-
-    }
-
-
-    if(!reference){
-
-        alert(
-            "Veuillez entrer la référence du paiement."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const {
-            error
-        } =
-        await supabaseClient
-        .from("deposits")
-        .insert({
-
-            user_id:
-                currentAuthUser.id,
-
-            machine_id:
-                machineId,
-
-            amount:
-                amount,
-
-            payment_method:
-                method,
-
-            payment_reference:
-                reference,
-
-            status:
-                "pending"
-
-        });
-
-
-        if(error){
-
-            showDatabaseError(
-                "Impossible d'envoyer le dépôt.",
-                error
-            );
-
-            return;
-
-        }
-
-
-        alert(
-            "VOTRE DEMANDE A ÉTÉ ENVOYÉE AVEC SUCCÈS ET EST EN ATTENTE DE L'ADMINISTRATEUR."
-        );
-
-
-        document.getElementById(
-            "depositMachine"
-        ).value = "";
-
-
-        document.getElementById(
-            "depositAmount"
-        ).value = "";
-
-
-        document.getElementById(
-            "depositMethod"
-        ).value = "";
-
-
-        document.getElementById(
-            "depositReference"
-        ).value = "";
-
-
-        document.getElementById(
-            "selectedMachineBox"
-        ).style.display =
-            "none";
-
-
-        selectedMachineId = null;
-
-
-        hideForms();
-
-
-        await loadDashboard();
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur lors de l'envoi du dépôt.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-RETRAIT
-========================================================= */
-
-async function submitWithdrawal(event){
-
-    event.preventDefault();
-
-
-    if(!currentAuthUser){
-
-        alert(
-            "Veuillez vous connecter."
-        );
-
-        return;
-
-    }
-
-
-    const amount =
-        Number(
-            document.getElementById(
-                "withdrawalAmount"
-            ).value
-        );
-
-
-    const phone =
-        document.getElementById(
-            "withdrawalPhone"
-        )
-        .value
-        .trim();
-
-
-    if(amount < 2500){
-
-        alert(
-            "Le retrait minimum est de 2 500 FCFA."
-        );
-
-        return;
-
-    }
-
-
-    if(amount % 100 !== 0){
-
-        alert(
-            "Le montant doit être un multiple de 100 FCFA."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        amount >
-        Number(
-            currentProfile.balance || 0
-        )
-    ){
-
-        alert(
-            "Votre solde est insuffisant."
-        );
-
-        return;
-
-    }
-
-
-    const today =
-        new Date();
-
-
-    if(
-        today.getDay() !== 5
-    ){
-
-        alert(
-            "Les retraits sont disponibles uniquement le vendredi."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const {
-            error
-        } =
-        await supabaseClient
-        .from("withdrawals")
-        .insert({
-
-            user_id:
-                currentAuthUser.id,
-
-            amount:
-                amount,
-
-            payment_method:
-                "Wave ou Orange Money",
-
-            payment_number:
-                phone,
-
-            status:
-                "pending"
-
-        });
-
-
-        if(error){
-
-            showDatabaseError(
-                "Impossible d'envoyer la demande de retrait.",
-                error
-            );
-
-            return;
-
-        }
-
-
-        alert(
-            "Votre demande de retrait a été envoyée à l'administrateur."
-        );
-
-
-        document.getElementById(
-            "withdrawalAmount"
-        ).value = "";
-
-
-        document.getElementById(
-            "withdrawalPhone"
-        ).value = "";
-
-
-        hideForms();
-
-
-        await loadDashboard();
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur lors de la demande de retrait.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-HISTORIQUE DEPOTS
-========================================================= */
-
-async function loadUserDeposits(){
-
-    const container =
-        document.getElementById(
-            "userDeposits"
-        );
-
-
-    if(!currentAuthUser){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .from("deposits")
-    .select("*")
-    .eq(
-        "user_id",
-        currentAuthUser.id
-    )
-    .order(
-        "created_at",
-        {
-            ascending:false
-        }
-    );
-
-
-    if(error){
-
-        console.error(
-            "Erreur dépôts :",
-            error
-        );
-
-
-        container.innerHTML =
-        `
-        <div class="error-box">
-
-        Impossible de charger les dépôts.
-
-        <br>
-
-        ${escapeHtml(
-            error.message
-        )}
-
-        </div>
-        `;
-
-
-        return;
-
-    }
-
-
-    if(
-        !data ||
-        data.length === 0
-    ){
-
-        container.innerHTML =
-        `
-        <div class="empty">
-        Aucun dépôt.
-        </div>
-        `;
-
-
-        return;
-
-    }
-
-
-    let html =
-    `
-
-    <table>
-
-    <tr>
-
-    <th>Date</th>
-
-    <th>Machine</th>
-
-    <th>Montant</th>
-
-    <th>Mode</th>
-
-    <th>Référence</th>
-
-    <th>Statut</th>
-
-    </tr>
-
-    `;
-
-
-    data.forEach(
-        deposit => {
-
-
-        const machine =
-            machines.find(
-                item =>
-                    Number(
-                        item.id
-                    ) ===
-                    Number(
-                        deposit.machine_id
-                    )
-            );
-
-
-        html +=
-        `
-
-        <tr>
-
-        <td>
-        ${formatDate(
-            deposit.created_at
-        )}
-        </td>
-
-        <td>
-        ${
-            machine
-            ?
-            escapeHtml(
-                machine.name
-            )
-            :
-            "-"
-        }
-        </td>
-
-        <td>
-        ${formatMoney(
-            deposit.amount
-        )}
-        </td>
-
-        <td>
-        ${escapeHtml(
-            deposit.payment_method
-        )}
-        </td>
-
-        <td>
-        ${escapeHtml(
-            deposit.payment_reference
-        )}
-        </td>
-
-        <td>
-        ${statusHtml(
-            deposit.status
-        )}
-        </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html +=
-        "</table>";
-
-
-    container.innerHTML =
-        html;
-
-}
-
-
-
-/* =========================================================
-HISTORIQUE RETRAITS
-========================================================= */
-
-async function loadUserWithdrawals(){
-
-    const container =
-        document.getElementById(
-            "userWithdrawals"
-        );
-
-
-    if(!currentAuthUser){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .from("withdrawals")
-    .select("*")
-    .eq(
-        "user_id",
-        currentAuthUser.id
-    )
-    .order(
-        "created_at",
-        {
-            ascending:false
-        }
-    );
-
-
-    if(error){
-
-        console.error(
-            "Erreur retraits :",
-            error
-        );
-
-
-        container.innerHTML =
-        `
-        <div class="error-box">
-
-        Impossible de charger les retraits.
-
-        <br>
-
-        ${escapeHtml(
-            error.message
-        )}
-
-        </div>
-        `;
-
-
-        return;
-
-    }
-
-
-    if(
-        !data ||
-        data.length === 0
-    ){
-
-        container.innerHTML =
-        `
-        <div class="empty">
-        Aucun retrait.
-        </div>
-        `;
-
-
-        return;
-
-    }
-
-
-    let html =
-    `
-
-    <table>
-
-    <tr>
-
-    <th>Date</th>
-
-    <th>Montant</th>
-
-    <th>Numéro</th>
-
-    <th>Statut</th>
-
-    </tr>
-
-    `;
-
-
-    data.forEach(
-        withdrawal => {
-
-
-        html +=
-        `
-
-        <tr>
-
-        <td>
-        ${formatDate(
-            withdrawal.created_at
-        )}
-        </td>
-
-        <td>
-        ${formatMoney(
-            withdrawal.amount
-        )}
-        </td>
-
-        <td>
-        ${escapeHtml(
-            withdrawal.payment_number
-        )}
-        </td>
-
-        <td>
-        ${statusHtml(
-            withdrawal.status
-        )}
-        </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html +=
-        "</table>";
-
-
-    container.innerHTML =
-        html;
-
-}
-
-
-
-/* =========================================================
-ADMIN - DEPOTS
-========================================================= */
-
-async function loadAdminDeposits(){
-
-    const container =
-        document.getElementById(
-            "adminDeposits"
-        );
-
-
-    const summary =
-        document.getElementById(
-            "adminDepositSummary"
-        );
-
-
-    container.innerHTML =
-    `
-    <div class="loading">
-    Chargement des dépôts...
-    </div>
-    `;
-
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .from("deposits")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
-
-
-        if(error){
-
-            console.error(
-                "Erreur admin dépôts :",
-                error
-            );
-
-
-            container.innerHTML =
-            `
-            <div class="error-box">
-
-            <strong>
-            Impossible de charger les dépôts.
-            </strong>
-
-            <br><br>
-
-            ${escapeHtml(
-                error.message
-            )}
-
-            </div>
-            `;
-
-
-            return;
-
-        }
-
-
-        const pendingCount =
-            (data || [])
-            .filter(
-                deposit =>
-                    deposit.status ===
-                    "pending"
-            )
-            .length;
-
-
-        summary.innerHTML =
-        `
-
-        <div class="info-box">
-
-        <strong>
-
-        ${pendingCount}
-        demande(s) en attente
-
-        </strong>
-
-        </div>
-
-        `;
-
-
-        if(
-            !data ||
-            data.length === 0
-        ){
-
-            container.innerHTML =
-            `
-            <div class="empty">
-            Aucun dépôt.
-            </div>
-            `;
-
-
-            return;
-
-        }
-
-
-        const userIds =
-        [
-            ...new Set(
-                data
-                .map(
-                    item =>
-                        item.user_id
-                )
-                .filter(Boolean)
-            )
-        ];
-
-
-        let profiles = [];
-
-
-        if(userIds.length){
-
-            const {
-                data:profileData,
-                error:profileError
-            } =
-            await supabaseClient
-            .from("profiles")
-            .select(
-                "id,full_name,phone"
-            )
-            .in(
-                "id",
-                userIds
-            );
-
-
-            if(profileError){
-
-                console.error(
-                    "Erreur profils admin :",
-                    profileError
-                );
-
-            }else{
-
-                profiles =
-                    profileData || [];
-
-            }
-
-        }
-
-
-        let html =
-        `
-
-        <table>
-
-        <tr>
-
-        <th>Date</th>
-
-        <th>Utilisateur</th>
-
-        <th>Téléphone</th>
-
-        <th>Machine</th>
-
-        <th>Montant</th>
-
-        <th>Paiement</th>
-
-        <th>Référence</th>
-
-        <th>Statut</th>
-
-        <th>Action</th>
-
-        </tr>
-
-        `;
-
-
-        data.forEach(
-            deposit => {
-
-
-            const profile =
-                profiles.find(
-                    item =>
-                        item.id ===
-                        deposit.user_id
-                );
-
-
-            const machine =
-                machines.find(
-                    item =>
-                        Number(
-                            item.id
-                        ) ===
-                        Number(
-                            deposit.machine_id
-                        )
-                );
-
-
-            let actions =
-                "-";
-
-
-            if(
-                deposit.status ===
-                "pending"
-            ){
-
-                actions =
-                `
-
-                <div
-                class="action-buttons">
-
-                <button
-                class="btn btn-success"
-                onclick="validateDeposit(
-                    ${deposit.id}
-                )">
-
-                VALIDER
-
-                </button>
-
-
-                <button
-                class="btn btn-danger"
-                onclick="rejectDeposit(
-                    ${deposit.id}
-                )">
-
-                REFUSER
-
-                </button>
-
-                </div>
-
-                `;
-
-            }
-
-
-            html +=
-            `
-
-            <tr>
-
-            <td>
-            ${formatDate(
-                deposit.created_at
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                profile?.full_name ||
-                deposit.user_id ||
-                "-"
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                profile?.phone ||
-                "-"
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                machine?.name ||
-                "-"
-            )}
-            </td>
-
-            <td>
-            ${formatMoney(
-                deposit.amount
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                deposit.payment_method
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                deposit.payment_reference
-            )}
-            </td>
-
-            <td>
-            ${statusHtml(
-                deposit.status
-            )}
-            </td>
-
-            <td>
-            ${actions}
-            </td>
-
-            </tr>
-
-            `;
-
-        });
-
-
-        html +=
-            "</table>";
-
-
-        container.innerHTML =
-            html;
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur lors du chargement des dépôts administrateur.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-ADMIN - VALIDATION DEPOT
-========================================================= */
-
-async function validateDeposit(
-    depositId
-){
-
-    if(
-        !confirm(
-            "Voulez-vous vraiment VALIDER ce dépôt ? La machine sera activée."
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .rpc(
-        "admin_validate_deposit",
-        {
-            p_deposit_id:
-                depositId
-        }
-    );
-
-
-    if(error){
-
-        showDatabaseError(
-            "Erreur lors de la validation du dépôt.",
-            error
-        );
-
-        return;
-
-    }
-
-
-    alert(
-        data ||
-        "Dépôt validé. La machine a été activée."
-    );
-
-
-    await loadAdminDeposits();
-
-}
-
-
-
-/* =========================================================
-ADMIN - REFUS DEPOT
-========================================================= */
-
-async function rejectDeposit(
-    depositId
-){
-
-    if(
-        !confirm(
-            "Voulez-vous vraiment REFUSER ce dépôt ?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .rpc(
-        "admin_reject_deposit",
-        {
-            p_deposit_id:
-                depositId
-        }
-    );
-
-
-    if(error){
-
-        showDatabaseError(
-            "Erreur lors du refus du dépôt.",
-            error
-        );
-
-        return;
-
-    }
-
-
-    alert(
-        data ||
-        "Dépôt refusé."
-    );
-
-
-    await loadAdminDeposits();
-
-}
-
-
-
-/* =========================================================
-ADMIN - RETRAITS
-========================================================= */
-
-async function loadAdminWithdrawals(){
-
-    const container =
-        document.getElementById(
-            "adminWithdrawals"
-        );
-
-
-    container.innerHTML =
-    `
-    <div class="loading">
-    Chargement des retraits...
-    </div>
-    `;
-
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .from("withdrawals")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
-
-
-        if(error){
-
-            console.error(
-                "Erreur admin retraits :",
-                error
-            );
-
-
-            container.innerHTML =
-            `
-            <div class="error-box">
-
-            Impossible de charger les retraits :
-
-            <br><br>
-
-            ${escapeHtml(
-                error.message
-            )}
-
-            </div>
-            `;
-
-
-            return;
-
-        }
-
-
-        if(
-            !data ||
-            data.length === 0
-        ){
-
-            container.innerHTML =
-            `
-            <div class="empty">
-            Aucun retrait.
-            </div>
-            `;
-
-
-            return;
-
-        }
-
-
-        const userIds =
-        [
-            ...new Set(
-                data
-                .map(
-                    item =>
-                        item.user_id
-                )
-                .filter(Boolean)
-            )
-        ];
-
-
-        let profiles = [];
-
-
-        if(userIds.length){
-
-            const {
-                data:profileData,
-                error:profileError
-            } =
-            await supabaseClient
-            .from("profiles")
-            .select(
-                "id,full_name,phone"
-            )
-            .in(
-                "id",
-                userIds
-            );
-
-
-            if(!profileError){
-
-                profiles =
-                    profileData || [];
-
-            }
-
-        }
-
-
-        let html =
-        `
-
-        <table>
-
-        <tr>
-
-        <th>Date</th>
-
-        <th>Utilisateur</th>
-
-        <th>Téléphone</th>
-
-        <th>Montant</th>
-
-        <th>Numéro réception</th>
-
-        <th>Statut</th>
-
-        </tr>
-
-        `;
-
-
-        data.forEach(
-            withdrawal => {
-
-
-            const profile =
-                profiles.find(
-                    item =>
-                        item.id ===
-                        withdrawal.user_id
-                );
-
-
-            html +=
-            `
-
-            <tr>
-
-            <td>
-            ${formatDate(
-                withdrawal.created_at
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                profile?.full_name ||
-                withdrawal.user_id ||
-                "-"
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                profile?.phone ||
-                "-"
-            )}
-            </td>
-
-            <td>
-            ${formatMoney(
-                withdrawal.amount
-            )}
-            </td>
-
-            <td>
-            ${escapeHtml(
-                withdrawal.payment_number
-            )}
-            </td>
-
-            <td>
-            ${statusHtml(
-                withdrawal.status
-            )}
-            </td>
-
-            </tr>
-
-            `;
-
-        });
-
-
-        html +=
-            "</table>";
-
-
-        container.innerHTML =
-            html;
-
-    }catch(error){
-
-        showDatabaseError(
-            "Erreur lors du chargement des retraits.",
-            error
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-ADMIN - PROFIL
-========================================================= */
-
-function loadAdminProfile(){
-
-    const container =
-        document.getElementById(
-            "adminUsers"
-        );
-
-
-    if(!currentProfile){
-
-        container.innerHTML =
-        `
-        <div class="error-box">
-
-        Profil administrateur indisponible.
-
-        </div>
-        `;
-
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-    `
-
-    <div class="success-box">
-
-    <p>
-
-    <strong>
-    Nom :
-    </strong>
-
-    ${escapeHtml(
-        currentProfile.full_name ||
-        "-"
-    )}
-
-    </p>
-
-
-    <p>
-
-    <strong>
-    Email :
-    </strong>
-
-    ${escapeHtml(
-        currentAuthUser?.email ||
-        "-"
-    )}
-
-    </p>
-
-
-    <p>
-
-    <strong>
-    Téléphone :
-    </strong>
-
-    ${escapeHtml(
-        currentProfile.phone ||
-        "-"
-    )}
-
-    </p>
-
-
-    <p>
-
-    <strong>
-    Rôle :
-    </strong>
-
-    <span
-    class="status status-active">
-
-    ADMIN
-
-    </span>
-
-    </p>
-
-
-    </div>
-
-    `;
-
-}
-
-
-
-/* =========================================================
-ADMIN
-========================================================= */
-
-async function loadAdmin(){
-
-    if(!currentAuthUser){
-
-        showPage("login");
-
-        return;
-
-    }
-
-
-    if(!currentProfile){
-
-        const loaded =
-            await loadCurrentUser();
-
-
-        if(!loaded){
-
-            return;
-
-        }
-
-    }
-
-
-    if(
-        !currentProfile ||
-        currentProfile.role !==
-        "admin"
-    ){
-
-        alert(
-            "Accès administrateur refusé."
-        );
-
-
-        showPage("home");
-
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "adminWelcome"
-    ).innerHTML =
-        "Bienvenue <strong>" +
-        escapeHtml(
-            currentProfile.full_name ||
-            "Administrateur"
-        ) +
-        "</strong>";
-
-
-    loadAdminProfile();
-
-
-    await loadMachinesFromDatabase();
-
-
-    await loadAdminDeposits();
-
-
-    await loadAdminWithdrawals();
-
-}
-
-
-
-/* =========================================================
-AUTHENTIFICATION
-========================================================= */
-
-supabaseClient.auth.onAuthStateChange(
-    function(event,session){
-
-        console.log(
-            "Événement Auth :",
-            event
-        );
-
-
-        if(!session){
-
-            currentAuthUser = null;
-
-            currentProfile = null;
-
-            userMachines = [];
-
-            updateNavigation();
-
-            return;
-
-        }
-
-
-        currentAuthUser =
-            session.user;
-
-
-        updateNavigation();
-
-    }
-);
-
-
-
-/* =========================================================
-INITIALISATION
+   INITIALISATION
 ========================================================= */
 
 async function initializeApp(){
 
-    console.log(
-        "Initialisation de CACAO..."
-    );
+try{
+
+const {
+data
+} =
+await supabaseClient.auth.getSession();
 
 
-    try{
+if(data && data.session){
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .auth
-        .getUser();
+currentAuthUser =
+data.session.user;
 
 
-        if(error){
-
-            console.error(
-                "Erreur Auth :",
-                error
-            );
+await loadCurrentUser();
 
 
-            currentAuthUser = null;
+if(
+currentProfile &&
+currentProfile.role === "admin"
+){
 
-            currentProfile = null;
+showPage("admin");
 
+}else{
 
-            updateNavigation();
+showPage("dashboard");
 
+}
 
-            showPage("home");
+}else{
 
+currentAuthUser = null;
 
-            return;
+currentProfile = null;
 
-        }
+showPage("home");
 
+}
 
-        if(
-            !data ||
-            !data.user
-        ){
+}catch(error){
 
-            console.log(
-                "Aucune session active."
-            );
+console.error(error);
 
+showPage("home");
 
-            currentAuthUser = null;
-
-            currentProfile = null;
-
-
-            updateNavigation();
-
-
-            showPage("home");
-
-
-            return;
-
-        }
-
-
-        currentAuthUser =
-            data.user;
-
-
-        console.log(
-            "Utilisateur trouvé :",
-            currentAuthUser.email
-        );
-
-
-        const loaded =
-            await loadCurrentUser();
-
-
-        if(!loaded){
-
-            return;
-
-        }
-
-
-        if(
-            currentProfile &&
-            currentProfile.role ===
-            "admin"
-        ){
-
-            showPage("admin");
-
-        }else{
-
-            showPage("dashboard");
-
-        }
-
-
-        applicationStarted = true;
-
-
-    }catch(error){
-
-        console.error(
-            "Erreur initializeApp :",
-            error
-        );
-
-
-        showDatabaseError(
-            "Erreur au démarrage de l'application.",
-            error
-        );
-
-
-        showPage("home");
-
-    }
+}
 
 }
 
 
+/* =========================================================
+   SURVEILLANCE SESSION
+========================================================= */
+
+supabaseClient.auth.onAuthStateChange(
+async (event, session) => {
+
+if(session){
+
+currentAuthUser =
+session.user;
+
+await loadCurrentUser();
+
+}else{
+
+currentAuthUser = null;
+
+currentProfile = null;
+
+updateNavigation();
+
+}
+
+}
+);
+
 
 /* =========================================================
-LANCEMENT
+   LANCEMENT
 ========================================================= */
 
 initializeApp();
@@ -4630,5 +3464,4 @@ initializeApp();
 </script>
 
 </body>
-
 </html>
