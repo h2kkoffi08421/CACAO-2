@@ -1,0 +1,3147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CACAO - Plateforme</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    color:#222;
+}
+
+header{
+    background:#5b3518;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+nav button{
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    background:#fff;
+    color:#5b3518;
+    font-weight:bold;
+}
+
+nav button:hover{
+    background:#e9d8c7;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.hero{
+    background:linear-gradient(135deg,#5b3518,#9b5c25);
+    color:white;
+    padding:50px 25px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin:0 0 15px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card h2,
+.card h3{
+    color:#5b3518;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:16px;
+}
+
+.btn{
+    border:none;
+    border-radius:7px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:4px;
+}
+
+.btn-primary{
+    background:#5b3518;
+    color:white;
+}
+
+.btn-success{
+    background:#198754;
+    color:white;
+}
+
+.btn-danger{
+    background:#dc3545;
+    color:white;
+}
+
+.btn-warning{
+    background:#f0ad4e;
+    color:white;
+}
+
+.btn-secondary{
+    background:#6c757d;
+    color:white;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.machine{
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:18px;
+    background:#fff;
+}
+
+.machine h3{
+    margin-top:0;
+    color:#5b3518;
+}
+
+.price{
+    font-size:24px;
+    font-weight:bold;
+    color:#198754;
+}
+
+.daily{
+    font-size:18px;
+    font-weight:bold;
+    color:#5b3518;
+}
+
+.status{
+    padding:8px 12px;
+    border-radius:20px;
+    display:inline-block;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.status-active{
+    background:#d1e7dd;
+    color:#0f5132;
+}
+
+.status-pending{
+    background:#fff3cd;
+    color:#664d03;
+}
+
+.status-rejected{
+    background:#f8d7da;
+    color:#842029;
+}
+
+.status-free{
+    background:#cff4fc;
+    color:#055160;
+}
+
+.balance{
+    font-size:30px;
+    font-weight:bold;
+    color:#198754;
+}
+
+.info-box{
+    background:#e7f1ff;
+    border-left:5px solid #0d6efd;
+    padding:15px;
+    border-radius:6px;
+    margin:15px 0;
+}
+
+.warning-box{
+    background:#fff3cd;
+    border-left:5px solid #ffc107;
+    padding:15px;
+    border-radius:6px;
+    margin:15px 0;
+}
+
+.success-box{
+    background:#d1e7dd;
+    border-left:5px solid #198754;
+    padding:15px;
+    border-radius:6px;
+    margin:15px 0;
+}
+
+.error-box{
+    background:#f8d7da;
+    border-left:5px solid #dc3545;
+    padding:15px;
+    border-radius:6px;
+    margin:15px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,
+td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#5b3518;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.payment-number{
+    font-size:24px;
+    font-weight:bold;
+    color:#198754;
+    text-align:center;
+    padding:15px;
+    background:#eef9f1;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+    background:#5b3518;
+    color:white;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:30px;
+    }
+
+    nav{
+        width:100%;
+    }
+
+    nav button{
+        flex:1;
+    }
+
+    table{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        CACAO
+    </div>
+
+    <nav>
+
+        <button onclick="showPage('home')">
+            Accueil
+        </button>
+
+        <button id="navDashboard"
+                onclick="showPage('dashboard')"
+                style="display:none;">
+            Mon espace
+        </button>
+
+        <button id="navAdmin"
+                onclick="showPage('admin')"
+                style="display:none;">
+            Administration
+        </button>
+
+        <button id="navLogin"
+                onclick="showPage('login')">
+            Connexion
+        </button>
+
+        <button id="navRegister"
+                onclick="showPage('register')">
+            Inscription
+        </button>
+
+        <button id="navLogout"
+                onclick="logout()"
+                style="display:none;">
+            Déconnexion
+        </button>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- ================= ACCUEIL ================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <h1>Bienvenue sur CACAO</h1>
+
+        <p>
+            Plateforme de gestion des machines en libre service.
+        </p>
+
+        <button class="btn btn-primary"
+                onclick="showPage('register')">
+            Créer un compte
+        </button>
+
+        <button class="btn btn-success"
+                onclick="showPage('login')">
+            Se connecter
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Comment fonctionne CACAO ?</h2>
+
+        <div class="grid">
+
+            <div>
+                <h3>1. Inscription</h3>
+                <p>
+                    Créez votre compte avec vos informations.
+                </p>
+            </div>
+
+            <div>
+                <h3>2. Dépôt</h3>
+                <p>
+                    Effectuez votre dépôt avec Wave ou Orange Money.
+                </p>
+            </div>
+
+            <div>
+                <h3>3. Validation</h3>
+                <p>
+                    L'administrateur vérifie et valide votre dépôt.
+                </p>
+            </div>
+
+            <div>
+                <h3>4. Machine</h3>
+                <p>
+                    Après validation, la machine peut être activée.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="warning-box">
+
+        <strong>Information importante</strong>
+
+        <p>
+            Les montants affichés dans cette application sont des
+            paramètres de démonstration du prototype.
+            Ils ne constituent pas une garantie de rendement.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= INSCRIPTION ================= -->
+
+<section id="register" class="page">
+
+    <div class="card">
+
+        <h2>Créer un compte</h2>
+
+        <form onsubmit="register(event)">
+
+            <div class="form-group">
+
+                <label>Nom complet</label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    required
+                    placeholder="Votre nom complet">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Téléphone</label>
+
+                <input
+                    type="tel"
+                    id="registerPhone"
+                    required
+                    placeholder="Votre numéro">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    required
+                    placeholder="Votre adresse email">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Mot de passe</label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    required
+                    minlength="4"
+                    placeholder="Votre mot de passe">
+
+            </div>
+
+
+            <button class="btn btn-primary" type="submit">
+                Créer mon compte
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONNEXION ================= -->
+
+<section id="login" class="page">
+
+    <div class="card">
+
+        <h2>Connexion</h2>
+
+        <form onsubmit="login(event)">
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    required
+                    placeholder="Votre adresse email">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Mot de passe</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    required
+                    placeholder="Votre mot de passe">
+
+            </div>
+
+
+            <button class="btn btn-primary" type="submit">
+                Se connecter
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DASHBOARD UTILISATEUR ================= -->
+
+<section id="dashboard" class="page">
+
+    <div class="card">
+
+        <h2>Mon espace</h2>
+
+        <p id="welcomeUser"></p>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <h3>Mon solde</h3>
+
+                <div class="balance" id="userBalance">
+                    0 FCFA
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Total gagné</h3>
+
+                <div class="balance" id="userTotalEarned">
+                    0 FCFA
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <button
+                class="btn btn-success"
+                onclick="showDepositForm()">
+                DÉPÔT
+            </button>
+
+
+            <button
+                class="btn btn-warning"
+                onclick="showWithdrawalForm()">
+                RETRAIT
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FORMULAIRE DEPOT -->
+
+    <div id="depositForm"
+         class="card"
+         style="display:none;">
+
+        <h2>Effectuer un dépôt</h2>
+
+        <div class="info-box">
+
+            <strong>Modes de paiement disponibles</strong>
+
+            <p>
+                Wave : <strong>0719713230</strong>
+            </p>
+
+            <p>
+                Orange Money : <strong>0719713230</strong>
+            </p>
+
+        </div>
+
+
+        <form onsubmit="submitDeposit(event)">
+
+            <div class="form-group">
+
+                <label>Montant du dépôt</label>
+
+                <input
+                    type="number"
+                    id="depositAmount"
+                    min="1"
+                    required
+                    placeholder="Exemple : 12000">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Mode de paiement</label>
+
+                <select id="depositMethod" required>
+
+                    <option value="">
+                        Sélectionner
+                    </option>
+
+                    <option value="Wave">
+                        Wave
+                    </option>
+
+                    <option value="Orange Money">
+                        Orange Money
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Référence de la transaction
+                </label>
+
+                <input
+                    type="text"
+                    id="depositReference"
+                    required
+                    placeholder="Référence du paiement">
+
+            </div>
+
+
+            <button
+                class="btn btn-success"
+                type="submit">
+                Envoyer le dépôt
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                type="button"
+                onclick="hideForms()">
+                Annuler
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- FORMULAIRE RETRAIT -->
+
+    <div id="withdrawalForm"
+         class="card"
+         style="display:none;">
+
+        <h2>Demande de retrait</h2>
+
+        <div class="warning-box">
+
+            <strong>Conditions de retrait</strong>
+
+            <ul>
+                <li>Retraits disponibles le vendredi.</li>
+                <li>Montant minimum : 2 500 FCFA.</li>
+                <li>Le montant doit être un multiple de 100 FCFA.</li>
+            </ul>
+
+        </div>
+
+
+        <form onsubmit="submitWithdrawal(event)">
+
+            <div class="form-group">
+
+                <label>Montant du retrait</label>
+
+                <input
+                    type="number"
+                    id="withdrawalAmount"
+                    min="2500"
+                    step="100"
+                    required
+                    placeholder="Exemple : 2500">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Numéro de réception</label>
+
+                <input
+                    type="tel"
+                    id="withdrawalPhone"
+                    required
+                    placeholder="Numéro Wave ou Orange Money">
+
+            </div>
+
+
+            <button
+                class="btn btn-warning"
+                type="submit">
+                Demander le retrait
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                type="button"
+                onclick="hideForms()">
+                Annuler
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- MACHINES -->
+
+    <div class="card">
+
+        <h2>Machines disponibles</h2>
+
+        <div id="machinesContainer" class="grid"></div>
+
+    </div>
+
+
+
+    <!-- HISTORIQUE -->
+
+    <div class="card">
+
+        <h2>Mes dépôts</h2>
+
+        <div id="userDeposits"></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Mes retraits</h2>
+
+        <div id="userWithdrawals"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMINISTRATION ================= -->
+
+<section id="admin" class="page">
+
+    <div class="card">
+
+        <h2>Administration CACAO</h2>
+
+        <p>
+            Gestion des utilisateurs, dépôts, retraits et machines.
+        </p>
+
+    </div>
+
+
+
+    <!-- PARAMETRES PAIEMENT -->
+
+    <div class="card">
+
+        <h2>Paramètres de paiement</h2>
+
+        <form onsubmit="savePaymentSettings(event)">
+
+            <div class="form-group">
+
+                <label>Numéro Wave</label>
+
+                <input
+                    type="tel"
+                    id="adminWaveNumber"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Numéro Orange Money</label>
+
+                <input
+                    type="tel"
+                    id="adminOrangeNumber"
+                    required>
+
+            </div>
+
+
+            <button
+                class="btn btn-success"
+                type="submit">
+                Enregistrer
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- DEPOTS -->
+
+    <div class="card">
+
+        <h2>Gestion des dépôts</h2>
+
+        <div id="adminDeposits"></div>
+
+    </div>
+
+
+
+    <!-- RETRAITS -->
+
+    <div class="card">
+
+        <h2>Gestion des retraits</h2>
+
+        <div id="adminWithdrawals"></div>
+
+    </div>
+
+
+
+    <!-- UTILISATEURS -->
+
+    <div class="card">
+
+        <h2>Utilisateurs</h2>
+
+        <div id="adminUsers"></div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+
+<footer>
+
+    <p>
+        CACAO © 2026 - Prototype
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   DONNEES DES MACHINES
+========================================================= */
+
+const machines = [
+
+    {
+        id:1,
+        name:"Machine 1",
+        price:12000,
+        daily:645.123
+    },
+
+    {
+        id:2,
+        name:"Machine 2",
+        price:18000,
+        daily:1100.234
+    },
+
+    {
+        id:3,
+        name:"Machine 3",
+        price:25000,
+        daily:1800
+    },
+
+    {
+        id:4,
+        name:"Machine 4",
+        price:35000,
+        daily:1850.46
+    },
+
+    {
+        id:5,
+        name:"Machine 5",
+        price:50000,
+        daily:2450
+    }
+
+];
+
+
+
+/* =========================================================
+   STOCKAGE
+========================================================= */
+
+let users =
+    JSON.parse(localStorage.getItem("cacaoUsers")) || [];
+
+let deposits =
+    JSON.parse(localStorage.getItem("cacaoDeposits")) || [];
+
+let withdrawals =
+    JSON.parse(localStorage.getItem("cacaoWithdrawals")) || [];
+
+let currentUserId =
+    localStorage.getItem("cacaoCurrentUser") || null;
+
+let paymentSettings =
+    JSON.parse(localStorage.getItem("cacaoPaymentSettings")) || {
+
+        wave:"0719713230",
+
+        orange:"0719713230"
+
+    };
+
+
+
+/* =========================================================
+   CREATION ADMIN PROTOTYPE
+========================================================= */
+
+function ensureAdmin(){
+
+    let admin =
+        users.find(user => user.role === "admin");
+
+    if(!admin){
+
+        admin = {
+
+            id:"ADMIN",
+
+            name:"Administrateur CACAO",
+
+            email:"admin@cacao.com",
+
+            phone:"",
+
+            password:"admin123",
+
+            role:"admin",
+
+            balance:0,
+
+            machines:[],
+
+            lastCalculated:null,
+
+            totalEarned:0
+
+        };
+
+        users.push(admin);
+
+        saveUsers();
+
+    }
+
+}
+
+ensureAdmin();
+
+
+
+/* =========================================================
+   UTILITAIRES
+========================================================= */
+
+function saveUsers(){
+
+    localStorage.setItem(
+        "cacaoUsers",
+        JSON.stringify(users)
+    );
+
+}
+
+
+function saveDeposits(){
+
+    localStorage.setItem(
+        "cacaoDeposits",
+        JSON.stringify(deposits)
+    );
+
+}
+
+
+function saveWithdrawals(){
+
+    localStorage.setItem(
+        "cacaoWithdrawals",
+        JSON.stringify(withdrawals)
+    );
+
+}
+
+
+function savePaymentSettings(){
+
+    localStorage.setItem(
+        "cacaoPaymentSettings",
+        JSON.stringify(paymentSettings)
+    );
+
+}
+
+
+function getCurrentUser(){
+
+    return users.find(
+        user => user.id === currentUserId
+    ) || null;
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function updateNavigation(){
+
+    const navDashboard =
+        document.getElementById("navDashboard");
+
+    const navAdmin =
+        document.getElementById("navAdmin");
+
+    const navLogin =
+        document.getElementById("navLogin");
+
+    const navRegister =
+        document.getElementById("navRegister");
+
+    const navLogout =
+        document.getElementById("navLogout");
+
+
+    navDashboard.style.display = "none";
+
+    navAdmin.style.display = "none";
+
+    navLogin.style.display = "inline-block";
+
+    navRegister.style.display = "inline-block";
+
+    navLogout.style.display = "none";
+
+
+    if(!currentUserId){
+
+        return;
+
+    }
+
+
+    navLogin.style.display = "none";
+
+    navRegister.style.display = "none";
+
+    navLogout.style.display = "inline-block";
+
+
+    const user = getCurrentUser();
+
+
+    if(!user){
+
+        currentUserId = null;
+
+        localStorage.removeItem(
+            "cacaoCurrentUser"
+        );
+
+        return;
+
+    }
+
+
+    if(user.role === "admin"){
+
+        navAdmin.style.display = "inline-block";
+
+    }else{
+
+        navDashboard.style.display = "inline-block";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   AFFICHAGE DES PAGES
+========================================================= */
+
+function showPage(page){
+
+    /*
+       PROTECTION ADMINISTRATEUR
+       Une personne non administratrice
+       ne peut pas afficher cette page.
+    */
+
+    if(
+        page === "admin" &&
+        (!currentUserId ||
+         !getCurrentUser() ||
+         getCurrentUser().role !== "admin")
+    ){
+
+        page = "home";
+
+    }
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(page);
+
+
+    if(target){
+
+        target.classList.add("active");
+
+    }
+
+
+    if(page === "dashboard"){
+
+        loadDashboard();
+
+    }
+
+
+    if(page === "admin"){
+
+        loadAdmin();
+
+    }
+
+
+    updateNavigation();
+
+}
+
+
+
+/* =========================================================
+   INSCRIPTION
+========================================================= */
+
+function register(event){
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("registerName")
+        .value.trim();
+
+
+    const phone =
+        document.getElementById("registerPhone")
+        .value.trim();
+
+
+    const email =
+        document.getElementById("registerEmail")
+        .value.trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById("registerPassword")
+        .value;
+
+
+    const exists =
+        users.some(
+            user => user.email === email
+        );
+
+
+    if(exists){
+
+        alert(
+            "Cette adresse email existe déjà."
+        );
+
+        return;
+
+    }
+
+
+    const user = {
+
+        id:
+            "USER-" +
+            Date.now(),
+
+        name:name,
+
+        phone:phone,
+
+        email:email,
+
+        password:password,
+
+        role:"user",
+
+        balance:0,
+
+        machines:[],
+
+        lastCalculated:null,
+
+        totalEarned:0
+
+    };
+
+
+    users.push(user);
+
+    saveUsers();
+
+
+    alert(
+        "Votre compte a été créé avec succès."
+    );
+
+
+    document
+        .getElementById("registerName")
+        .value = "";
+
+    document
+        .getElementById("registerPhone")
+        .value = "";
+
+    document
+        .getElementById("registerEmail")
+        .value = "";
+
+    document
+        .getElementById("registerPassword")
+        .value = "";
+
+
+    showPage("login");
+
+}
+
+
+
+/* =========================================================
+   CONNEXION
+========================================================= */
+
+function login(event){
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("loginEmail")
+        .value.trim()
+        .toLowerCase();
+
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    const user =
+        users.find(
+            item =>
+                item.email === email &&
+                item.password === password
+        );
+
+
+    if(!user){
+
+        alert(
+            "Email ou mot de passe incorrect."
+        );
+
+        return;
+
+    }
+
+
+    currentUserId = user.id;
+
+
+    localStorage.setItem(
+        "cacaoCurrentUser",
+        currentUserId
+    );
+
+
+    document
+        .getElementById("loginEmail")
+        .value = "";
+
+    document
+        .getElementById("loginPassword")
+        .value = "";
+
+
+    if(user.role === "admin"){
+
+        showPage("admin");
+
+    }else{
+
+        showPage("dashboard");
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DECONNEXION
+========================================================= */
+
+function logout(){
+
+    currentUserId = null;
+
+    localStorage.removeItem(
+        "cacaoCurrentUser"
+    );
+
+
+    showPage("home");
+
+}
+
+
+
+/* =========================================================
+   DASHBOARD UTILISATEUR
+========================================================= */
+
+function loadDashboard(){
+
+    const user = getCurrentUser();
+
+
+    if(!user){
+
+        showPage("login");
+
+        return;
+
+    }
+
+
+    /*
+       Protection supplémentaire :
+       un administrateur ne doit pas utiliser
+       l'espace utilisateur.
+    */
+
+    if(user.role === "admin"){
+
+        showPage("admin");
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("welcomeUser")
+        .innerHTML =
+            "Bienvenue <strong>" +
+            escapeHtml(user.name) +
+            "</strong>";
+
+
+    calculateDailyEarnings(user);
+
+
+    document
+        .getElementById("userBalance")
+        .textContent =
+            formatMoney(user.balance);
+
+
+    document
+        .getElementById("userTotalEarned")
+        .textContent =
+            formatMoney(user.totalEarned);
+
+
+    loadMachines(user);
+
+    loadUserDeposits(user);
+
+    loadUserWithdrawals(user);
+
+}
+
+
+
+/* =========================================================
+   CALCUL DES GAINS
+========================================================= */
+
+function calculateDailyEarnings(user){
+
+    if(!user.machines){
+
+        user.machines = [];
+
+    }
+
+
+    const today =
+        new Date()
+        .toISOString()
+        .slice(0,10);
+
+
+    if(user.lastCalculated === today){
+
+        return;
+
+    }
+
+
+    let totalDaily = 0;
+
+
+    user.machines.forEach(machine => {
+
+        if(machine.active){
+
+            const machineInfo =
+                machines.find(
+                    item => item.id === machine.machineId
+                );
+
+
+            if(machineInfo){
+
+                totalDaily +=
+                    Number(machineInfo.daily);
+
+            }
+
+        }
+
+    });
+
+
+    if(totalDaily > 0){
+
+        user.balance =
+            Number(user.balance || 0) +
+            totalDaily;
+
+
+        user.totalEarned =
+            Number(user.totalEarned || 0) +
+            totalDaily;
+
+    }
+
+
+    user.lastCalculated = today;
+
+
+    saveUsers();
+
+}
+
+
+
+/* =========================================================
+   AFFICHAGE DES MACHINES
+========================================================= */
+
+function loadMachines(user){
+
+    const container =
+        document.getElementById(
+            "machinesContainer"
+        );
+
+
+    container.innerHTML = "";
+
+
+    machines.forEach(machine => {
+
+        const rented =
+            (user.machines || [])
+            .find(
+                item =>
+                    item.machineId === machine.id
+            );
+
+
+        let html = "";
+
+
+        if(rented && rented.active){
+
+            html = `
+
+                <div class="machine">
+
+                    <h3>
+                        ${machine.name}
+                    </h3>
+
+                    <p>
+                        Prix :
+                        <strong>
+                            ${formatMoney(machine.price)}
+                        </strong>
+                    </p>
+
+                    <p class="daily">
+                        Rémunération :
+                        ${formatNumber(machine.daily)}
+                        FCFA / jour
+                    </p>
+
+                    <p>
+                        <span class="status status-active">
+                            MACHINE ACTIVE
+                        </span>
+                    </p>
+
+                </div>
+
+            `;
+
+        }else{
+
+            const pending =
+                deposits.find(
+                    deposit =>
+                        deposit.userId === user.id &&
+                        deposit.machineId === machine.id &&
+                        deposit.status === "pending"
+                );
+
+
+            html = `
+
+                <div class="machine">
+
+                    <h3>
+                        ${machine.name}
+                    </h3>
+
+                    <p>
+                        Prix :
+                        <strong>
+                            ${formatMoney(machine.price)}
+                        </strong>
+                    </p>
+
+                    <p class="daily">
+                        Rémunération :
+                        ${formatNumber(machine.daily)}
+                        FCFA / jour
+                    </p>
+
+                    ${
+                        pending
+                        ?
+                        `
+                        <p>
+                            <span class="status status-pending">
+                                DÉPÔT EN ATTENTE
+                            </span>
+                        </p>
+                        `
+                        :
+                        `
+                        <button
+                            class="btn btn-primary"
+                            onclick="prepareMachineDeposit(${machine.id})">
+                            LOUER CETTE MACHINE
+                        </button>
+                        `
+                    }
+
+                </div>
+
+            `;
+
+        }
+
+
+        container.innerHTML += html;
+
+    });
+
+}
+
+
+
+/* =========================================================
+   PREPARER DEPOT MACHINE
+========================================================= */
+
+function prepareMachineDeposit(machineId){
+
+    const machine =
+        machines.find(
+            item => item.id === machineId
+        );
+
+
+    if(!machine){
+
+        return;
+
+    }
+
+
+    showDepositForm();
+
+
+    document
+        .getElementById("depositAmount")
+        .value = machine.price;
+
+
+    document
+        .getElementById("depositAmount")
+        .dataset.machineId =
+            machineId;
+
+
+    window.scrollTo({
+        top:document
+            .getElementById("depositForm")
+            .offsetTop,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   FORMULAIRE DEPOT
+========================================================= */
+
+function showDepositForm(){
+
+    hideForms();
+
+
+    document
+        .getElementById("depositForm")
+        .style.display = "block";
+
+}
+
+
+function hideForms(){
+
+    document
+        .getElementById("depositForm")
+        .style.display = "none";
+
+
+    document
+        .getElementById("withdrawalForm")
+        .style.display = "none";
+
+}
+
+
+
+/* =========================================================
+   DEPOT
+========================================================= */
+
+function submitDeposit(event){
+
+    event.preventDefault();
+
+
+    const user = getCurrentUser();
+
+
+    if(!user){
+
+        alert("Veuillez vous connecter.");
+
+        return;
+
+    }
+
+
+    const amount =
+        Number(
+            document
+            .getElementById("depositAmount")
+            .value
+        );
+
+
+    const method =
+        document
+        .getElementById("depositMethod")
+        .value;
+
+
+    const reference =
+        document
+        .getElementById("depositReference")
+        .value.trim();
+
+
+    const machineId =
+        Number(
+            document
+            .getElementById("depositAmount")
+            .dataset.machineId
+        ) || null;
+
+
+    if(amount <= 0){
+
+        alert(
+            "Veuillez entrer un montant valide."
+        );
+
+        return;
+
+    }
+
+
+    if(!method){
+
+        alert(
+            "Veuillez choisir un mode de paiement."
+        );
+
+        return;
+
+    }
+
+
+    if(!reference){
+
+        alert(
+            "Veuillez entrer la référence du paiement."
+        );
+
+        return;
+
+    }
+
+
+    const deposit = {
+
+        id:
+            "DEP-" +
+            Date.now(),
+
+        userId:user.id,
+
+        userName:user.name,
+
+        amount:amount,
+
+        method:method,
+
+        reference:reference,
+
+        machineId:machineId,
+
+        status:"pending",
+
+        date:
+            new Date().toLocaleString("fr-FR")
+
+    };
+
+
+    deposits.push(deposit);
+
+    saveDeposits();
+
+
+    alert(
+        "Votre dépôt a été envoyé. Il doit être validé par l'administrateur."
+    );
+
+
+    document
+        .getElementById("depositAmount")
+        .value = "";
+
+    document
+        .getElementById("depositMethod")
+        .value = "";
+
+    document
+        .getElementById("depositReference")
+        .value = "";
+
+
+    delete document
+        .getElementById("depositAmount")
+        .dataset.machineId;
+
+
+    hideForms();
+
+    loadDashboard();
+
+}
+
+
+
+/* =========================================================
+   RETRAIT
+========================================================= */
+
+function showWithdrawalForm(){
+
+    hideForms();
+
+
+    document
+        .getElementById("withdrawalForm")
+        .style.display = "block";
+
+}
+
+
+function submitWithdrawal(event){
+
+    event.preventDefault();
+
+
+    const user = getCurrentUser();
+
+
+    if(!user){
+
+        alert("Veuillez vous connecter.");
+
+        return;
+
+    }
+
+
+    const amount =
+        Number(
+            document
+            .getElementById("withdrawalAmount")
+            .value
+        );
+
+
+    const phone =
+        document
+        .getElementById("withdrawalPhone")
+        .value.trim();
+
+
+    if(amount < 2500){
+
+        alert(
+            "Le retrait minimum est de 2 500 FCFA."
+        );
+
+        return;
+
+    }
+
+
+    if(amount % 100 !== 0){
+
+        alert(
+            "Le montant doit être un multiple de 100 FCFA."
+        );
+
+        return;
+
+    }
+
+
+    if(amount > Number(user.balance || 0)){
+
+        alert(
+            "Votre solde est insuffisant."
+        );
+
+        return;
+
+    }
+
+
+    const today =
+        new Date();
+
+
+    const day =
+        today.getDay();
+
+
+    /*
+       0 = dimanche
+       5 = vendredi
+    */
+
+    if(day !== 5){
+
+        alert(
+            "Les retraits sont disponibles uniquement le vendredi."
+        );
+
+        return;
+
+    }
+
+
+    const withdrawal = {
+
+        id:
+            "RET-" +
+            Date.now(),
+
+        userId:user.id,
+
+        userName:user.name,
+
+        amount:amount,
+
+        phone:phone,
+
+        status:"pending",
+
+        date:
+            new Date().toLocaleString("fr-FR")
+
+    };
+
+
+    /*
+       Le montant est réservé immédiatement.
+    */
+
+    user.balance =
+        Number(user.balance || 0) -
+        amount;
+
+
+    withdrawals.push(withdrawal);
+
+
+    saveUsers();
+
+    saveWithdrawals();
+
+
+    alert(
+        "Votre demande de retrait a été envoyée à l'administrateur."
+    );
+
+
+    document
+        .getElementById("withdrawalAmount")
+        .value = "";
+
+    document
+        .getElementById("withdrawalPhone")
+        .value = "";
+
+
+    hideForms();
+
+    loadDashboard();
+
+}
+
+
+
+/* =========================================================
+   HISTORIQUE DEPOTS UTILISATEUR
+========================================================= */
+
+function loadUserDeposits(user){
+
+    const container =
+        document.getElementById(
+            "userDeposits"
+        );
+
+
+    const list =
+        deposits.filter(
+            deposit =>
+                deposit.userId === user.id
+        );
+
+
+    if(list.length === 0){
+
+        container.innerHTML =
+            "<p>Aucun dépôt.</p>";
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <tr>
+                <th>Date</th>
+                <th>Montant</th>
+                <th>Mode</th>
+                <th>Référence</th>
+                <th>Statut</th>
+            </tr>
+
+    `;
+
+
+    list.forEach(deposit => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(deposit.date)}
+                </td>
+
+                <td>
+                    ${formatMoney(deposit.amount)}
+                </td>
+
+                <td>
+                    ${escapeHtml(deposit.method)}
+                </td>
+
+                <td>
+                    ${escapeHtml(deposit.reference)}
+                </td>
+
+                <td>
+                    ${statusHtml(deposit.status)}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += "</table>";
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================================
+   HISTORIQUE RETRAITS UTILISATEUR
+========================================================= */
+
+function loadUserWithdrawals(user){
+
+    const container =
+        document.getElementById(
+            "userWithdrawals"
+        );
+
+
+    const list =
+        withdrawals.filter(
+            withdrawal =>
+                withdrawal.userId === user.id
+        );
+
+
+    if(list.length === 0){
+
+        container.innerHTML =
+            "<p>Aucun retrait.</p>";
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <tr>
+                <th>Date</th>
+                <th>Montant</th>
+                <th>Numéro</th>
+                <th>Statut</th>
+            </tr>
+
+    `;
+
+
+    list.forEach(withdrawal => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(withdrawal.date)}
+                </td>
+
+                <td>
+                    ${formatMoney(withdrawal.amount)}
+                </td>
+
+                <td>
+                    ${escapeHtml(withdrawal.phone)}
+                </td>
+
+                <td>
+                    ${statusHtml(withdrawal.status)}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += "</table>";
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================================
+   ADMINISTRATION
+========================================================= */
+
+function loadAdmin(){
+
+    const admin = getCurrentUser();
+
+
+    /*
+       SECURITE :
+       seul un administrateur peut charger
+       les données administratives.
+    */
+
+    if(
+        !admin ||
+        admin.role !== "admin"
+    ){
+
+        showPage("home");
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("adminWaveNumber")
+        .value =
+            paymentSettings.wave;
+
+
+    document
+        .getElementById("adminOrangeNumber")
+        .value =
+            paymentSettings.orange;
+
+
+    loadAdminDeposits();
+
+    loadAdminWithdrawals();
+
+    loadAdminUsers();
+
+}
+
+
+
+/* =========================================================
+   ADMIN DEPOTS
+========================================================= */
+
+function loadAdminDeposits(){
+
+    const container =
+        document.getElementById(
+            "adminDeposits"
+        );
+
+
+    if(deposits.length === 0){
+
+        container.innerHTML =
+            "<p>Aucun dépôt.</p>";
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <tr>
+
+                <th>Date</th>
+                <th>Utilisateur</th>
+                <th>Montant</th>
+                <th>Mode</th>
+                <th>Référence</th>
+                <th>Machine</th>
+                <th>Statut</th>
+                <th>Action</th>
+
+            </tr>
+
+    `;
+
+
+    deposits.forEach(deposit => {
+
+        const machine =
+            machines.find(
+                item =>
+                    item.id === deposit.machineId
+            );
+
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(deposit.date)}
+                </td>
+
+                <td>
+                    ${escapeHtml(deposit.userName)}
+                </td>
+
+                <td>
+                    ${formatMoney(deposit.amount)}
+                </td>
+
+                <td>
+                    ${escapeHtml(deposit.method)}
+                </td>
+
+                <td>
+                    ${escapeHtml(deposit.reference)}
+                </td>
+
+                <td>
+                    ${
+                        machine
+                        ?
+                        escapeHtml(machine.name)
+                        :
+                        "-"
+                    }
+                </td>
+
+                <td>
+                    ${statusHtml(deposit.status)}
+                </td>
+
+                <td>
+
+                    ${
+                        deposit.status === "pending"
+                        ?
+                        `
+
+                        <button
+                            class="btn btn-success"
+                            onclick="validateDeposit('${deposit.id}')">
+                            Valider
+                        </button>
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="rejectDeposit('${deposit.id}')">
+                            Rejeter
+                        </button>
+
+                        `
+                        :
+                        "-"
+                    }
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += "</table>";
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================================
+   VALIDATION DEPOT
+========================================================= */
+
+function validateDeposit(depositId){
+
+    const admin = getCurrentUser();
+
+
+    if(!admin || admin.role !== "admin"){
+
+        alert("Accès refusé.");
+
+        return;
+
+    }
+
+
+    const deposit =
+        deposits.find(
+            item =>
+                item.id === depositId
+        );
+
+
+    if(!deposit){
+
+        return;
+
+    }
+
+
+    if(deposit.status !== "pending"){
+
+        return;
+
+    }
+
+
+    const user =
+        users.find(
+            item =>
+                item.id === deposit.userId
+        );
+
+
+    if(!user){
+
+        alert(
+            "Utilisateur introuvable."
+        );
+
+        return;
+
+    }
+
+
+    deposit.status = "validated";
+
+
+    /*
+       Si le dépôt correspond à une machine,
+       on active la machine.
+
+       Sinon, le montant est ajouté au solde.
+    */
+
+    if(deposit.machineId){
+
+        const machine =
+            machines.find(
+                item =>
+                    item.id === deposit.machineId
+            );
+
+
+        if(machine){
+
+            if(!user.machines){
+
+                user.machines = [];
+
+            }
+
+
+            const already =
+                user.machines.find(
+                    item =>
+                        item.machineId === machine.id
+                );
+
+
+            if(!already){
+
+                user.machines.push({
+
+                    machineId:machine.id,
+
+                    active:true,
+
+                    activationDate:
+                        new Date().toLocaleString("fr-FR")
+
+                });
+
+            }
+
+        }
+
+    }else{
+
+        user.balance =
+            Number(user.balance || 0) +
+            Number(deposit.amount);
+
+    }
+
+
+    saveUsers();
+
+    saveDeposits();
+
+
+    alert(
+        "Dépôt validé avec succès."
+    );
+
+
+    loadAdmin();
+
+}
+
+
+
+/* =========================================================
+   REJET DEPOT
+========================================================= */
+
+function rejectDeposit(depositId){
+
+    const admin = getCurrentUser();
+
+
+    if(!admin || admin.role !== "admin"){
+
+        alert("Accès refusé.");
+
+        return;
+
+    }
+
+
+    const deposit =
+        deposits.find(
+            item =>
+                item.id === depositId
+        );
+
+
+    if(!deposit){
+
+        return;
+
+    }
+
+
+    deposit.status = "rejected";
+
+
+    saveDeposits();
+
+
+    alert(
+        "Dépôt rejeté."
+    );
+
+
+    loadAdmin();
+
+}
+
+
+
+/* =========================================================
+   ADMIN RETRAITS
+========================================================= */
+
+function loadAdminWithdrawals(){
+
+    const container =
+        document.getElementById(
+            "adminWithdrawals"
+        );
+
+
+    if(withdrawals.length === 0){
+
+        container.innerHTML =
+            "<p>Aucun retrait.</p>";
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <tr>
+
+                <th>Date</th>
+                <th>Utilisateur</th>
+                <th>Montant</th>
+                <th>Numéro</th>
+                <th>Statut</th>
+                <th>Action</th>
+
+            </tr>
+
+    `;
+
+
+    withdrawals.forEach(withdrawal => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(withdrawal.date)}
+                </td>
+
+                <td>
+                    ${escapeHtml(withdrawal.userName)}
+                </td>
+
+                <td>
+                    ${formatMoney(withdrawal.amount)}
+                </td>
+
+                <td>
+                    ${escapeHtml(withdrawal.phone)}
+                </td>
+
+                <td>
+                    ${statusHtml(withdrawal.status)}
+                </td>
+
+                <td>
+
+                    ${
+                        withdrawal.status === "pending"
+                        ?
+                        `
+
+                        <button
+                            class="btn btn-success"
+                            onclick="validateWithdrawal('${withdrawal.id}')">
+                            Valider
+                        </button>
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="rejectWithdrawal('${withdrawal.id}')">
+                            Rejeter
+                        </button>
+
+                        `
+                        :
+                        "-"
+                    }
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += "</table>";
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================================
+   VALIDATION RETRAIT
+========================================================= */
+
+function validateWithdrawal(withdrawalId){
+
+    const admin = getCurrentUser();
+
+
+    if(!admin || admin.role !== "admin"){
+
+        alert("Accès refusé.");
+
+        return;
+
+    }
+
+
+    const withdrawal =
+        withdrawals.find(
+            item =>
+                item.id === withdrawalId
+        );
+
+
+    if(!withdrawal){
+
+        return;
+
+    }
+
+
+    if(withdrawal.status !== "pending"){
+
+        return;
+
+    }
+
+
+    withdrawal.status = "validated";
+
+
+    saveWithdrawals();
+
+
+    alert(
+        "Retrait validé."
+    );
+
+
+    loadAdmin();
+
+}
+
+
+
+/* =========================================================
+   REJET RETRAIT
+========================================================= */
+
+function rejectWithdrawal(withdrawalId){
+
+    const admin = getCurrentUser();
+
+
+    if(!admin || admin.role !== "admin"){
+
+        alert("Accès refusé.");
+
+        return;
+
+    }
+
+
+    const withdrawal =
+        withdrawals.find(
+            item =>
+                item.id === withdrawalId
+        );
+
+
+    if(!withdrawal){
+
+        return;
+
+    }
+
+
+    if(withdrawal.status !== "pending"){
+
+        return;
+
+    }
+
+
+    /*
+       En cas de rejet,
+       on restitue le montant à l'utilisateur.
+    */
+
+    const user =
+        users.find(
+            item =>
+                item.id === withdrawal.userId
+        );
+
+
+    if(user){
+
+        user.balance =
+            Number(user.balance || 0) +
+            Number(withdrawal.amount);
+
+    }
+
+
+    withdrawal.status = "rejected";
+
+
+    saveUsers();
+
+    saveWithdrawals();
+
+
+    alert(
+        "Retrait rejeté. Le montant a été restitué."
+    );
+
+
+    loadAdmin();
+
+}
+
+
+
+/* =========================================================
+   ADMIN UTILISATEURS
+========================================================= */
+
+function loadAdminUsers(){
+
+    const container =
+        document.getElementById(
+            "adminUsers"
+        );
+
+
+    const normalUsers =
+        users.filter(
+            user =>
+                user.role !== "admin"
+        );
+
+
+    if(normalUsers.length === 0){
+
+        container.innerHTML =
+            "<p>Aucun utilisateur.</p>";
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <tr>
+
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Solde</th>
+                <th>Total gagné</th>
+                <th>Machines</th>
+
+            </tr>
+
+    `;
+
+
+    normalUsers.forEach(user => {
+
+        const activeMachines =
+            (user.machines || [])
+            .filter(
+                machine =>
+                    machine.active
+            ).length;
+
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(user.name)}
+                </td>
+
+                <td>
+                    ${escapeHtml(user.email)}
+                </td>
+
+                <td>
+                    ${escapeHtml(user.phone)}
+                </td>
+
+                <td>
+                    ${formatMoney(user.balance)}
+                </td>
+
+                <td>
+                    ${formatMoney(user.totalEarned)}
+                </td>
+
+                <td>
+                    ${activeMachines}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += "</table>";
+
+
+    container.innerHTML = html;
+
+}
+
+
+
+/* =========================================================
+   PARAMETRES PAIEMENT
+========================================================= */
+
+function savePaymentSettings(event){
+
+    event.preventDefault();
+
+
+    const admin = getCurrentUser();
+
+
+    if(!admin || admin.role !== "admin"){
+
+        alert("Accès refusé.");
+
+        return;
+
+    }
+
+
+    paymentSettings.wave =
+        document
+        .getElementById("adminWaveNumber")
+        .value.trim();
+
+
+    paymentSettings.orange =
+        document
+        .getElementById("adminOrangeNumber")
+        .value.trim();
+
+
+    localStorage.setItem(
+        "cacaoPaymentSettings",
+        JSON.stringify(paymentSettings)
+    );
+
+
+    alert(
+        "Paramètres de paiement enregistrés."
+    );
+
+}
+
+
+
+/* =========================================================
+   FORMATAGE
+========================================================= */
+
+function formatMoney(value){
+
+    return (
+        Number(value || 0)
+        .toLocaleString("fr-FR",{
+            maximumFractionDigits:3
+        })
+        + " FCFA"
+    );
+
+}
+
+
+function formatNumber(value){
+
+    return Number(value || 0)
+        .toLocaleString("fr-FR",{
+            maximumFractionDigits:3
+        });
+
+}
+
+
+function statusHtml(status){
+
+    if(status === "validated"){
+
+        return `
+            <span class="status status-active">
+                VALIDÉ
+            </span>
+        `;
+
+    }
+
+
+    if(status === "pending"){
+
+        return `
+            <span class="status status-pending">
+                EN ATTENTE
+            </span>
+        `;
+
+    }
+
+
+    if(status === "rejected"){
+
+        return `
+            <span class="status status-rejected">
+                REJETÉ
+            </span>
+        `;
+
+    }
+
+
+    return status;
+
+}
+
+
+
+/* =========================================================
+   PROTECTION CONTRE L'INJECTION HTML
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+function initializeApp(){
+
+    updateNavigation();
+
+
+    const user =
+        getCurrentUser();
+
+
+    if(user){
+
+        if(user.role === "admin"){
+
+            showPage("admin");
+
+        }else{
+
+            showPage("dashboard");
+
+        }
+
+    }else{
+
+        showPage("home");
+
+    }
+
+}
+
+
+initializeApp();
+
+</script>
+
+</body>
+</html>
