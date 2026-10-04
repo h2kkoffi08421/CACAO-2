@@ -540,8 +540,6 @@ footer{
 
         <div class="community-buttons">
 
-            <!-- WHATSAPP -->
-
             <a
                 href="https://chat.whatsapp.com/EHOWJ7axYL0FY8TRSTmvNS"
                 target="_blank"
@@ -552,8 +550,6 @@ footer{
 
             </a>
 
-
-            <!-- ACTUALITÉS -->
 
             <button
                 class="community-btn community-news"
@@ -566,8 +562,6 @@ footer{
 
             </button>
 
-
-            <!-- ASSISTANCE -->
 
             <button
                 class="community-btn community-help"
@@ -582,8 +576,6 @@ footer{
 
         </div>
 
-
-        <!-- MESSAGE COMMUNAUTÉ -->
 
         <div
             id="communityMessage"
@@ -703,10 +695,10 @@ footer{
 
             <div class="payment-method">
 
-                <strong>🟣 Wave</strong>
+                <strong>🟢 Wave</strong>
 
                 <div class="payment-number">
-                    07 19 71 32 30
+                    05 45 15 63 02
                 </div>
 
             </div>
@@ -714,10 +706,10 @@ footer{
 
             <div class="payment-method">
 
-                <strong>🟠 Orange Money</strong>
+                <strong>🟡 MTN Mobile Money</strong>
 
                 <div class="payment-number">
-                    07 19 71 32 30
+                    05 45 15 63 02
                 </div>
 
             </div>
@@ -760,8 +752,8 @@ footer{
                 Wave
             </option>
 
-            <option value="Orange Money">
-                Orange Money
+            <option value="MTN Mobile Money">
+                MTN Mobile Money
             </option>
 
         </select>
@@ -817,7 +809,7 @@ footer{
                 </li>
 
                 <li>
-                    Paiement uniquement par Wave ou Orange Money.
+                    Paiement uniquement par Wave ou MTN Mobile Money.
                 </li>
 
                 <li>
@@ -860,8 +852,8 @@ footer{
                 Wave
             </option>
 
-            <option value="Orange Money">
-                Orange Money
+            <option value="MTN Mobile Money">
+                MTN Mobile Money
             </option>
 
         </select>
@@ -872,7 +864,7 @@ footer{
         <input
             type="text"
             id="withdrawPaymentNumber"
-            placeholder="Numéro Wave ou Orange Money"
+            placeholder="Numéro Wave ou MTN Mobile Money"
         >
 
 
@@ -1057,7 +1049,7 @@ function money(value){
         "fr-FR",
         {
             minimumFractionDigits:0,
-            maximumFractionDigits:2
+            maximumFractionDigits:3
         }
     ) + " FCFA";
 
@@ -1648,11 +1640,11 @@ function updateDepositMachineInfo(){
 
         <br>
 
-        <strong>Wave : 07 19 71 32 30</strong>
+        <strong>Wave : 05 45 15 63 02</strong>
 
         <br>
 
-        <strong>Orange Money : 07 19 71 32 30</strong>
+        <strong>MTN Mobile Money : 05 45 15 63 02</strong>
 
     `;
 
@@ -1719,7 +1711,7 @@ async function submitDeposit(){
 
         message(
             "depositMessage",
-            "Veuillez choisir Wave ou Orange Money.",
+            "Veuillez choisir Wave ou MTN Mobile Money.",
             "error"
         );
 
@@ -1950,12 +1942,12 @@ async function submitWithdrawal(){
 
     if(
         paymentMethod !== "Wave" &&
-        paymentMethod !== "Orange Money"
+        paymentMethod !== "MTN Mobile Money"
     ){
 
         message(
             "withdrawMessage",
-            "Choisissez Wave ou Orange Money.",
+            "Choisissez Wave ou MTN Mobile Money.",
             "error"
         );
 
