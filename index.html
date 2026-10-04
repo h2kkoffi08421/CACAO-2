@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,9 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
@@ -113,6 +112,16 @@ input,select{
     margin-top:0;
 }
 
+.machine-price{
+    font-size:20px;
+    font-weight:bold;
+    color:#198754;
+}
+
+.machine-earning{
+    font-weight:bold;
+}
+
 .stats{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -161,6 +170,7 @@ input,select{
     font-weight:bold;
     color:#198754;
     letter-spacing:1px;
+    margin-top:5px;
 }
 
 .warning{
@@ -177,6 +187,7 @@ input,select{
     border:1px solid #badbcc;
     padding:12px;
     border-radius:8px;
+    margin-top:10px;
 }
 
 .error{
@@ -185,6 +196,7 @@ input,select{
     border:1px solid #f5c2c7;
     padding:12px;
     border-radius:8px;
+    margin-top:10px;
 }
 
 table{
@@ -225,11 +237,6 @@ footer{
     color:#777;
 }
 
-
-/* =========================================================
-   COMMUNAUTÉ CACAO-2
-========================================================= */
-
 .community-box{
     background:linear-gradient(135deg,#e8f7ee,#ffffff);
     border:2px solid #198754;
@@ -242,7 +249,6 @@ footer{
 .community-box h2{
     text-align:center;
     margin-top:0;
-    color:#198754;
 }
 
 .community-description{
@@ -273,17 +279,9 @@ footer{
     margin:0;
 }
 
-.community-whatsapp{
-    background:#25D366;
-}
-
-.community-news{
-    background:#0d6efd;
-}
-
-.community-help{
-    background:#f59e0b;
-}
+.community-whatsapp{background:#25D366}
+.community-news{background:#0d6efd}
+.community-help{background:#f59e0b}
 
 .community-btn:hover{
     opacity:.9;
@@ -306,11 +304,6 @@ footer{
     background:#6c757d;
     color:white;
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:600px){
 
@@ -346,10 +339,6 @@ footer{
 
 <div class="container">
 
-<!-- =====================================================
-     ACCUEIL
-===================================================== -->
-
 <section id="homeSection">
 
     <div class="card">
@@ -357,19 +346,17 @@ footer{
         <h2>Bienvenue sur CACAO</h2>
 
         <p>
-            Bienvenue sur notre plateforme. Connectez-vous ou créez
-            votre compte pour accéder aux machines.
+            Bienvenue sur notre plateforme.
+            Connectez-vous ou créez votre compte pour accéder aux machines.
         </p>
 
-        <button
-            class="btn-primary"
-            onclick="showSection('registerSection')">
+        <button class="btn-primary"
+                onclick="showSection('registerSection')">
             Créer un compte
         </button>
 
-        <button
-            class="btn-secondary"
-            onclick="showSection('loginSection')">
+        <button class="btn-secondary"
+                onclick="showSection('loginSection')">
             Se connecter
         </button>
 
@@ -380,21 +367,15 @@ footer{
         <h3>⚠️ Information importante</h3>
 
         <div class="warning">
-
             Les paramètres de rémunération affichés dans cette application
             sont des paramètres de démonstration. Ils ne constituent pas
             une garantie de rendement financier.
-
         </div>
 
     </div>
 
 </section>
 
-
-<!-- =====================================================
-     INSCRIPTION
-===================================================== -->
 
 <section id="registerSection" class="hidden">
 
@@ -403,46 +384,28 @@ footer{
         <h2>Créer un compte</h2>
 
         <label>Nom complet</label>
-
-        <input
-            type="text"
-            id="registerName"
-            placeholder="Votre nom complet"
-        >
+        <input type="text" id="registerName"
+               placeholder="Votre nom complet">
 
         <label>Numéro de téléphone</label>
-
-        <input
-            type="text"
-            id="registerPhone"
-            placeholder="Votre numéro"
-        >
+        <input type="text" id="registerPhone"
+               placeholder="Votre numéro">
 
         <label>Email</label>
-
-        <input
-            type="email"
-            id="registerEmail"
-            placeholder="Votre email"
-        >
+        <input type="email" id="registerEmail"
+               placeholder="Votre email">
 
         <label>Mot de passe</label>
+        <input type="password" id="registerPassword"
+               placeholder="Mot de passe">
 
-        <input
-            type="password"
-            id="registerPassword"
-            placeholder="Mot de passe"
-        >
-
-        <button
-            class="btn-primary"
-            onclick="registerUser()">
+        <button class="btn-primary"
+                onclick="registerUser()">
             S'inscrire
         </button>
 
-        <button
-            class="btn-secondary"
-            onclick="showSection('loginSection')">
+        <button class="btn-secondary"
+                onclick="showSection('loginSection')">
             J'ai déjà un compte
         </button>
 
@@ -453,10 +416,6 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     CONNEXION
-===================================================== -->
-
 <section id="loginSection" class="hidden">
 
     <div class="card">
@@ -464,30 +423,20 @@ footer{
         <h2>Connexion</h2>
 
         <label>Email</label>
-
-        <input
-            type="email"
-            id="loginEmail"
-            placeholder="Votre email"
-        >
+        <input type="email" id="loginEmail"
+               placeholder="Votre email">
 
         <label>Mot de passe</label>
+        <input type="password" id="loginPassword"
+               placeholder="Votre mot de passe">
 
-        <input
-            type="password"
-            id="loginPassword"
-            placeholder="Votre mot de passe"
-        >
-
-        <button
-            class="btn-primary"
-            onclick="loginUser()">
+        <button class="btn-primary"
+                onclick="loginUser()">
             Se connecter
         </button>
 
-        <button
-            class="btn-secondary"
-            onclick="showSection('homeSection')">
+        <button class="btn-secondary"
+                onclick="showSection('homeSection')">
             Retour
         </button>
 
@@ -498,10 +447,6 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     DASHBOARD UTILISATEUR
-===================================================== -->
-
 <section id="dashboardSection" class="hidden">
 
     <div class="card">
@@ -509,89 +454,65 @@ footer{
         <h2>👤 Mon tableau de bord</h2>
 
         <p>
-            Bienvenue
-            <strong id="userName">Utilisateur</strong>
+            Bienvenue <strong id="userName">Utilisateur</strong>
         </p>
 
-        <button
-            class="btn-danger"
-            onclick="logoutUser()">
+        <button class="btn-danger"
+                onclick="logoutUser()">
             Déconnexion
         </button>
 
     </div>
 
 
-    <!-- =================================================
-         COMMUNAUTÉ CACAO-2
-    ================================================== -->
-
     <div class="community-box">
 
         <h2>🌱 Communauté CACAO-2</h2>
 
         <p class="community-description">
-
             Bienvenue dans la communauté CACAO-2.
             Retrouvez nos actualités, échangez avec les membres
             et obtenez de l'assistance.
-
         </p>
 
         <div class="community-buttons">
 
-            <a
-                href="https://chat.whatsapp.com/EHOWJ7axYL0FY8TRSTmvNS"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="community-btn community-whatsapp">
-
+            <a href="https://chat.whatsapp.com/EHOWJ7axYL0FY8TRSTmvNS"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="community-btn community-whatsapp">
                 💬 Rejoindre WhatsApp
-
             </a>
 
-
-            <button
-                class="community-btn community-news"
-                onclick="showCommunityMessage(
+            <button class="community-btn community-news"
+                    onclick="showCommunityMessage(
                     '📰 Actualités CACAO-2',
                     'Les nouvelles informations et annonces concernant CACAO-2 seront publiées dans cet espace.'
-                )">
-
+                    )">
                 📰 Actualités
-
             </button>
 
-
-            <button
-                class="community-btn community-help"
-                onclick="showCommunityMessage(
+            <button class="community-btn community-help"
+                    onclick="showCommunityMessage(
                     '🆘 Assistance CACAO-2',
                     'Pour toute difficulté concernant votre compte, votre dépôt, votre machine ou votre retrait, contactez l’administrateur.'
-                )">
-
+                    )">
                 🆘 Assistance
-
             </button>
 
         </div>
 
-
-        <div
-            id="communityMessage"
-            class="community-message"
-            style="display:none;">
+        <div id="communityMessage"
+             class="community-message"
+             style="display:none;">
 
             <h3 id="communityMessageTitle"></h3>
 
             <p id="communityMessageText"></p>
 
-            <button
-                class="community-close"
-                onclick="closeCommunityMessage()">
-
+            <button class="community-close"
+                    onclick="closeCommunityMessage()">
                 Fermer
-
             </button>
 
         </div>
@@ -599,40 +520,21 @@ footer{
     </div>
 
 
-    <!-- =================================================
-         STATISTIQUES
-    ================================================== -->
-
     <div class="stats">
 
         <div class="stat">
-
             💰 Solde
-
-            <strong id="userBalance">
-                0 FCFA
-            </strong>
-
+            <strong id="userBalance">0 FCFA</strong>
         </div>
 
         <div class="stat">
-
             📈 Total gagné
-
-            <strong id="userTotalEarned">
-                0 FCFA
-            </strong>
-
+            <strong id="userTotalEarned">0 FCFA</strong>
         </div>
 
         <div class="stat">
-
             ⚙️ Machines actives
-
-            <strong id="userMachinesCount">
-                0
-            </strong>
-
+            <strong id="userMachinesCount">0</strong>
         </div>
 
     </div>
@@ -640,69 +542,46 @@ footer{
     <br>
 
 
-    <!-- =================================================
-         MACHINES
-    ================================================== -->
-
     <div class="card">
 
-        <h2>⚙️ Machines</h2>
+        <h2>⚙️ Les machines disponibles</h2>
 
-        <div
-            id="machinesContainer"
-            class="machine-grid">
-
+        <div id="machinesContainer"
+             class="machine-grid">
             Chargement des machines...
-
         </div>
 
     </div>
 
-
-    <!-- =================================================
-         DEPOT
-    ================================================== -->
 
     <div class="card">
 
         <h2>💳 Dépôt</h2>
 
         <p>
-            Sélectionnez une machine pour effectuer votre dépôt.
+            Sélectionnez une machine puis effectuez le paiement
+            avec <strong>Wave</strong> ou <strong>MTN Mobile Money</strong>.
         </p>
 
-        <div
-            id="depositMachineInfo"
-            class="notice">
-
+        <div id="depositMachineInfo"
+             class="notice">
             Aucune machine sélectionnée.
-
         </div>
 
 
         <div class="payment-box">
 
-            <h3>📲 Effectuer le paiement</h3>
-
-            <p>
-
-                Après avoir choisi votre machine, effectuez le paiement
-                correspondant au prix de la machine sur l'un des comptes
-                ci-dessous.
-
-            </p>
-
+            <h3>📲 Numéro de paiement</h3>
 
             <div class="payment-method">
 
-                <strong>🟢 Wave</strong>
+                <strong>🟣 Wave</strong>
 
                 <div class="payment-number">
                     05 45 15 63 02
                 </div>
 
             </div>
-
 
             <div class="payment-method">
 
@@ -714,15 +593,14 @@ footer{
 
             </div>
 
-
             <div class="warning">
 
                 <strong>Important :</strong>
+                effectuez le paiement uniquement sur le numéro
+                <strong>0545156302</strong> avant d'envoyer votre demande.
 
-                le paiement est effectué manuellement par l'utilisateur.
                 L'application ne vérifie pas automatiquement le paiement.
-                Après le paiement, indiquez la référence de votre transaction
-                ci-dessous.
+                Après le paiement, indiquez la référence de votre transaction.
 
             </div>
 
@@ -761,30 +639,20 @@ footer{
 
         <label>Référence du paiement</label>
 
-        <input
-            type="text"
-            id="depositReference"
-            placeholder="Référence de la transaction"
-        >
+        <input type="text"
+               id="depositReference"
+               placeholder="Référence de la transaction">
 
 
-        <button
-            class="btn-primary"
-            onclick="submitDeposit()">
-
+        <button class="btn-primary"
+                onclick="submitDeposit()">
             📤 Envoyer la demande de dépôt
-
         </button>
-
 
         <div id="depositMessage"></div>
 
     </div>
 
-
-    <!-- =================================================
-         RETRAIT
-    ================================================== -->
 
     <div class="card">
 
@@ -796,33 +664,19 @@ footer{
 
             <ul>
 
-                <li>
-                    Les retraits sont disponibles uniquement le vendredi.
-                </li>
+                <li>Les retraits sont disponibles uniquement le vendredi.</li>
 
-                <li>
-                    Montant minimum : 2 500 FCFA.
-                </li>
+                <li>Montant minimum : 2 500 FCFA.</li>
 
-                <li>
-                    Le montant doit être un multiple de 100 FCFA.
-                </li>
+                <li>Le montant doit être un multiple de 100 FCFA.</li>
 
-                <li>
-                    Paiement uniquement par Wave ou MTN Mobile Money.
-                </li>
+                <li>Paiement uniquement par Wave ou MTN Mobile Money.</li>
 
-                <li>
-                    Numéro de réception obligatoire.
-                </li>
+                <li>Numéro de réception obligatoire.</li>
 
-                <li>
-                    Validation obligatoire par l'administrateur.
-                </li>
+                <li>Validation obligatoire par l'administrateur.</li>
 
-                <li>
-                    Le solde est débité uniquement après validation.
-                </li>
+                <li>Le solde est débité uniquement après validation.</li>
 
             </ul>
 
@@ -831,13 +685,11 @@ footer{
 
         <label>Montant du retrait</label>
 
-        <input
-            type="number"
-            id="withdrawAmount"
-            min="2500"
-            step="100"
-            placeholder="Exemple : 2600"
-        >
+        <input type="number"
+               id="withdrawAmount"
+               min="2500"
+               step="100"
+               placeholder="Exemple : 2600">
 
 
         <label>Mode de paiement</label>
@@ -861,30 +713,20 @@ footer{
 
         <label>Numéro de réception</label>
 
-        <input
-            type="text"
-            id="withdrawPaymentNumber"
-            placeholder="Numéro Wave ou MTN Mobile Money"
-        >
+        <input type="text"
+               id="withdrawPaymentNumber"
+               placeholder="Numéro Wave ou MTN Mobile Money">
 
 
-        <button
-            class="btn-primary"
-            onclick="submitWithdrawal()">
-
+        <button class="btn-primary"
+                onclick="submitWithdrawal()">
             💸 Demander le retrait
-
         </button>
-
 
         <div id="withdrawMessage"></div>
 
     </div>
 
-
-    <!-- =================================================
-         HISTORIQUE DEPOTS
-    ================================================== -->
 
     <div class="card">
 
@@ -896,10 +738,6 @@ footer{
 
     </div>
 
-
-    <!-- =================================================
-         HISTORIQUE RETRAITS
-    ================================================== -->
 
     <div class="card">
 
@@ -914,10 +752,6 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     ADMIN
-===================================================== -->
-
 <section id="adminSection" class="hidden">
 
     <div class="card">
@@ -928,29 +762,21 @@ footer{
             Bienvenue dans l'espace administrateur.
         </p>
 
-        <button
-            class="btn-danger"
-            onclick="logoutUser()">
-
+        <button class="btn-danger"
+                onclick="logoutUser()">
             Déconnexion
-
         </button>
 
     </div>
 
 
-    <!-- DEPOTS ADMIN -->
-
     <div class="card">
 
         <h2>💳 Demandes de dépôts</h2>
 
-        <button
-            class="btn-secondary"
-            onclick="loadAdminDeposits()">
-
+        <button class="btn-secondary"
+                onclick="loadAdminDeposits()">
             🔄 Actualiser
-
         </button>
 
         <div id="adminDeposits">
@@ -960,18 +786,13 @@ footer{
     </div>
 
 
-    <!-- RETRAITS ADMIN -->
-
     <div class="card">
 
         <h2>💸 Demandes de retraits</h2>
 
-        <button
-            class="btn-secondary"
-            onclick="loadAdminWithdrawals()">
-
+        <button class="btn-secondary"
+                onclick="loadAdminWithdrawals()">
             🔄 Actualiser
-
         </button>
 
         <div id="adminWithdrawals">
@@ -981,18 +802,13 @@ footer{
     </div>
 
 
-    <!-- PROFILS ADMIN -->
-
     <div class="card">
 
         <h2>👥 Utilisateurs</h2>
 
-        <button
-            class="btn-secondary"
-            onclick="loadAdminProfiles()">
-
+        <button class="btn-secondary"
+                onclick="loadAdminProfiles()">
             🔄 Actualiser
-
         </button>
 
         <div id="adminProfiles">
@@ -1005,7 +821,6 @@ footer{
 
 </div>
 
-
 <footer>
     CACAO © 2026
 </footer>
@@ -1014,7 +829,7 @@ footer{
 <script>
 
 /* =========================================================
-   CONFIGURATION SUPABASE
+   SUPABASE
 ========================================================= */
 
 const SUPABASE_URL =
@@ -1049,7 +864,7 @@ function money(value){
         "fr-FR",
         {
             minimumFractionDigits:0,
-            maximumFractionDigits:3
+            maximumFractionDigits:2
         }
     ) + " FCFA";
 
@@ -1095,57 +910,37 @@ function message(elementId,text,type){
     if(!element) return;
 
     element.innerHTML =
-        `<div class="${type}">${text}</div>`;
+        `<div class="${type}">${escapeHtml(text)}</div>`;
 
 }
 
 
 /* =========================================================
-   COMMUNAUTÉ CACAO-2
+   COMMUNAUTÉ
 ========================================================= */
 
 function showCommunityMessage(title,messageText){
 
-    const titleElement =
-        document.getElementById(
-            "communityMessageTitle"
-        );
+    document.getElementById(
+        "communityMessageTitle"
+    ).textContent = title;
 
-    const textElement =
-        document.getElementById(
-            "communityMessageText"
-        );
+    document.getElementById(
+        "communityMessageText"
+    ).textContent = messageText;
 
-    const box =
-        document.getElementById(
-            "communityMessage"
-        );
-
-    if(titleElement){
-        titleElement.textContent = title;
-    }
-
-    if(textElement){
-        textElement.textContent = messageText;
-    }
-
-    if(box){
-        box.style.display = "block";
-    }
+    document.getElementById(
+        "communityMessage"
+    ).style.display = "block";
 
 }
 
 
 function closeCommunityMessage(){
 
-    const box =
-        document.getElementById(
-            "communityMessage"
-        );
-
-    if(box){
-        box.style.display = "none";
-    }
+    document.getElementById(
+        "communityMessage"
+    ).style.display = "none";
 
 }
 
@@ -1181,7 +976,7 @@ async function registerUser(){
 
     try{
 
-        const { data,error } =
+        const {error} =
             await supabaseClient.auth.signUp({
 
                 email:email,
@@ -1249,7 +1044,7 @@ async function loginUser(){
 
     try{
 
-        const { data,error } =
+        const {error} =
             await supabaseClient.auth.signInWithPassword({
 
                 email:email,
@@ -1292,15 +1087,13 @@ async function logoutUser(){
 
 
 /* =========================================================
-   INITIALISATION UTILISATEUR
+   INITIALISATION
 ========================================================= */
 
 async function initializeUser(){
 
     const {
-        data:{
-            user
-        }
+        data:{user}
     } =
     await supabaseClient.auth.getUser();
 
@@ -1364,11 +1157,8 @@ async function loadProfile(){
 
     if(!currentUser) return;
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("profiles")
         .select("*")
         .eq("id",currentUser.id)
@@ -1399,30 +1189,20 @@ async function updateMyEarnings(){
 
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "update_my_earnings"
             );
 
         if(error){
 
-            console.error(
-                "Erreur gains :",
-                error
-            );
+            console.error("Erreur gains :",error);
 
             return;
 
         }
 
-        console.log(
-            "Gains calculés :",
-            data
-        );
+        console.log("Gains calculés :",data);
 
     }
     catch(error){
@@ -1444,8 +1224,7 @@ function updateDashboard(){
 
     document.getElementById("userName")
         .textContent =
-        currentProfile.full_name ||
-        "Utilisateur";
+        currentProfile.full_name || "Utilisateur";
 
     document.getElementById("userBalance")
         .textContent =
@@ -1464,11 +1243,8 @@ function updateDashboard(){
 
 async function loadMachines(){
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("machines")
         .select("*")
         .eq("active",true)
@@ -1477,6 +1253,11 @@ async function loadMachines(){
     if(error){
 
         console.error(error);
+
+        document.getElementById(
+            "machinesContainer"
+        ).innerHTML =
+            `<div class="error">${escapeHtml(error.message)}</div>`;
 
         return;
 
@@ -1495,6 +1276,7 @@ async function loadMachines(){
     select.innerHTML =
         `<option value="">-- Choisir une machine --</option>`;
 
+
     machines.forEach(machine => {
 
         const div =
@@ -1504,15 +1286,14 @@ async function loadMachines(){
 
         div.innerHTML = `
 
-            <h3>${escapeHtml(machine.name)}</h3>
+            <h3>⚙️ ${escapeHtml(machine.name)}</h3>
 
-            <p>
-                <strong>Prix :</strong>
-                ${money(machine.price)}
+            <p class="machine-price">
+                Prix : ${money(machine.price)}
             </p>
 
-            <p>
-                <strong>Rémunération journalière :</strong>
+            <p class="machine-earning">
+                💰 Gain journalier :
                 ${money(machine.daily_earning)}
             </p>
 
@@ -1547,18 +1328,15 @@ async function loadMachines(){
 
 
 /* =========================================================
-   MACHINES DE L'UTILISATEUR
+   MACHINES UTILISATEUR
 ========================================================= */
 
 async function loadUserMachines(){
 
     if(!currentUser) return;
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("user_machines")
         .select("*")
         .eq("user_id",currentUser.id)
@@ -1636,15 +1414,15 @@ function updateDepositMachineInfo(){
 
         <br><br>
 
-        Effectuez d'abord le paiement sur :
+        Effectuez le paiement avec :
 
         <br>
 
-        <strong>Wave : 05 45 15 63 02</strong>
+        <strong>Wave : 0545156302</strong>
 
         <br>
 
-        <strong>MTN Mobile Money : 05 45 15 63 02</strong>
+        <strong>MTN Mobile Money : 0545156302</strong>
 
     `;
 
@@ -1707,7 +1485,10 @@ async function submitDeposit(){
 
     }
 
-    if(!paymentMethod){
+    if(
+        paymentMethod !== "Wave" &&
+        paymentMethod !== "MTN Mobile Money"
+    ){
 
         message(
             "depositMessage",
@@ -1733,29 +1514,21 @@ async function submitDeposit(){
 
     try{
 
-        const {
-            error
-        } =
-        await supabaseClient
+        const {error} =
+            await supabaseClient
             .from("deposits")
             .insert({
 
                 user_id:currentUser.id,
-
                 machine_id:machine.id,
-
                 amount:machine.price,
-
                 payment_method:paymentMethod,
-
                 payment_reference:reference,
-
                 status:"pending"
 
             });
 
         if(error) throw error;
-
 
         message(
             "depositMessage",
@@ -1763,11 +1536,9 @@ async function submitDeposit(){
             "success"
         );
 
-
         document.getElementById(
             "depositReference"
         ).value = "";
-
 
         await loadMyDeposits();
 
@@ -1795,11 +1566,8 @@ async function loadMyDeposits(){
 
     if(!currentUser) return;
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("deposits")
         .select("*")
         .eq("user_id",currentUser.id)
@@ -1814,9 +1582,7 @@ async function loadMyDeposits(){
     }
 
     const container =
-        document.getElementById(
-            "myDeposits"
-        );
+        document.getElementById("myDeposits");
 
     if(!data || data.length === 0){
 
@@ -1855,9 +1621,7 @@ async function loadMyDeposits(){
 
                 <td>${escapeHtml(item.payment_reference || "")}</td>
 
-                <td>
-                    ${statusHtml(item.status)}
-                </td>
+                <td>${statusHtml(item.status)}</td>
 
             </tr>
 
@@ -1967,15 +1731,10 @@ async function submitWithdrawal(){
 
     }
 
-
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "create_withdrawal",
                 {
                     p_amount:amount,
@@ -1986,13 +1745,11 @@ async function submitWithdrawal(){
 
         if(error) throw error;
 
-
         message(
             "withdrawMessage",
             "Votre demande de retrait a été enregistrée et est en attente de validation par l'administrateur.",
             "success"
         );
-
 
         document.getElementById(
             "withdrawAmount"
@@ -2005,7 +1762,6 @@ async function submitWithdrawal(){
         document.getElementById(
             "withdrawPaymentNumber"
         ).value = "";
-
 
         await updateMyEarnings();
 
@@ -2039,11 +1795,8 @@ async function loadMyWithdrawals(){
 
     if(!currentUser) return;
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("withdrawals")
         .select("*")
         .eq("user_id",currentUser.id)
@@ -2058,9 +1811,7 @@ async function loadMyWithdrawals(){
     }
 
     const container =
-        document.getElementById(
-            "myWithdrawals"
-        );
+        document.getElementById("myWithdrawals");
 
     if(!data || data.length === 0){
 
@@ -2099,9 +1850,7 @@ async function loadMyWithdrawals(){
 
                 <td>${escapeHtml(item.payment_number || "")}</td>
 
-                <td>
-                    ${statusHtml(item.status)}
-                </td>
+                <td>${statusHtml(item.status)}</td>
 
             </tr>
 
@@ -2117,21 +1866,16 @@ async function loadMyWithdrawals(){
 
 
 /* =========================================================
-   ADMIN - DEPOTS
+   ADMIN DEPOTS
 ========================================================= */
 
 async function loadAdminDeposits(){
 
     const container =
-        document.getElementById(
-            "adminDeposits"
-        );
+        document.getElementById("adminDeposits");
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("deposits")
         .select("*")
         .order("id",{ascending:false});
@@ -2182,17 +1926,13 @@ async function loadAdminDeposits(){
                 <button
                     class="btn-primary"
                     onclick="validateDeposit(${item.id})">
-
                     VALIDER
-
                 </button>
 
                 <button
                     class="btn-danger"
                     onclick="rejectDeposit(${item.id})">
-
                     REFUSER
-
                 </button>
 
             `;
@@ -2203,7 +1943,6 @@ async function loadAdminDeposits(){
             actions = "Traité";
 
         }
-
 
         html += `
 
@@ -2239,7 +1978,7 @@ async function loadAdminDeposits(){
 
 
 /* =========================================================
-   ADMIN - VALIDATION DEPOT
+   ADMIN VALIDATION DEPOT
 ========================================================= */
 
 async function validateDeposit(id){
@@ -2250,12 +1989,8 @@ async function validateDeposit(id){
 
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "admin_validate_deposit",
                 {
                     p_deposit_id:id
@@ -2271,10 +2006,7 @@ async function validateDeposit(id){
     }
     catch(error){
 
-        alert(
-            "Erreur : " +
-            error.message
-        );
+        alert("Erreur : " + error.message);
 
     }
 
@@ -2282,7 +2014,7 @@ async function validateDeposit(id){
 
 
 /* =========================================================
-   ADMIN - REFUS DEPOT
+   ADMIN REFUS DEPOT
 ========================================================= */
 
 async function rejectDeposit(id){
@@ -2293,12 +2025,8 @@ async function rejectDeposit(id){
 
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "admin_reject_deposit",
                 {
                     p_deposit_id:id
@@ -2314,10 +2042,7 @@ async function rejectDeposit(id){
     }
     catch(error){
 
-        alert(
-            "Erreur : " +
-            error.message
-        );
+        alert("Erreur : " + error.message);
 
     }
 
@@ -2325,21 +2050,16 @@ async function rejectDeposit(id){
 
 
 /* =========================================================
-   ADMIN - RETRAITS
+   ADMIN RETRAITS
 ========================================================= */
 
 async function loadAdminWithdrawals(){
 
     const container =
-        document.getElementById(
-            "adminWithdrawals"
-        );
+        document.getElementById("adminWithdrawals");
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("withdrawals")
         .select("*")
         .order("id",{ascending:false});
@@ -2389,17 +2109,13 @@ async function loadAdminWithdrawals(){
                 <button
                     class="btn-primary"
                     onclick="validateWithdrawal(${item.id})">
-
                     VALIDER
-
                 </button>
 
                 <button
                     class="btn-danger"
                     onclick="rejectWithdrawal(${item.id})">
-
                     REFUSER
-
                 </button>
 
             `;
@@ -2410,7 +2126,6 @@ async function loadAdminWithdrawals(){
             actions = "Traité";
 
         }
-
 
         html += `
 
@@ -2444,7 +2159,7 @@ async function loadAdminWithdrawals(){
 
 
 /* =========================================================
-   ADMIN - VALIDATION RETRAIT
+   ADMIN VALIDATION RETRAIT
 ========================================================= */
 
 async function validateWithdrawal(id){
@@ -2455,12 +2170,8 @@ async function validateWithdrawal(id){
 
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "admin_validate_withdrawal",
                 {
                     p_withdrawal_id:id
@@ -2476,10 +2187,7 @@ async function validateWithdrawal(id){
     }
     catch(error){
 
-        alert(
-            "Erreur : " +
-            error.message
-        );
+        alert("Erreur : " + error.message);
 
     }
 
@@ -2487,7 +2195,7 @@ async function validateWithdrawal(id){
 
 
 /* =========================================================
-   ADMIN - REFUS RETRAIT
+   ADMIN REFUS RETRAIT
 ========================================================= */
 
 async function rejectWithdrawal(id){
@@ -2498,12 +2206,8 @@ async function rejectWithdrawal(id){
 
     try{
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .rpc(
+        const {data,error} =
+            await supabaseClient.rpc(
                 "admin_reject_withdrawal",
                 {
                     p_withdrawal_id:id
@@ -2519,10 +2223,7 @@ async function rejectWithdrawal(id){
     }
     catch(error){
 
-        alert(
-            "Erreur : " +
-            error.message
-        );
+        alert("Erreur : " + error.message);
 
     }
 
@@ -2530,21 +2231,16 @@ async function rejectWithdrawal(id){
 
 
 /* =========================================================
-   ADMIN - PROFILS
+   ADMIN PROFILS
 ========================================================= */
 
 async function loadAdminProfiles(){
 
     const container =
-        document.getElementById(
-            "adminProfiles"
-        );
+        document.getElementById("adminProfiles");
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
+    const {data,error} =
+        await supabaseClient
         .from("profiles")
         .select("*")
         .order("created_at",{ascending:false});
@@ -2611,7 +2307,7 @@ async function loadAdminProfiles(){
 
 
 /* =========================================================
-   ADMIN - TOUT CHARGER
+   ADMIN TOUT CHARGER
 ========================================================= */
 
 async function loadAdminData(){
@@ -2661,7 +2357,7 @@ function statusHtml(status){
 
 
 /* =========================================================
-   SECURITE AFFICHAGE
+   SECURITE
 ========================================================= */
 
 function escapeHtml(value){
@@ -2685,9 +2381,7 @@ async function startApp(){
     try{
 
         const {
-            data:{
-                session
-            }
+            data:{session}
         } =
         await supabaseClient.auth.getSession();
 
@@ -2715,7 +2409,7 @@ async function startApp(){
 
 
 /* =========================================================
-   ECOUTE AUTHENTIFICATION
+   AUTHENTIFICATION
 ========================================================= */
 
 supabaseClient.auth.onAuthStateChange(
@@ -2723,8 +2417,7 @@ supabaseClient.auth.onAuthStateChange(
 
         if(event === "SIGNED_IN" && session){
 
-            currentUser =
-                session.user;
+            currentUser = session.user;
 
         }
 
@@ -2752,3 +2445,4 @@ startApp();
 
 </body>
 </html>
+```
